@@ -58,10 +58,10 @@ List Data User
                                         <button type="button" class="btn btn-icon btn-primary" onclick="modalshow('{{ Crypt::encryptString($item->id_user) }}')">
                                             <span class="tf-icons bx bx-show-alt"></span>
                                         </button>
-                                        <button type="button" class="btn btn-icon btn-primary" onclick="modaledit('{{ Crypt::encryptString($item->id_user) }}')">
+                                        <button type="button" class="btn btn-icon btn-warning" onclick="modaledit('{{ Crypt::encryptString($item->id_user) }}')">
                                             <span class="tf-icons bx bx-edit"></span>
                                         </button>
-                                        <button type="button" class="btn btn-icon btn-primary" onclick="modaldelete('{{ Crypt::encryptString($item->id_user) }}')">
+                                        <button type="button" class="btn btn-icon btn-danger" onclick="modaldelete('{{ Crypt::encryptString($item->id_user) }}')">
                                             <span class="tf-icons bx bx-eraser"></span>
                                         </button>
                                     </div>
@@ -296,12 +296,6 @@ List Data User
 @section('script')
 
 <script>
-    function modaldelete(id) {
-        // alert(id);
-        var url = $('#modaldelete form').attr('action');
-        $('#modaldelete form').attr('action', url.replace(':id', id));
-        $('#modaldelete').modal('show');
-    }
     function modalshow(id){
         $.ajax({
             url: `{{ route('show_user_data', ':id') }}`.replace(':id', id),
@@ -339,6 +333,11 @@ List Data User
             }
         });
 
+    }
+    function modaldelete(id) {
+        var url = $('#modaldelete form').attr('action');
+        $('#modaldelete form').attr('action', url.replace(':id', id));
+        $('#modaldelete').modal('show');
     }
     $(document).ready(function () {
         $('input[name="foto"').on('change',function(){

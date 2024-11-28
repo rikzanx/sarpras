@@ -13,12 +13,20 @@ use Illuminate\Support\Facades\Auth;
 
 class GroupController extends Controller
 {
-    public function list_data_inventory_group(){
+    public function list_data_group(){
         $group = Group::get();
 
         return view('group/list_data_group',[
             'group' => $group
         ]);
+    }
+
+    public function show_data_group(Request $request,$id_group)
+    {
+        $decryptId = Crypt::decryptString($id_group);
+        $group = Group::findOrFail($decryptId);
+
+        return response()->json($group);
     }
 
     public function add_group()

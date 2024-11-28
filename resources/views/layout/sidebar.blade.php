@@ -24,6 +24,29 @@
         </li>
 
         <li class="menu-header small text-uppercase">
+            <span class="menu-header-text">Transaksi</span>
+        </li>
+        <li class="menu-item {{ request()->is('list_transaksi*') ? 'open' : '' }}">
+            <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons bx bx-archive"></i>
+                <div data-i18n="Layouts">Transaksi</div>
+            </a>
+
+            <ul class="menu-sub">
+                <li class="menu-item {{ request()->is('list_transaksi_barang_masuk*') ? 'active' : '' }}">
+                    <a href="{{route('list_transaksi_barang_masuk')}}" class="menu-link">
+                        <div data-i18n="Without navbar">Barang Masuk <span class="tf-icons bx bx-archive-in"></span></div>
+                    </a>
+                </li>
+                
+                <li class="menu-item {{ request()->is('list_transaksi_barang_keluar*') ? 'active' : '' }}">
+                    <a href="{{route('list_transaksi_barang_keluar')}}" class="menu-link">
+                        <div data-i18n="Container">Barang Keluar <span class="tf-icons bx bx-archive-out"></span></div>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li class="menu-header small text-uppercase">
             <span class="menu-header-text">Material Request</span>
         </li>
 
@@ -37,9 +60,7 @@
         <li class="menu-header small text-uppercase">
             <span class="menu-header-text">Master Data</span>
         </li>
-
-        <!-- Layouts -->
-        <li class="menu-item">
+        <li class="menu-item {{ request()->is('list_data_barang*') || request()->is('list_data_group*') || request()->is('list_data_satuan*') ? 'open' : '' }}">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-layout"></i>
                 <div data-i18n="Layouts">Master</div>
@@ -48,24 +69,22 @@
             <ul class="menu-sub">
                 <li class="menu-item {{ request()->is('list_data_barang*') ? 'active' : '' }}">
                     <a href="{{route('list_data_barang')}}" class="menu-link">
-                        <div data-i18n="Without navbar">Master Barang</div>
+                        <div data-i18n="Without navbar">Barang</div>
                     </a>
                 </li>
-                <li class="menu-item {{ request()->is('list_data_inventory_group*') ? 'active' : '' }}">
-                    <a href="{{route('list_data_inventory_group')}}" class="menu-link">
-                        <div data-i18n="Without menu">Inventory Group</div>
-                    </a>
-                </li>
+                
                 <li class="menu-item {{ request()->is('list_data_satuan*') ? 'active' : '' }}">
                     <a href="{{route('list_data_satuan')}}" class="menu-link">
                         <div data-i18n="Container">Satuan</div>
                     </a>
                 </li>
+                <li class="menu-item {{ request()->is('list_data_group*') ? 'active' : '' }}">
+                    <a href="{{route('list_data_group')}}" class="menu-link">
+                        <div data-i18n="Without menu">Group</div>
+                    </a>
+                </li>
             </ul>
         </li>
-
-        
-
 
         <!-- User -->
         <li class="menu-header small text-uppercase"><span class="menu-header-text">User</span></li>

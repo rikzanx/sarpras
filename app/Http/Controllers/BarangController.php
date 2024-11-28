@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Barang;
-
+use App\Models\Satuan;
+use App\Models\Group;
 use Illuminate\Support\Facades\Crypt;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Validator;
@@ -14,11 +15,23 @@ use Illuminate\Support\Facades\Auth;
 class BarangController extends Controller
 {
     public function list_data_barang(){
+        $satuan = Satuan::get();
+        $group = Group::get();
         $barangs = Barang::with(['satuan','group'])->get();
 
         return view('barang/list_data_barang',[
-            'barangs' => $barangs
+            'barangs' => $barangs,
+            'satuan' => $satuan,
+            'group' => $group
         ]);
+    }
+
+    public function show_data_barang(Request $request,$id_barang)
+    {
+        $decryptId = Crypt::decryptString($id_barang);
+        $barang = Barang::findOrFail($decryptId);
+
+        return response()->json($barang);
     }
 
     public function add_barang()

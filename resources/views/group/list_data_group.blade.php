@@ -29,7 +29,7 @@ List Data Group
                 <div class="card-header mt-4 py-2 px-1 d-flex justify-content-between align-items-center">
                     <h4>Data Group</h4>
                     <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                        data-bs-target="#exLargeModal">+ Add Group</button>
+                        data-bs-target="#modaltambah">+ Add Group</button>
                 </div>
                 <div class="card-datatable table-responsive mb-4 mt-4 dt-buttons display nowrap" style="width:100%">
                     <table id="myTable" class="table">
@@ -42,24 +42,26 @@ List Data Group
                             </tr>
                         </thead>
                         <tbody>
+                            @foreach($group as $index => $item)
                             <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td>{{ $index+1 }}</td>
+                                <td>{{ $item->nama }}</td>
+                                <td>{{ $item->deskripsi }}</td>
                                 <td style="text-align: center;">
                                     <div class="demo-inline-spacing">
-                                        <button type="button" class="btn btn-icon btn-primary">
+                                        <button type="button" class="btn btn-icon btn-primary" onclick="modalshow('{{ Crypt::encryptString($item->id_group) }}')">
                                             <span class="tf-icons bx bx-show-alt"></span>
                                         </button>
-                                        <button type="button" class="btn btn-icon btn-primary">
+                                        <button type="button" class="btn btn-icon btn-warning" onclick="modaledit('{{ Crypt::encryptString($item->id_group) }}')">
                                             <span class="tf-icons bx bx-edit"></span>
                                         </button>
-                                        <button type="button" class="btn btn-icon btn-primary">
+                                        <button type="button" class="btn btn-icon btn-danger" onclick="modaldelete('{{ Crypt::encryptString($item->id_group) }}')">
                                             <span class="tf-icons bx bx-eraser"></span>
                                         </button>
                                     </div>
                                 </td>
                             </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
@@ -70,47 +72,183 @@ List Data Group
 
 
 
-<div class="modal fade" id="exLargeModal" tabindex="-1" aria-hidden="true">
+<!-- Modal Tambah -->
+<div class="modal fade" id="modaltambah" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-xl" role="document">
         <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel4">Tambah Data</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <div class="row">
-                    <div class="col mb-3">
-                        <label for="nameExLarge" class="form-label">Nama Group</label>
-                        <input type="text" id="nameExLarge" class="form-control" placeholder="Enter Name" />
+            <form action="{{ route('add_group_action') }}" method="post">
+                @csrf
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel4">Tambah Data</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col mb-3">
+                            <label class="form-label">Nama Group</label>
+                            <input type="text" class="form-control" placeholder="Enter Name" name="nama" />
+                        </div>
+                    </div>
+                    <div class="row g-2">
+                        <div class="col mb-0">
+                            <label  class="form-label">Deskripsi</label>
+                            <input type="text" class="form-control" placeholder="Enter Deskripsi" name="deskripsi" />
+                        </div>
                     </div>
                 </div>
-                <div class="row g-2">
-                    <div class="col mb-0">
-                        <label for="emailExLarge" class="form-label">Deskripsi</label>
-                        <input type="text" id="emailExLarge" class="form-control" placeholder="Enter Name" />
-                    </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                        Close
+                    </button>
+                    <button type="input" class="btn btn-primary">Tambah Data</button>
                 </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
-                    Close
-                </button>
-                <button type="button" class="btn btn-primary">Tambah Data</button>
-            </div>
+            </form>
         </div>
     </div>
 </div>
+<!-- End Modal Tambah -->
+
+<!-- Modal Show -->
+<div class="modal fade" id="modalshow" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-xl" role="document">
+        <div class="modal-content">
+            <form action="#" method="post">
+                @csrf
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel4">Show Data</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col mb-3">
+                            <label class="form-label">Nama Group</label>
+                            <input type="text" class="form-control" placeholder="Enter Name" name="nama" />
+                        </div>
+                    </div>
+                    <div class="row g-2">
+                        <div class="col mb-0">
+                            <label  class="form-label">Deskripsi</label>
+                            <input type="text" class="form-control" placeholder="Enter Deskripsi" name="deskripsi" />
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                        Close
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+ <!-- End Modal Show -->
+
+ <!-- Modal Edit -->
+<div class="modal fade" id="modaledit" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-xl" role="document">
+        <div class="modal-content">
+            <form action="{{ route('edit_group_action',':id') }}" method="post">
+                @csrf
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel4">Eidt Data</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col mb-3">
+                            <label class="form-label">Nama Group</label>
+                            <input type="text" class="form-control" placeholder="Enter Name" name="nama" />
+                        </div>
+                    </div>
+                    <div class="row g-2">
+                        <div class="col mb-0">
+                            <label  class="form-label">Deskripsi</label>
+                            <input type="text" class="form-control" placeholder="Enter Deskripsi" name="deskripsi" />
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                        Close
+                    </button>
+                    <button type="input" class="btn btn-primary">Edit Data</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+ <!-- End Modal Edit -->
+
+<!-- Modal Delete -->
+<div class="modal fade" id="modaldelete" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-xxs" role="document">
+        <div class="modal-content">
+            <form action="{{  route('delete_group_action',':id') }}" method="post" enctype="multipart/form-data">
+                @csrf
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel4">Hapus Data</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col">
+                            <h6>Apakah yakin anda akan menghapus data ini?</h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                        Close
+                    </button>
+                    <button type="submit" class="btn btn-danger">Hapus Data</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- End Modal Delete -->
 @endsection
 
 
 @section('script')
 
 <script>
+    function modalshow(id){
+        $.ajax({
+            url: `{{ route('show_data_group', ':id') }}`.replace(':id', id),
+            method: 'GET',
+            success: function(data){
+                console.log(data);
+                $('#modalshow input[name="nama"]').val(data.nama);
+                $('#modalshow input[name="deskripsi"]').val(data.deskripsi);
+                $('#modalshow').modal('show');
+            },
+            error: function(err){
+                alert('Gagal mengambil data user');
+            }
+        });
+    }
+    function modaledit(id){
+        $.ajax({
+            url: `{{ route('show_data_group', ':id') }}`.replace(':id', id),
+            method: 'GET',
+            success: function(data){
+                let url = $('#modaledit form').attr('action');
+                $('#modaledit form').attr('action',url.replace(':id',id));
+                $('#modaledit input[name="nama"]').val(data.nama);
+                $('#modaledit input[name="deskripsi"]').val(data.deskripsi);
+                $('#modaledit').modal('show');
+            },
+            error: function(err){
+                alert('Gagal mengambil data user');
+            }
+        });
+
+    }
     function modaldelete(id) {
-        // alert(id);
-        var url = $('.delete-form').attr('action');
-        $('.delete-form').attr('action', url.replace(':id', id));
-        $('#deleteModal').modal('show');
+        var url = $('#modaldelete form').attr('action');
+        $('#modaldelete form').attr('action', url.replace(':id', id));
+        $('#modaldelete').modal('show');
     }
     $(document).ready(function () {
         $('#myTable').DataTable({

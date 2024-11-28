@@ -52,10 +52,10 @@ List Data Satuan
                                         <button type="button" class="btn btn-icon btn-primary" onclick="modalshow('{{ Crypt::encryptString($item->id_satuan) }}')">
                                             <span class="tf-icons bx bx-show-alt"></span>
                                         </button>
-                                        <button type="button" class="btn btn-icon btn-primary" onclick="modaledit('{{ Crypt::encryptString($item->id_satuan) }}')">
+                                        <button type="button" class="btn btn-icon btn-warning" onclick="modaledit('{{ Crypt::encryptString($item->id_satuan) }}')">
                                             <span class="tf-icons bx bx-edit"></span>
                                         </button>
-                                        <button type="button" class="btn btn-icon btn-primary" onclick="modaldelete('{{ Crypt::encryptString($item->id_satuan) }}')">
+                                        <button type="button" class="btn btn-icon btn-danger" onclick="modaldelete('{{ Crypt::encryptString($item->id_satuan) }}')">
                                             <span class="tf-icons bx bx-eraser"></span>
                                         </button>
                                     </div>
@@ -177,18 +177,41 @@ List Data Satuan
     </div>
 </div>
  <!-- End Modal Edit -->
+
+<!-- Modal Delete -->
+<div class="modal fade" id="modaldelete" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-xxs" role="document">
+        <div class="modal-content">
+            <form action="{{  route('delete_satuan_action',':id') }}" method="post" enctype="multipart/form-data">
+                @csrf
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel4">Hapus Data</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col">
+                            <h6>Apakah yakin anda akan menghapus data ini?</h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                        Close
+                    </button>
+                    <button type="submit" class="btn btn-danger">Hapus Data</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- End Modal Delete -->
 @endsection
 
 
 @section('script')
 
 <script>
-    function modaldelete(id) {
-        // alert(id);
-        var url = $('.delete-form').attr('action');
-        $('.delete-form').attr('action', url.replace(':id', id));
-        $('#deleteModal').modal('show');
-    }
     function modalshow(id){
         $.ajax({
             url: `{{ route('show_data_satuan', ':id') }}`.replace(':id', id),
@@ -220,6 +243,11 @@ List Data Satuan
             }
         });
 
+    }
+    function modaldelete(id) {
+        var url = $('#modaldelete form').attr('action');
+        $('#modaldelete form').attr('action', url.replace(':id', id));
+        $('#modaldelete').modal('show');
     }
     $(document).ready(function () {
         $('#myTable').DataTable({
