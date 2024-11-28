@@ -33,7 +33,8 @@ Route::group(['middleware' => [AuthMiddleware::class]],function(){
     Route::get('/atk/list_transaksi_barang_keluar',[TransaksiController::class,'atk_list_transaksi_barang_keluar'])->name('atk_list_transaksi_barang_keluar');
     Route::get('/atk/show_transaksi_barang/{id_transaction}',[TransaksiController::class,'atk_show_transaksi_barang'])->name('atk_show_transaksi_barang');
     Route::post('/atk/add_transaksi_barang_masuk_action',[TransaksiController::class,'atk_add_transaksi_barang_masuk_action'])->name('atk_add_transaksi_barang_masuk_action');
-    
+    Route::get('/atk/stock_barang',[TransaksiController::class,'atk_stock_barang'])->name('atk_stock_barang');
+
     Route::get('/list_data_user', [UserController::class, 'list_data_user'])->name('list_data_user');
     Route::get('/show_user_data/{id_user}',[UserController::class, 'show_user_data'])->name('show_user_data');
     Route::post('/add_user_action', [UserController::class, 'add_user_action'])->name('add_user_action');

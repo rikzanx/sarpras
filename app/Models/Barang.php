@@ -34,6 +34,11 @@ class Barang extends Model
         return $this->belongsTo(Group::class, 'id_group', 'id_group');
     }
 
+    public function stock()
+    {
+        return $this->hasOne(Stock::class, 'id_barang', 'id_barang');
+    }
+
     public function transaksis()
     {
         return $this->belongsToMany(Transaksi::class, 'transaksi_barangs', 'id_barang', 'id_transaksi')

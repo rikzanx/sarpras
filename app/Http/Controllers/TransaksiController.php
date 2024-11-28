@@ -86,6 +86,18 @@ class TransaksiController extends Controller
             'satuan' => $satuan
         ]);
     }
+    
+    public function atk_stock_barang()
+    {
+        $satuan = Satuan::get();
+        $group = Group::get();
+        $barangs = Barang::with(['satuan','group','stock'])->where('id_group',2)->get();
+        return view('transaksi/atk_stock_barang',[
+            'barangs' => $barangs,
+            'satuan' => $satuan,
+            'group' => $group
+        ]);
+    }
 
     public function atk_show_transaksi_barang($group,$id_transaction)
     {
