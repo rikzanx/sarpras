@@ -36,7 +36,9 @@ Route::group(['middleware' => [AuthMiddleware::class]],function(){
     Route::get('/list_data_barang', [BarangController::class, 'list_data_barang'])->name('list_data_barang');
 
     Route::get('/list_data_satuan', [SatuanController::class, 'list_data_satuan'])->name('list_data_satuan');
-
+    Route::post('/add_satuan_action',[SatuanController::class, 'add_satuan_action'])->name('add_satuan_action');
+    Route::get('/show_data_satuan/{id_satuan}', [SatuanController::class, 'show_data_satuan'])->name('show_data_satuan');
+    Route::post('/edit_satuan_action/{id_satuan}',[SatuanController::class, 'edit_satuan_action'])->name('edit_satuan_action');
 
 
     Route::get('/list_data_pengajuan', [PengajuanController::class, 'list_data_pengajuan'])->name('list_data_pengajuan');

@@ -23,32 +23,6 @@
             </a>
         </li>
 
-        <!-- Layouts -->
-        <li class="menu-item">
-            <a href="javascript:void(0);" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons bx bx-layout"></i>
-                <div data-i18n="Layouts">Master</div>
-            </a>
-
-            <ul class="menu-sub">
-                <li class="menu-item {{ request()->is('list_data_inventory_group*') ? 'active' : '' }}">
-                    <a href="{{route('list_data_inventory_group')}}" class="menu-link">
-                        <div data-i18n="Without menu">Inventory Group</div>
-                    </a>
-                </li>
-                <li class="menu-item {{ request()->is('list_data_barang*') ? 'active' : '' }}">
-                    <a href="{{route('list_data_barang')}}" class="menu-link">
-                        <div data-i18n="Without navbar">Item</div>
-                    </a>
-                </li>
-                <li class="menu-item {{ request()->is('list_data_satuan*') ? 'active' : '' }}">
-                    <a href="{{route('list_data_satuan')}}" class="menu-link">
-                        <div data-i18n="Container">Satuan</div>
-                    </a>
-                </li>
-            </ul>
-        </li>
-
         <li class="menu-header small text-uppercase">
             <span class="menu-header-text">Material Request</span>
         </li>
@@ -59,6 +33,38 @@
                 <div data-i18n="Boxicons">Pengajuan Barang</div>
             </a>
         </li>
+
+        <li class="menu-header small text-uppercase">
+            <span class="menu-header-text">Master Data</span>
+        </li>
+
+        <!-- Layouts -->
+        <li class="menu-item">
+            <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons bx bx-layout"></i>
+                <div data-i18n="Layouts">Master</div>
+            </a>
+
+            <ul class="menu-sub">
+                <li class="menu-item {{ request()->is('list_data_barang*') ? 'active' : '' }}">
+                    <a href="{{route('list_data_barang')}}" class="menu-link">
+                        <div data-i18n="Without navbar">Master Barang</div>
+                    </a>
+                </li>
+                <li class="menu-item {{ request()->is('list_data_inventory_group*') ? 'active' : '' }}">
+                    <a href="{{route('list_data_inventory_group')}}" class="menu-link">
+                        <div data-i18n="Without menu">Inventory Group</div>
+                    </a>
+                </li>
+                <li class="menu-item {{ request()->is('list_data_satuan*') ? 'active' : '' }}">
+                    <a href="{{route('list_data_satuan')}}" class="menu-link">
+                        <div data-i18n="Container">Satuan</div>
+                    </a>
+                </li>
+            </ul>
+        </li>
+
+        
 
 
         <!-- User -->

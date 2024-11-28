@@ -302,6 +302,24 @@ List Data User
         $('#modaldelete form').attr('action', url.replace(':id', id));
         $('#modaldelete').modal('show');
     }
+    function modalshow(id){
+        $.ajax({
+            url: `{{ route('show_user_data', ':id') }}`.replace(':id', id),
+            method: 'GET',
+            success: function(data){
+                console.log(data);
+                $('#modalshow input[name="nik"]').val(data.nik);
+                $('#modalshow input[name="nama"]').val(data.nama);
+                $('#modalshow input[name="email"]').val(data.email);
+                $('#modalshow select[name="level_user"]').val(data.id_level_user);
+                $('#modalshow .preview_foto').attr('src', "{{ asset('assets/img/foto_profil/:path')}}".replace(':path',data.profile_photo_path));
+                $('#modalshow').modal('show');
+            },
+            error: function(err){
+                alert('Gagal mengambil data user');
+            }
+        });
+    }
     function modaledit(id){
         $.ajax({
             url: `{{ route('show_user_data', ':id') }}`.replace(':id', id),
@@ -321,24 +339,6 @@ List Data User
             }
         });
 
-    }
-    function modalshow(id){
-        $.ajax({
-            url: `{{ route('show_user_data', ':id') }}`.replace(':id', id),
-            method: 'GET',
-            success: function(data){
-                console.log(data);
-                $('#modalshow input[name="nik"]').val(data.nik);
-                $('#modalshow input[name="nama"]').val(data.nama);
-                $('#modalshow input[name="email"]').val(data.email);
-                $('#modalshow select[name="level_user"]').val(data.id_level_user);
-                $('#modalshow .preview_foto').attr('src', "{{ asset('assets/img/foto_profil/:path')}}".replace(':path',data.profile_photo_path));
-                $('#modalshow').modal('show');
-            },
-            error: function(err){
-                alert('Gagal mengambil data user');
-            }
-        });
     }
     $(document).ready(function () {
         $('input[name="foto"').on('change',function(){

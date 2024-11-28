@@ -44,12 +44,13 @@ List Data Barang
                             </tr>
                         </thead>
                         <tbody>
+                            @foreach($barangs as $index => $item)
                             <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td style="text-align: center;">{{ $index+1 }}</td>
+                                <td style="text-align: center;">{{ $item->group->nama }}</td>
+                                <td>{{ $item->nama }}</td>
+                                <td>{{ $item->deskripsi }}</td>
+                                <td>{{ $item->satuan->nama }}</td>
                                 <td style="text-align: center;">
                                     <div class="demo-inline-spacing">
                                         <button type="button" class="btn btn-icon btn-primary">
@@ -64,6 +65,7 @@ List Data Barang
                                     </div>
                                 </td>
                             </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>

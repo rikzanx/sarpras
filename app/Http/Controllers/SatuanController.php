@@ -21,6 +21,14 @@ class SatuanController extends Controller
         ]);
     }
 
+    public function show_data_satuan($id_satuan)
+    {
+        $decryptId = Crypt::decryptString($id_satuan);
+        $satuan = Satuan::where('id_satuan',$decryptId)->firstOrFail();
+
+        return response()->json($satuan);
+    }
+
     public function add_satuan()
     {
         return view('satuan/add_satuan');

@@ -14,10 +14,10 @@ use Illuminate\Support\Facades\Auth;
 class BarangController extends Controller
 {
     public function list_data_barang(){
-        $barang = Barang::get();
+        $barangs = Barang::with(['satuan','group'])->get();
 
         return view('barang/list_data_barang',[
-            'barang' => $barang
+            'barangs' => $barangs
         ]);
     }
 
