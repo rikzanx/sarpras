@@ -29,7 +29,7 @@ List Data User
                 <div class="card-header mt-4 py-2 px-1 d-flex justify-content-between align-items-center">
                     <h4>Data User</h4>
                     <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                        data-bs-target="#exLargeModal">+ Add User</button>
+                        data-bs-target="#modaltambah">+ Add User</button>
                 </div>
                 <div class="card-datatable table-responsive mb-4 mt-4 dt-buttons display nowrap" style="width:100%">
                     <table id="myTable" class="table">
@@ -55,13 +55,13 @@ List Data User
                                 <td style="text-align: center;">{{$item->email}}</td>
                                 <td style="text-align: center;">
                                     <div class="demo-inline-spacing">
-                                        <button type="button" class="btn btn-icon btn-primary" onclick="modaledit({{$item->id}})">
+                                        <button type="button" class="btn btn-icon btn-primary" onclick="modalshow('{{ Crypt::encryptString($item->id_user) }}')">
                                             <span class="tf-icons bx bx-show-alt"></span>
                                         </button>
-                                        <button type="button" class="btn btn-icon btn-primary">
+                                        <button type="button" class="btn btn-icon btn-primary" onclick="modaledit('{{ Crypt::encryptString($item->id_user) }}')">
                                             <span class="tf-icons bx bx-edit"></span>
                                         </button>
-                                        <button type="button" class="btn btn-icon btn-primary">
+                                        <button type="button" class="btn btn-icon btn-primary" onclick="modaldelete('{{ Crypt::encryptString($item->id_user) }}')">
                                             <span class="tf-icons bx bx-eraser"></span>
                                         </button>
                                     </div>
@@ -78,7 +78,7 @@ List Data User
 
 
 <!-- Modal Tambah -->
-<div class="modal fade" id="exLargeModal" tabindex="-1" aria-hidden="true">
+<div class="modal fade" id="modaltambah" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-xl" role="document">
         <div class="modal-content">
             <form action="{{ route('add_user_action') }}" method="post" enctype="multipart/form-data">
@@ -91,7 +91,7 @@ List Data User
                     <div class="row">
                         <div class="col mb-3">
                             <label for="nameExLarge" class="form-label">Level User</label>
-                            <select class="form-control" name="level_user" id="level_user">
+                            <select class="form-control" name="level_user" >
                             <option selected disabled>Pilih Level User</option>
                                         @foreach ($level_user as $item)
                                         <option value="{{ $item->id_level_user }}">{{ $item->level_user }}</option>
@@ -102,31 +102,32 @@ List Data User
                     <div class="row">
                         <div class="col mb-3">
                             <label for="nameExLarge" class="form-label">NIK</label>
-                            <input type="text" id="nameExLarge" class="form-control" placeholder="Enter Name" name="nik" />
+                            <input type="text"  class="form-control" placeholder="Enter Name" name="nik" />
                         </div>
                     </div>
                     <div class="row">
                         <div class="col mb-3">
                             <label for="nameExLarge" class="form-label">Nama</label>
-                            <input type="text" id="nameExLarge" class="form-control" placeholder="Enter Name" name="nama" />
+                            <input type="text"  class="form-control" placeholder="Enter Name" name="nama" />
                         </div>
                     </div>
+                    <img src="{{ asset('assets/img/foto_profil/default.png') }}" class="img-fluid preview_foto" width="100px">
                     <div class="row g-2">
                         <div class="col mb-3">
                             <label for="emailExLarge" class="form-label">Foto Profil</label>
-                            <input type="file" id="emailExLarge" class="form-control" placeholder="xxxx@xxx.xx" name="foto" />
+                            <input type="file"  class="form-control" placeholder="xxxx@xxx.xx" name="foto" />
                         </div>
                     </div>
                     <div class="row g-2">
                         <div class="col mb-3">
                             <label for="emailExLarge" class="form-label">Email</label>
-                            <input type="text" id="emailExLarge" class="form-control" placeholder="xxxx@xxx.xx" name="email" />
+                            <input type="text"  class="form-control" placeholder="xxxx@xxx.xx" name="email" />
                         </div>
                     </div>
                     <div class="row g-2">
                         <div class="col mb-0">
                             <label for="emailExLarge" class="form-label">Password</label>
-                            <input type="password" id="emailExLarge" class="form-control" placeholder="*****" name="password"/>
+                            <input type="password"  class="form-control" placeholder="*****" name="password"/>
                         </div>
                     </div>
                 </div>
@@ -142,21 +143,21 @@ List Data User
 </div>
 <!-- End Modal Tambah -->
 
-<!-- Modal Edit -->
-<div class="modal fade" id="modaledit" tabindex="-1" aria-hidden="true">
+<!-- Modal Show -->
+<div class="modal fade" id="modalshow" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-xl" role="document">
         <div class="modal-content">
-            <form action="{{ route('add_user_action') }}" method="post" enctype="multipart/form-data">
+            <form action="#" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel4">Tambah Data</h5>
+                    <h5 class="modal-title" id="exampleModalLabel4">Show Data</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <div class="row">
                         <div class="col mb-3">
                             <label for="nameExLarge" class="form-label">Level User</label>
-                            <select class="form-control" name="level_user" id="level_user">
+                            <select class="form-control" name="level_user"  disabled>
                             <option selected disabled>Pilih Level User</option>
                                         @foreach ($level_user as $item)
                                         <option value="{{ $item->id_level_user }}">{{ $item->level_user }}</option>
@@ -167,31 +168,20 @@ List Data User
                     <div class="row">
                         <div class="col mb-3">
                             <label for="nameExLarge" class="form-label">NIK</label>
-                            <input type="text" id="nameExLarge" class="form-control" placeholder="Enter Name" name="nik" />
+                            <input type="text"  class="form-control" placeholder="Enter Name" name="nik" disabled/>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col mb-3">
                             <label for="nameExLarge" class="form-label">Nama</label>
-                            <input type="text" id="nameExLarge" class="form-control" placeholder="Enter Name" name="nama" />
+                            <input type="text"  class="form-control" placeholder="Enter Name" name="nama" disabled/>
                         </div>
                     </div>
-                    <div class="row g-2">
-                        <div class="col mb-3">
-                            <label for="emailExLarge" class="form-label">Foto Profil</label>
-                            <input type="file" id="emailExLarge" class="form-control" placeholder="xxxx@xxx.xx" name="foto" />
-                        </div>
-                    </div>
+                    <img src="{{ asset('assets/img/foto_profil/default.png') }}" class="img-fluid preview_foto" width="100px">
                     <div class="row g-2">
                         <div class="col mb-3">
                             <label for="emailExLarge" class="form-label">Email</label>
-                            <input type="text" id="emailExLarge" class="form-control" placeholder="xxxx@xxx.xx" name="email" />
-                        </div>
-                    </div>
-                    <div class="row g-2">
-                        <div class="col mb-0">
-                            <label for="emailExLarge" class="form-label">Password</label>
-                            <input type="password" id="emailExLarge" class="form-control" placeholder="*****" name="password"/>
+                            <input type="text"  class="form-control" placeholder="xxxx@xxx.xx" name="email" disabled/>
                         </div>
                     </div>
                 </div>
@@ -199,13 +189,107 @@ List Data User
                     <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
                         Close
                     </button>
-                    <button type="submit" class="btn btn-primary">Tambah Data</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- End Modal Show -->
+
+<!-- Modal Edit -->
+<div class="modal fade" id="modaledit" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-xl" role="document">
+        <div class="modal-content">
+            <form action="{{  route('edit_user_action',':id') }}" method="post" enctype="multipart/form-data">
+                @csrf
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel4">Edit Data</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col mb-3">
+                            <label for="nameExLarge" class="form-label">Level User</label>
+                            <select class="form-control" name="level_user" >
+                            <option selected disabled>Pilih Level User</option>
+                                        @foreach ($level_user as $item)
+                                        <option value="{{ $item->id_level_user }}">{{ $item->level_user }}</option>
+                                        @endforeach
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col mb-3">
+                            <label for="nameExLarge" class="form-label">NIK</label>
+                            <input type="text"  class="form-control" placeholder="Enter Name" name="nik" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col mb-3">
+                            <label for="nameExLarge" class="form-label">Nama</label>
+                            <input type="text"  class="form-control" placeholder="Enter Name" name="nama" />
+                        </div>
+                    </div>
+                    <img src="{{ asset('assets/img/foto_profil/default.png') }}" class="img-fluid preview_foto" width="100px">
+                    <div class="row g-2">
+                        <div class="col mb-3">
+                            <label for="emailExLarge" class="form-label">Foto Profil</label>
+                            <input type="file"  class="form-control" placeholder="xxxx@xxx.xx" name="foto" />
+                        </div>
+                    </div>
+                    <div class="row g-2">
+                        <div class="col mb-3">
+                            <label for="emailExLarge" class="form-label">Email</label>
+                            <input type="text"  class="form-control" placeholder="xxxx@xxx.xx" name="email" />
+                        </div>
+                    </div>
+                    <div class="row g-2">
+                        <div class="col mb-0">
+                            <label for="emailExLarge" class="form-label">Password *Kosongi jika tidak diganti</label>
+                            <input type="password"  class="form-control" placeholder="*****" value="" name="password" autocomplete="new-password"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                        Close
+                    </button>
+                    <button type="submit" class="btn btn-primary">Edit Data</button>
                 </div>
             </form>
         </div>
     </div>
 </div>
 <!-- End Modal Edit -->
+
+<!-- Modal Delete -->
+<div class="modal fade" id="modaldelete" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-xxs" role="document">
+        <div class="modal-content">
+            <form action="{{  route('delete_user_action',':id') }}" method="post" enctype="multipart/form-data">
+                @csrf
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel4">Hapus Data</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col">
+                            <h6>Apakah yakin anda akan menghapus data ini?</h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                        Close
+                    </button>
+                    <button type="submit" class="btn btn-danger">Hapus Data</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- End Modal Delete -->
 @endsection
 
 
@@ -214,14 +298,61 @@ List Data User
 <script>
     function modaldelete(id) {
         // alert(id);
-        var url = $('.delete-form').attr('action');
-        $('.delete-form').attr('action', url.replace(':id', id));
-        $('#deleteModal').modal('show');
+        var url = $('#modaldelete form').attr('action');
+        $('#modaldelete form').attr('action', url.replace(':id', id));
+        $('#modaldelete').modal('show');
     }
     function modaledit(id){
+        $.ajax({
+            url: `{{ route('show_user_data', ':id') }}`.replace(':id', id),
+            method: 'GET',
+            success: function(data){
+                let url = $('#modaledit form').attr('action');
+                $('#modaledit form').attr('action',url.replace(':id',id));
+                $('#modaledit input[name="nik"]').val(data.nik);
+                $('#modaledit input[name="nama"]').val(data.nama);
+                $('#modaledit input[name="email"]').val(data.email);
+                $('#modaledit select[name="level_user"]').val(data.id_level_user);
+                $('#preview_foto').attr('src', "{{ asset('assets/img/foto_profil/:path')}}".replace(':path',data.profile_photo_path));
+                $('#modaledit').modal('show');
+            },
+            error: function(err){
+                alert('Gagal mengambil data user');
+            }
+        });
 
     }
+    function modalshow(id){
+        $.ajax({
+            url: `{{ route('show_user_data', ':id') }}`.replace(':id', id),
+            method: 'GET',
+            success: function(data){
+                console.log(data);
+                $('#modalshow input[name="nik"]').val(data.nik);
+                $('#modalshow input[name="nama"]').val(data.nama);
+                $('#modalshow input[name="email"]').val(data.email);
+                $('#modalshow select[name="level_user"]').val(data.id_level_user);
+                $('#modalshow .preview_foto').attr('src', "{{ asset('assets/img/foto_profil/:path')}}".replace(':path',data.profile_photo_path));
+                $('#modalshow').modal('show');
+            },
+            error: function(err){
+                alert('Gagal mengambil data user');
+            }
+        });
+    }
     $(document).ready(function () {
+        $('input[name="foto"').on('change',function(){
+            let file = this.files[0];
+            if(file){
+                let reader = new FileReader();
+                reader.onload = function(e) {
+                    $('.preview_foto').attr('src', e.target.result);
+                };
+                reader.readAsDataURL(file);
+            }else {
+                $('.preview_foto').attr('src', "");
+            }
+        });
         $('#myTable').DataTable({
             scrollX: true,
             responsive: true,

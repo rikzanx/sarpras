@@ -93,6 +93,13 @@ class UserController extends Controller
         }
     }
 
+    public function show_user_data($id_user)
+    {
+        $decryptId = Crypt::decryptString($id_user);
+        $profile = User::where('id_user',$decryptId)->firstOrFail();
+        return response()->json($profile);
+    }
+
     public function add_user()
     {
         $level_user = LevelUser::get();
@@ -192,7 +199,7 @@ class UserController extends Controller
             $user->save();
             DB::commit();
 
-            return redirect()->route('list_data_user')->with('success', "Sukses Menambahkan Data");
+            return redirect()->route('list_data_user')->with('success', "Sukses Mengedit Data");
         }catch (\Exception $e) {
             report($e);
             DB::rollback();
@@ -206,8 +213,8 @@ class UserController extends Controller
         DB::beginTransaction();
         try{
             $decryptId = Crypt::decryptString($id_user);
-            $user = User::withCount('hasil_uji')->findOrFail($decryptId);
-            if($user->hasil_ujis_count > 0){
+            $user = User::withCount('transactions')->findOrFail($decryptId);
+            if($user->transactions_count > 0){
                 DB::rollback();
                 return redirect()->route('list_data_user')->with('error', "Gagal Menghapus Data, Data sedang dipakai");
             }

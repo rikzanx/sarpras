@@ -25,6 +25,9 @@ Route::group(['middleware' => [AuthMiddleware::class]],function(){
 
     Route::get('/list_data_user', [UserController::class, 'list_data_user'])->name('list_data_user');
     Route::post('/add_user_action', [UserController::class, 'add_user_action'])->name('add_user_action');
+    Route::get('/show_user_data/{id_user}',[UserController::class, 'show_user_data'])->name('show_user_data');
+    Route::post('/edit_user_action/{id_user}', [UserController::class, 'edit_user_action'])->name('edit_user_action');
+    Route::post('/delete_user_action/{id_user}', [UserController::class, 'delete_user_action'])->name('delete_user_action');
 
 
 
