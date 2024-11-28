@@ -5,8 +5,8 @@ use App\Models\User;
 use App\Models\LevelUser;
 use App\Models\Group;
 use App\Models\Barang;
-use App\Models\Transaction;
-use App\Models\TransactionBarang;
+use App\Models\Transaksi;
+use App\Models\TransaksiBarang;
 use App\Models\Stock;
 use App\Models\Notifikasi;
 use App\Models\Satuan;
@@ -139,58 +139,60 @@ class DatabaseSeeder extends Seeder
             'available_stock' => 150
         ]);
 
-        // Seed Transactions (Permintaan Barang)
-        $transactionRequest = Transaction::create([
+        // Seed Transaksi (Permintaan Barang)
+        $transaksiRequest = Transaksi::create([
             'id_user' => $superAdmin->id_user,
-            'transaction_type' => 'out',
+            'id_group' => $GroupISMS->id_group,
+            'tipe' => 'out',
             'penerima' => 'Divisi IT',
-            'tanggal_transaction' => now(),
-            'remarks' => 'Permintaan barang peralatan IT'
+            'tanggal' => now(),
+            'deskripsi' => 'Permintaan barang peralatan IT'
         ]);
-        TransactionBarang::create([
-            'id_transaction' => $transactionRequest->id_transaction,
+        TransaksiBarang::create([
+            'id_transaksi' => $transaksiRequest->id_transaksi,
             'id_barang' => $barang1->id_barang,
             'quantity' => 2,
-            'remarks' => 'Komputer desktop untuk IT'
+            'deskripsi' => 'Komputer desktop untuk IT'
         ]);
-        TransactionBarang::create([
-            'id_transaction' => $transactionRequest->id_transaction,
+        TransaksiBarang::create([
+            'id_transaksi' => $transaksiRequest->id_transaksi,
             'id_barang' => $barang2->id_barang,
             'quantity' => 1,
-            'remarks' => 'CCTV kamera untuk keamanan'
+            'deskripsi' => 'CCTV kamera untuk keamanan'
         ]);
-        TransactionBarang::create([
-            'id_transaction' => $transactionRequest->id_transaction,
+        TransaksiBarang::create([
+            'id_transaksi' => $transaksiRequest->id_transaksi,
             'id_barang' => $barang3->id_barang,
             'quantity' => 10,
-            'remarks' => 'Kabel LAN untuk jaringan'
+            'deskripsi' => 'Kabel LAN untuk jaringan'
         ]);
 
-        // Seed Transactions (Pembelian Barang)
-        $transactionPurchase = Transaction::create([
+        // Seed Transaksi' (Pembelian Barang)
+        $transaksiPurchase = Transaksi::create([
             'id_user' => $adminAplikasi->id_user,
-            'transaction_type' => 'in',
-            'penerima' => 'Supplier ABC',
-            'tanggal_transaction' => now(),
-            'remarks' => 'Pembelian barang peralatan kantor'
+            'id_group' => $GroupATK->id_group,
+            'tipe' => 'in',
+            'penerima' => 'Agam Febrian',
+            'tanggal' => now(),
+            'deskripsi' => 'Pembelian barang peralatan kantor'
         ]);
-        TransactionBarang::create([
-            'id_transaction' => $transactionPurchase->id_transaction,
+        TransaksiBarang::create([
+            'id_transaksi' => $transaksiPurchase->id_transaksi,
             'id_barang' => $barang4->id_barang,
             'quantity' => 50,
-            'remarks' => 'Kertas A4 untuk keperluan kantor'
+            'deskripsi' => 'Kertas A4 untuk keperluan kantor'
         ]);
-        TransactionBarang::create([
-            'id_transaction' => $transactionPurchase->id_transaction,
+        TransaksiBarang::create([
+            'id_transaksi' => $transaksiPurchase->id_transaksi,
             'id_barang' => $barang5->id_barang,
             'quantity' => 30,
-            'remarks' => 'Pensil untuk kebutuhan kantor'
+            'deskripsi' => 'Pensil untuk kebutuhan kantor'
         ]);
-        TransactionBarang::create([
-            'id_transaction' => $transactionPurchase->id_transaction,
+        TransaksiBarang::create([
+            'id_transaksi' => $transaksiPurchase->id_transaksi,
             'id_barang' => $barang6->id_barang,
             'quantity' => 40,
-            'remarks' => 'Bolpoin untuk keperluan kantor'
+            'deskripsi' => 'Bolpoin untuk keperluan kantor'
         ]);
 
         // Seed Notifikasi

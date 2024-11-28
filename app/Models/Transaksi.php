@@ -5,22 +5,23 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Pengajuan extends Model
+class Transaksi extends Model
 {
     use HasFactory;
 
-    protected $primaryKey = 'id_pengajuan';
+    protected $primaryKey = 'id_transaksi';
 
-    protected $table = "pengajuans";
+    protected $table = "transaksis";
 
     protected $fillable =
     [
-        'id_pengajuan',
-        'id_user',
         'id_transaksi',
+        'id_user',
+        'id_group',
+        'tipe',
+        'penerima',
         'tanggal',
         'deskripsi',
-        'validasi',
     ];
 
     protected $guarded = [];
@@ -28,6 +29,10 @@ class Pengajuan extends Model
     public function user()
     {
         return $this->hasOne(User::class, 'id_user', 'id_user');
+    }
+    public function group()
+    {
+        return $this->hasOne(Group::class, 'id_group', 'id_group');
     }
     public function transaksi_barangs()
     {

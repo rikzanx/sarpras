@@ -34,10 +34,10 @@ class Barang extends Model
         return $this->belongsTo(Group::class, 'id_group', 'id_group');
     }
 
-    public function transactions()
+    public function transaksis()
     {
-        return $this->belongsToMany(Transaction::class, 'transaction_barangs', 'id_barang', 'id_transaction')
-                ->withPivot('quantity', 'remarks')
+        return $this->belongsToMany(Transaksi::class, 'transaksi_barangs', 'id_barang', 'id_transaksi')
+                ->withPivot('quantity', 'deskripsi')
                 ->withTimestamps();
     }
 }

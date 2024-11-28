@@ -213,8 +213,8 @@ class UserController extends Controller
         DB::beginTransaction();
         try{
             $decryptId = Crypt::decryptString($id_user);
-            $user = User::withCount('transactions')->findOrFail($decryptId);
-            if($user->transactions_count > 0){
+            $user = User::withCount('transaksis')->findOrFail($decryptId);
+            if($user->transaksis_count > 0){
                 DB::rollback();
                 return redirect()->route('list_data_user')->with('error', "Gagal Menghapus Data, Data sedang dipakai");
             }

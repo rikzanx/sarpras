@@ -10,7 +10,7 @@ use App\Http\Controllers\GroupController;
 use App\Http\Controllers\BarangController;
 use App\Http\Controllers\SatuanController;
 use App\Http\Controllers\PengajuanController;
-use App\Http\Controllers\TransactionController;
+use App\Http\Controllers\TransaksiController;
 
 
 Route::get('/', [AuthController::class, 'index'])->name('login');
@@ -25,9 +25,15 @@ Route::group(['middleware' => [AuthMiddleware::class]],function(){
 
     Route::get('dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
 
-    Route::get('/list_transaksi_barang_masuk',[TransactionController::class,'list_transaksi_barang_masuk'])->name('list_transaksi_barang_masuk');
-    Route::get('/list_transaksi_barang_keluar',[TransactionController::class,'list_transaksi_barang_keluar'])->name('list_transaksi_barang_keluar');
+    Route::get('/isms/list_transaksi_barang_masuk',[TransaksiController::class,'isms_list_transaksi_barang_masuk'])->name('isms_list_transaksi_barang_masuk');
+    Route::get('/isms/list_transaksi_barang_keluar',[TransaksiController::class,'isms_list_transaksi_barang_keluar'])->name('isms_list_transaksi_barang_keluar');
+    Route::get('/isms/show_transaksi_barang/{id_transaction}',[TransaksiController::class,'isms_show_transaksi_barang'])->name('isms_show_transaksi_barang');
 
+    Route::get('/atk/list_transaksi_barang_masuk',[TransaksiController::class,'atk_list_transaksi_barang_masuk'])->name('atk_list_transaksi_barang_masuk');
+    Route::get('/atk/list_transaksi_barang_keluar',[TransaksiController::class,'atk_list_transaksi_barang_keluar'])->name('atk_list_transaksi_barang_keluar');
+    Route::get('/atk/show_transaksi_barang/{id_transaction}',[TransaksiController::class,'atk_show_transaksi_barang'])->name('atk_show_transaksi_barang');
+    Route::post('/atk/add_transaksi_barang_masuk_action',[TransaksiController::class,'atk_add_transaksi_barang_masuk_action'])->name('atk_add_transaksi_barang_masuk_action');
+    
     Route::get('/list_data_user', [UserController::class, 'list_data_user'])->name('list_data_user');
     Route::get('/show_user_data/{id_user}',[UserController::class, 'show_user_data'])->name('show_user_data');
     Route::post('/add_user_action', [UserController::class, 'add_user_action'])->name('add_user_action');

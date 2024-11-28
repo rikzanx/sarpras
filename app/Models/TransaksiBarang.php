@@ -5,21 +5,21 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class TransactionBarang extends Model
+class TransaksiBarang extends Model
 {
     use HasFactory;
 
-    protected $primaryKey = 'id_transaction_barang';
+    protected $primaryKey = 'id_transaksi_barang';
 
-    protected $table = "transaction_barangs";
+    protected $table = "transaksi_barangs";
 
     protected $fillable =
     [
-        'id_transaction_barang',
-        'id_transaction',
+        'id_transaksi_barang',
+        'id_transaksi',
         'id_barang',
         'quantity',
-        'remarks',
+        'deskripsi',
     ];
 
     protected $guarded = [];

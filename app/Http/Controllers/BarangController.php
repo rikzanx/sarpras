@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Barang;
 use App\Models\Satuan;
 use App\Models\Group;
+use App\Models\Stock;
 use Illuminate\Support\Facades\Crypt;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Validator;
@@ -55,11 +56,15 @@ class BarangController extends Controller
         }
         DB::beginTransaction();
         try{
-            Barang::create([
+            $barang = Barang::create([
                 "id_group" => $request->id_group,
                 "id_satuan" => $request->id_satuan,
                 "nama" => $request->nama,
                 "deskripsi" => $request->deskripsi,
+            ]);
+            Stock::create([
+                "id_barang" => $barang->id_barang,
+                "available_stock" => 0
             ]);
             DB::commit();
 
@@ -121,8 +126,8 @@ class BarangController extends Controller
         DB::beginTransaction();
         try{
             $decryptId = Crypt::decryptString($id_barang);
-            $barang = Barang::withCount('transactions')->findOrFail($decryptId);
-            if($barang->transactions_count > 0){
+            $barang = Barang::withCount('transaksis')->findOrFail($decryptId);
+            if($barang->transaksis_count > 0){
                 DB::rollback();
                 return redirect()->route('list_data_barang')->with('error', "Gagal Menghapus Data, Data sedang dipakai");
             }

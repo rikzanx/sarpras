@@ -15,9 +15,11 @@ return new class extends Migration
             $table->id('id_pengajuan');
             $table->unsignedBigInteger('id_user');
             $table->foreign('id_user')->references('id_user')->on('users');
-            $table->unsignedBigInteger('id_transaction')->nullable();
-            $table->foreign('id_transaction')->references('id_transaction')->on('transactions');
-            $table->timestamp('tanggal_pengajuan')->default(now());
+            $table->unsignedBigInteger('id_transaksi')->nullable();
+            $table->foreign('id_transaksi')->references('id_transaksi')->on('transaksis');
+            $table->timestamp('tanggal')->default(now());
+            $table->text('deskripsi')->nullable();
+            $table->text('validasi')->nullable();
             $table->timestamps();
         });
     }

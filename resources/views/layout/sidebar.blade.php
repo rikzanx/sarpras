@@ -24,23 +24,26 @@
         </li>
 
         <li class="menu-header small text-uppercase">
-            <span class="menu-header-text">Transaksi</span>
+            <span class="menu-header-text">ISMS</span>
         </li>
-        <li class="menu-item {{ request()->is('list_transaksi*') ? 'open' : '' }}">
+        <li class="menu-header small text-uppercase">
+            <span class="menu-header-text">ATK</span>
+        </li>
+        <li class="menu-item {{ request()->is('atk/list_transaksi*') ? 'open' : '' }}">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-archive"></i>
                 <div data-i18n="Layouts">Transaksi</div>
             </a>
 
             <ul class="menu-sub">
-                <li class="menu-item {{ request()->is('list_transaksi_barang_masuk*') ? 'active' : '' }}">
-                    <a href="{{route('list_transaksi_barang_masuk')}}" class="menu-link">
+                <li class="menu-item {{ request()->is('atk/list_transaksi_barang_masuk*') ? 'active' : '' }}">
+                    <a href="{{route('atk_list_transaksi_barang_masuk')}}" class="menu-link">
                         <div data-i18n="Without navbar">Barang Masuk <span class="tf-icons bx bx-archive-in"></span></div>
                     </a>
                 </li>
                 
-                <li class="menu-item {{ request()->is('list_transaksi_barang_keluar*') ? 'active' : '' }}">
-                    <a href="{{route('list_transaksi_barang_keluar')}}" class="menu-link">
+                <li class="menu-item {{ request()->is('atk/list_transaksi_barang_keluar*') ? 'active' : '' }}">
+                    <a href="{{route('atk_list_transaksi_barang_keluar')}}" class="menu-link">
                         <div data-i18n="Container">Barang Keluar <span class="tf-icons bx bx-archive-out"></span></div>
                     </a>
                 </li>

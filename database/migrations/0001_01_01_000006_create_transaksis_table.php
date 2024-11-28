@@ -11,14 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('transactions', function (Blueprint $table) {
-            $table->id('id_transaction');
+        Schema::create('transaksis', function (Blueprint $table) {
+            $table->id('id_transaksi');
             $table->unsignedBigInteger('id_user');
             $table->foreign('id_user')->references('id_user')->on('users');
-            $table->enum('transaction_type', ['in', 'out']);
+            $table->unsignedBigInteger('id_group');
+            $table->foreign('id_group')->references('id_group')->on('groups');
+            $table->enum('tipe', ['in', 'out']);
             $table->text('penerima')->nullable();
-            $table->timestamp('tanggal_transaction')->default(now());
-            $table->text('remarks')->nullable();
+            $table->timestamp('tanggal')->default(now());
+            $table->text('deskripsi')->nullable();
             $table->timestamps();
         });
     }
@@ -28,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('transactions');
+        Schema::dropIfExists('transaksis');
     }
 };
