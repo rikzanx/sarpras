@@ -99,11 +99,12 @@ class TransaksiController extends Controller
         ]);
     }
 
-    public function atk_show_transaksi_barang($group,$id_transaction)
+    public function atk_show_transaksi_barang($id_transaksi)
     {
-        $decryptId = Crypt::decryptString($id_transaction);
+        $decryptId = Crypt::decryptString($id_transaksi);
+        // dd($decryptId);
         $transaksi = Transaksi::with(['transaksi_barangs'])->withCount('transaksi_barangs')->withSum('transaksi_barangs as total_barang', 'quantity')
-        ->where('id_group',2)->where('id_transaction',$decryptId)->firstOrFail();
+        ->where('id_group',2)->where('id_transaksi',$decryptId)->firstOrFail();
 
         return response()->json($transaksi);
     }
