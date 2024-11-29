@@ -8,6 +8,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\GroupController;
 use App\Http\Controllers\BarangController;
+use App\Http\Controllers\BarangAtkController;
 use App\Http\Controllers\SatuanController;
 use App\Http\Controllers\PengajuanController;
 use App\Http\Controllers\TransaksiController;
@@ -29,11 +30,27 @@ Route::group(['middleware' => [AuthMiddleware::class]],function(){
     Route::get('/isms/list_transaksi_barang_keluar',[TransaksiController::class,'isms_list_transaksi_barang_keluar'])->name('isms_list_transaksi_barang_keluar');
     Route::get('/isms/show_transaksi_barang/{id_transaction}',[TransaksiController::class,'isms_show_transaksi_barang'])->name('isms_show_transaksi_barang');
 
-    Route::get('/atk/list_transaksi_barang_masuk',[TransaksiController::class,'atk_list_transaksi_barang_masuk'])->name('atk_list_transaksi_barang_masuk');
-    Route::get('/atk/list_transaksi_barang_keluar',[TransaksiController::class,'atk_list_transaksi_barang_keluar'])->name('atk_list_transaksi_barang_keluar');
-    Route::get('/atk/show_transaksi_barang/{id_transaction}',[TransaksiController::class,'atk_show_transaksi_barang'])->name('atk_show_transaksi_barang');
-    Route::post('/atk/add_transaksi_barang_masuk_action',[TransaksiController::class,'atk_add_transaksi_barang_masuk_action'])->name('atk_add_transaksi_barang_masuk_action');
+    // ATK
     Route::get('/atk/stock_barang',[TransaksiController::class,'atk_stock_barang'])->name('atk_stock_barang');
+    Route::get('/atk/show_transaksi_barang/{id_transaction}',[TransaksiController::class,'atk_show_transaksi_barang'])->name('atk_show_transaksi_barang');
+    
+    Route::get('/atk/list_transaksi_barang_masuk',[TransaksiController::class,'atk_list_transaksi_barang_masuk'])->name('atk_list_transaksi_barang_masuk');
+    Route::post('/atk/add_transaksi_barang_masuk_action',[TransaksiController::class,'atk_add_transaksi_barang_masuk_action'])->name('atk_add_transaksi_barang_masuk_action');
+    Route::post('/atk/edit_transaksi_barang_masuk_action/{id_transaction}',[TransaksiController::class,'atk_edit_transaksi_barang_masuk_action'])->name('atk_edit_transaksi_barang_masuk_action');
+    Route::post('/atk/delete_transaksi_barang_masuk_action/{id_transaction}',[TransaksiController::class,'atk_delete_transaksi_barang_masuk_action'])->name('atk_delete_transaksi_barang_masuk_action');
+    
+    Route::get('/atk/list_transaksi_barang_keluar',[TransaksiController::class,'atk_list_transaksi_barang_keluar'])->name('atk_list_transaksi_barang_keluar');
+    Route::post('/atk/add_transaksi_barang_keluar_action',[TransaksiController::class,'atk_add_transaksi_barang_keluar_action'])->name('atk_add_transaksi_barang_keluar_action');
+    Route::post('/atk/edit_transaksi_barang_keluar_action/{id_transaction}',[TransaksiController::class,'atk_edit_transaksi_barang_keluar_action'])->name('atk_edit_transaksi_barang_keluar_action');
+    Route::post('/atk/delete_transaksi_barang_keluar_action/{id_transaction}',[TransaksiController::class,'atk_delete_transaksi_barang_keluar_action'])->name('atk_delete_transaksi_barang_keluar_action');
+
+    Route::get('/atk/list_data_barang', [BarangAtkController::class, 'atk_list_data_barang'])->name('atk_list_data_barang');
+    Route::get('/atk/show_data_barang/{id_barang}', [BarangAtkController::class, 'atk_show_data_barang'])->name('atk_show_data_barang');
+    Route::post('/atk/add_barang_action',[BarangAtkController::class, 'atk_add_barang_action'])->name('atk_add_barang_action');
+    Route::post('/atl/edit_barang_action/{id_barang}',[BarangAtkController::class, 'atk_edit_barang_action'])->name('atk_edit_barang_action');
+    Route::post('/atk/delete_barang_action/{id_barang}',[BarangAtkController::class, 'atk_delete_barang_action'])->name('atk_delete_barang_action');
+    // END ATK ///
+
 
     Route::get('/list_data_user', [UserController::class, 'list_data_user'])->name('list_data_user');
     Route::get('/show_user_data/{id_user}',[UserController::class, 'show_user_data'])->name('show_user_data');

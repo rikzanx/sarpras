@@ -17,7 +17,7 @@
 @endsection
 
 @section('judul')
-List Stock Barang ATK
+List Data Barang ATK
 @endsection
 
 @section('isi')
@@ -27,8 +27,8 @@ List Stock Barang ATK
             <div class="card px-4">
                 <div class="card-header mt-4 py-2 px-1 d-flex justify-content-between align-items-center">
                     <h4>Data Barang</h4>
-                    <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                        data-bs-target="#modaltambah">+ Add Barang</button> -->
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                        data-bs-target="#modaltambah">+ Add Barang</button>
                 </div>
                 <div class="card-datatable table-responsive mb-4 mt-4 dt-buttons display nowrap" style="width:100%">
                     <table id="myTable" class="table">
@@ -38,11 +38,8 @@ List Stock Barang ATK
                                 <th style="text-align: center;">Nama Group</th>
                                 <th style="text-align: center;">Nama Barang</th>
                                 <th style="text-align: center;">Deskripsi</th>
-                                <th style="text-align: center;">Stock Tersedia</th>
-                                <th style="text-align: center;">Barang Masuk</th>
-                                <th style="text-align: center;">Barang Keluar</th>
                                 <th style="text-align: center;">Satuan</th>
-                                <th style="text-align: center; width:5px;">Updated At</th>
+                                <th style="text-align: center; width:5px;">Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -52,11 +49,20 @@ List Stock Barang ATK
                                 <td style="text-align: center;">{{ $item->group->nama }}</td>
                                 <td>{{ $item->nama }}</td>
                                 <td>{{ $item->deskripsi }}</td>
-                                <td>{{ $item->stock->available_stock }}</td>
-                                <td>{{ $item->total_barang_masuk }}</td>
-                                <td>{{ $item->total_barang_keluar }}</td>
                                 <td>{{ $item->satuan->nama }}</td>
-                                <td>{{ $item->stock->updated_at }}</td>
+                                <td style="text-align: center;">
+                                    <div class="demo-inline-spacing">
+                                        <button type="button" class="btn btn-icon btn-primary" onclick="modalshow('{{ Crypt::encryptString($item->id_barang) }}')">
+                                            <span class="tf-icons bx bx-show-alt"></span>
+                                        </button>
+                                        <button type="button" class="btn btn-icon btn-warning" onclick="modaledit('{{ Crypt::encryptString($item->id_barang) }}')">
+                                            <span class="tf-icons bx bx-edit"></span>
+                                        </button>
+                                        <button type="button" class="btn btn-icon btn-danger" onclick="modaldelete('{{ Crypt::encryptString($item->id_barang) }}')">
+                                            <span class="tf-icons bx bx-eraser"></span>
+                                        </button>
+                                    </div>
+                                </td>
                             </tr>
                             @endforeach
                         </tbody>
@@ -71,7 +77,7 @@ List Stock Barang ATK
 <div class="modal fade" id="modaltambah" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-xl" role="document">
         <div class="modal-content">
-            <form action="{{ route('add_barang_action') }}" method="post">
+            <form action="{{ route('atk_add_barang_action') }}" method="post">
                 @csrf
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel4">Tambah Data</h5>
@@ -186,7 +192,7 @@ List Stock Barang ATK
 <div class="modal fade" id="modaledit" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-xl" role="document">
         <div class="modal-content">
-            <form action="{{ route('edit_barang_action',':id') }}" method="post">
+            <form action="{{ route('atk_edit_barang_action',':id') }}" method="post">
                 @csrf
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel4">Eidt Data</h5>
@@ -244,7 +250,7 @@ List Stock Barang ATK
 <div class="modal fade" id="modaldelete" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-xxs" role="document">
         <div class="modal-content">
-            <form action="{{  route('delete_barang_action',':id') }}" method="post" enctype="multipart/form-data">
+            <form action="{{  route('atk_delete_barang_action',':id') }}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel4">Hapus Data</h5>
@@ -276,7 +282,7 @@ List Stock Barang ATK
 <script>
     function modalshow(id){
         $.ajax({
-            url: `{{ route('show_data_barang', ':id') }}`.replace(':id', id),
+            url: `{{ route('atk_show_data_barang', ':id') }}`.replace(':id', id),
             method: 'GET',
             success: function(data){
                 console.log(data);
@@ -293,7 +299,7 @@ List Stock Barang ATK
     }
     function modaledit(id){
         $.ajax({
-            url: `{{ route('show_data_barang', ':id') }}`.replace(':id', id),
+            url: `{{ route('atk_show_data_barang', ':id') }}`.replace(':id', id),
             method: 'GET',
             success: function(data){
                 let url = $('#modaledit form').attr('action');

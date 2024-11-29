@@ -55,6 +55,12 @@
                 <div data-i18n="Documentation">Stock</div>
             </a>
         </li>
+        <li class="menu-item {{ request()->is('atk/list_data_barang*') ? 'active' : '' }}">
+            <a href="{{route('atk_list_data_barang')}}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-package"></i>
+                <div data-i18n="Documentation">List Barang</div>
+            </a>
+        </li>
         <li class="menu-header small text-uppercase">
             <span class="menu-header-text">Material Request</span>
         </li>

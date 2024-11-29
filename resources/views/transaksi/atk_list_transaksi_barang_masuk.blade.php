@@ -111,7 +111,7 @@ List Transaksi Barang Masuk
                             List Barang:
                         </div>
                         <div class="col-2 d-grid gap-2">
-                            <button type="button" class="btn btn-primary" id="add-item">
+                            <button type="button" class="btn btn-primary add-item">
                             <span class="tf-icons bx bx-plus"></span> Barang
                             </button>
                         </div>
@@ -226,10 +226,10 @@ List Transaksi Barang Masuk
 <div class="modal fade" id="modaledit" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-xl" role="document">
         <div class="modal-content">
-            <form action="{{ route('atk_add_transaksi_barang_masuk_action') }}" method="post">
+            <form action="{{ route('atk_edit_transaksi_barang_masuk_action',':id') }}" method="post">
                 @csrf
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel4">Tambah Data</h5>
+                    <h5 class="modal-title" id="exampleModalLabel4">Edit Data</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -256,7 +256,7 @@ List Transaksi Barang Masuk
                             List Barang:
                         </div>
                         <div class="col-2 d-grid gap-2">
-                            <button type="button" class="btn btn-primary" id="add-item">
+                            <button type="button" class="btn btn-primary add-item">
                             <span class="tf-icons bx bx-plus"></span> Barang
                             </button>
                         </div>
@@ -291,7 +291,7 @@ List Transaksi Barang Masuk
                     <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
                         Close
                     </button>
-                    <button type="input" class="btn btn-primary">Tambah Data</button>
+                    <button type="input" class="btn btn-warning">Edit Data</button>
                 </div>
             </form>
         </div>
@@ -303,7 +303,7 @@ List Transaksi Barang Masuk
 <div class="modal fade" id="modaldelete" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-xxs" role="document">
         <div class="modal-content">
-            <form action="{{  route('delete_barang_action',':id') }}" method="post" enctype="multipart/form-data">
+            <form action="{{  route('atk_delete_transaksi_barang_masuk_action',':id') }}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel4">Hapus Data</h5>
@@ -333,6 +333,7 @@ List Transaksi Barang Masuk
 @section('script')
 
 <script>
+    let lastItemIndex = 0;
     function modalshow(id) {
         $.ajax({
             url: `{{ route('atk_show_transaksi_barang', ':id') }}`.replace(':id', id),
@@ -388,15 +389,19 @@ List Transaksi Barang Masuk
         });
     }
 
-
     function modaledit(id){
+        lastItemIndex = 0;
         $.ajax({
             url: `{{ route('atk_show_transaksi_barang', ':id') }}`.replace(':id', id),
             method: 'GET',
             success: function (data) {
                 console.log(data);
+                let url = $('#modaledit form').attr('action');
+                $('#modaledit form').attr('action',url.replace(':id',id));
                 $('#modaledit input[name="nama"]').val(data.nama);
-                $('#modaledit input[name="tanggal"]').val(data.tanggal);
+                let tanggal = data.tanggal;
+                let formattedDate = tanggal.replace(' ','T').slice(0,16);
+                $('#modaledit input[name="tanggal"]').val(formattedDate);
                 $('#modaledit input[name="deskripsi"]').val(data.deskripsi);
                 $('#modaledit input[name="penerima"]').val(data.penerima);
                 $('#modaledit select[name="id_group"]').val(data.id_group);
@@ -419,6 +424,7 @@ List Transaksi Barang Masuk
                             </div>
                             <div class="col-2">
                                 <label for="barang[${index}][quantity]" class="form-label">Jumlah</label>
+                                <input type="hidden" name="barang[${index}][id_transaksi_barang]" value="${item.id_transaksi_barang}">
                                 <input type="number" class="form-control" name="barang[${index}][quantity]" value="${item.quantity}" required>
                             </div>
                             <div class="col-1">
@@ -437,6 +443,7 @@ List Transaksi Barang Masuk
 
                     const selectElement = dynamicItems.find(`select[name="barang[${index}][id_barang]"]`);
                     selectElement.val(item.id_barang);
+                    lastItemIndex++;
                 });
 
                 $('#modaledit').modal('show');
@@ -483,9 +490,40 @@ List Transaksi Barang Masuk
             $('#modaltambah .dynamic-items').append(newItem);
             itemIndex++;
         });
-
-        // Hapus barang
         $('#modaltambah .dynamic-items').on('click', '.remove-item', function () {
+            $(this).closest('.item-row').remove();
+        });
+        $('#modaledit .add-item').on('click', function () {
+            console.log(lastItemIndex);
+            const newItem = `
+                <div class="row item-row mb-3">
+                    <div class="col-9">
+                        <label for="barang[${lastItemIndex}][id_barang]" class="form-label">Pilih Barang</label>
+                        <select class="form-control" name="barang[${lastItemIndex}][id_barang]" required>
+                            <option selected disabled>Pilih Barang</option>
+                            @foreach ($barang as $item)
+                                <option value="{{ $item->id_barang }}">{{ $item->nama }} ({{ $item->satuan->nama }})</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="col-2">
+                        <label for="barang[${lastItemIndex}][quantity]" class="form-label">Jumlah</label>
+                        <input type="number" class="form-control" name="barang[${lastItemIndex}][quantity]" value="1" required>
+                    </div>
+                    <div class="col-1">
+                        <label class="form-label">&nbsp;</label>
+                        <div class="mx-auto">
+                            <button type="button" class="btn btn-icon btn-danger remove-item">
+                                <span class="tf-icons bx bx-eraser"></span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+            $('#modaledit .dynamic-items').append(newItem);
+            lastItemIndex++;
+        });
+        $('#modaledit .dynamic-items').on('click', '.remove-item', function () {
             $(this).closest('.item-row').remove();
         });
         $('#myTable').DataTable({

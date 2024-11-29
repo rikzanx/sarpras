@@ -116,30 +116,57 @@ class DatabaseSeeder extends Seeder
         // Seed Stocks
         Stock::create([
             'id_barang' => $barang1->id_barang,
-            'available_stock' => 10
+            'available_stock' => 0
         ]);
         Stock::create([
             'id_barang' => $barang2->id_barang,
-            'available_stock' => 5
+            'available_stock' => 0
         ]);
         Stock::create([
             'id_barang' => $barang3->id_barang,
-            'available_stock' => 50
+            'available_stock' => 0
         ]);
         Stock::create([
             'id_barang' => $barang4->id_barang,
-            'available_stock' => 100
+            'available_stock' => 40
         ]);
         Stock::create([
             'id_barang' => $barang5->id_barang,
-            'available_stock' => 200
+            'available_stock' => 15
         ]);
         Stock::create([
             'id_barang' => $barang6->id_barang,
-            'available_stock' => 150
+            'available_stock' => 20
         ]);
 
-        // Seed Transaksi (Permintaan Barang)
+        // Seed Transaksi (Permintaan Barang) ISMS
+        $transaksiRequest = Transaksi::create([
+            'id_user' => $superAdmin->id_user,
+            'id_group' => $GroupISMS->id_group,
+            'tipe' => 'in',
+            'penerima' => 'Divisi IT',
+            'tanggal' => now(),
+            'deskripsi' => 'Permintaan barang peralatan IT'
+        ]);
+        TransaksiBarang::create([
+            'id_transaksi' => $transaksiRequest->id_transaksi,
+            'id_barang' => $barang1->id_barang,
+            'quantity' => 10,
+            'deskripsi' => 'Komputer desktop untuk IT'
+        ]);
+        TransaksiBarang::create([
+            'id_transaksi' => $transaksiRequest->id_transaksi,
+            'id_barang' => $barang2->id_barang,
+            'quantity' => 10,
+            'deskripsi' => 'CCTV kamera untuk keamanan'
+        ]);
+        TransaksiBarang::create([
+            'id_transaksi' => $transaksiRequest->id_transaksi,
+            'id_barang' => $barang3->id_barang,
+            'quantity' => 100,
+            'deskripsi' => 'Kabel LAN untuk jaringan'
+        ]);
+        // Seed Transaksi (Permintaan Barang) ISMS
         $transaksiRequest = Transaksi::create([
             'id_user' => $superAdmin->id_user,
             'id_group' => $GroupISMS->id_group,
@@ -192,6 +219,34 @@ class DatabaseSeeder extends Seeder
             'id_transaksi' => $transaksiPurchase->id_transaksi,
             'id_barang' => $barang6->id_barang,
             'quantity' => 40,
+            'deskripsi' => 'Bolpoin untuk keperluan kantor'
+        ]);
+
+        // Seed Transaksi' (Pengambilan Barang)
+        $transaksiPurchase = Transaksi::create([
+            'id_user' => $adminAplikasi->id_user,
+            'id_group' => $GroupATK->id_group,
+            'tipe' => 'out',
+            'penerima' => 'Nanang',
+            'tanggal' => now(),
+            'deskripsi' => 'Pengambilan barang peralatan kantor'
+        ]);
+        TransaksiBarang::create([
+            'id_transaksi' => $transaksiPurchase->id_transaksi,
+            'id_barang' => $barang4->id_barang,
+            'quantity' => 10,
+            'deskripsi' => 'Kertas A4 untuk keperluan kantor'
+        ]);
+        TransaksiBarang::create([
+            'id_transaksi' => $transaksiPurchase->id_transaksi,
+            'id_barang' => $barang5->id_barang,
+            'quantity' => 15,
+            'deskripsi' => 'Pensil untuk kebutuhan kantor'
+        ]);
+        TransaksiBarang::create([
+            'id_transaksi' => $transaksiPurchase->id_transaksi,
+            'id_barang' => $barang6->id_barang,
+            'quantity' => 20,
             'deskripsi' => 'Bolpoin untuk keperluan kantor'
         ]);
 

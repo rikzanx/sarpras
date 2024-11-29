@@ -45,4 +45,19 @@ class Barang extends Model
                 ->withPivot('quantity', 'deskripsi')
                 ->withTimestamps();
     }
+
+    public function transaksi_masuk()
+    {
+        return $this->belongsToMany(Transaksi::class, 'transaksi_barangs', 'id_barang', 'id_transaksi')
+            ->where('tipe', 'in')
+            ->withPivot('quantity', 'deskripsi')
+            ->withTimestamps();
+    }
+    public function transaksi_keluar()
+    {
+        return $this->belongsToMany(Transaksi::class, 'transaksi_barangs', 'id_barang', 'id_transaksi')
+            ->where('tipe', 'out')
+            ->withPivot('quantity', 'deskripsi')
+            ->withTimestamps();
+    }
 }
