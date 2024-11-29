@@ -13,34 +13,34 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
-class BarangAtkController extends Controller
+class BarangIsmsController extends Controller
 {
-    public function atk_list_data_barang(){
+    public function isms_list_data_barang(){
         $satuan = Satuan::get();
-        $group = Group::where('id_group',2)->get();
-        $barangs = Barang::where('id_group',2)->with(['satuan','group'])->get();
+        $group = Group::where('id_group',1)->get();
+        $barangs = Barang::where('id_group',1)->with(['satuan','group'])->get();
 
-        return view('barang/atk_list_data_barang',[
+        return view('barang/isms_list_data_barang',[
             'barangs' => $barangs,
             'satuan' => $satuan,
             'group' => $group
         ]);
     }
 
-    public function atk_show_data_barang(Request $request,$id_barang)
+    public function isms_show_data_barang(Request $request,$id_barang)
     {
         $decryptId = Crypt::decryptString($id_barang);
-        $barang = Barang::where('id_group',2)->findOrFail($decryptId);
+        $barang = Barang::where('id_group',1)->findOrFail($decryptId);
 
         return response()->json($barang);
     }
 
-    public function atk_add_barang()
+    public function isms_add_barang()
     {
         return view('barang/add_barang');
     }
 
-    public function atk_add_barang_action(Request $request)
+    public function isms_add_barang_action(Request $request)
     {
         $messages = [
             'required'  => 'Harap bagian :attribute di isi.',
@@ -68,7 +68,7 @@ class BarangAtkController extends Controller
             ]);
             DB::commit();
 
-            return redirect()->route('atk_list_data_barang')->with('success', "Sukses Menambahkan Data");
+            return redirect()->route('isms_list_data_barang')->with('success', "Sukses Menambahkan Data");
         }catch (\Exception $e) {
             report($e);
             DB::rollback();
@@ -77,17 +77,17 @@ class BarangAtkController extends Controller
         }
     }
 
-    public function atk_edit_barang(Request $request,$id_barang)
+    public function isms_edit_barang(Request $request,$id_barang)
     {
         $decryptId = Crypt::decryptString($id_barang);
-        $barang = Barang::where('id_group',2)->findOrFail($decryptId);
+        $barang = Barang::where('id_group',1)->findOrFail($decryptId);
 
         return view('barang.edit_barang',[
             'barang' => $barang
         ]);
     }
 
-    public function atk_edit_barang_action(Request $request, $id_barang)
+    public function isms_edit_barang_action(Request $request, $id_barang)
     {
         $messages = [
             'required'  => 'Harap bagian :attribute di isi.',
@@ -112,7 +112,7 @@ class BarangAtkController extends Controller
             $barang->save();
             DB::commit();
 
-            return redirect()->route('atk_list_data_barang')->with('success', "Sukses Mengedit Data");
+            return redirect()->route('isms_list_data_barang')->with('success', "Sukses Mengedit Data");
         }catch (\Exception $e) {
             report($e);
             DB::rollback();
@@ -121,19 +121,19 @@ class BarangAtkController extends Controller
         }
     }
 
-    public function atk_delete_barang_action(Request $request,$id_barang)
+    public function isms_delete_barang_action(Request $request,$id_barang)
     {
         DB::beginTransaction();
         try{
             $decryptId = Crypt::decryptString($id_barang);
-            $barang = Barang::where('id_group',2)->withCount('transaksis')->findOrFail($decryptId);
+            $barang = Barang::where('id_group',1)->withCount('transaksis')->findOrFail($decryptId);
             if($barang->transaksis_count > 0){
                 DB::rollback();
-                return redirect()->route('atk_list_data_barang')->with('error', "Gagal Menghapus Data, Data sedang dipakai");
+                return redirect()->route('isms_list_data_barang')->with('error', "Gagal Menghapus Data, Data sedang dipakai");
             }
             $barang->delete();
             DB::commit();
-            return redirect()->route('atk_list_data_barang')->with('success', "Sukses Menghapus Data");
+            return redirect()->route('isms_list_data_barang')->with('success', "Sukses Menghapus Data");
         }catch (\Exception $e) {
             DB::rollback();
             report($e);

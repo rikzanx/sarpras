@@ -14,16 +14,16 @@
 
   // Total Revenue Report Chart - Bar Chart
   // --------------------------------------------------------------------
-  const totalRevenueChartEl = document.querySelector('#totalRevenueChart'),
-    totalRevenueChartOptions = {
+  const totalTransaksiChartEl = document.querySelector('#totalTransaksiChart'),
+    totalTransaksiChartOptions = {
       series: [
         {
-          name: '2021',
-          data: [18, 7, 15, 29, 18, 12, 9]
+          name: 'Barang Masuk',
+          data: [18, 7, 15, 29, 18, 12, 9,18, 7, 15, 29, 18]
         },
         {
-          name: '2020',
-          data: [-13, -18, -9, -14, -5, -17, -15]
+          name: 'Barang Keluar',
+          data: [-13, -18, -9, -14, -5, -17, -15,-13, -18, -9, -14, -5]
         }
       ],
       chart: {
@@ -78,7 +78,7 @@
         }
       },
       xaxis: {
-        categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
+        categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul','Aug','Sep','Okt','Des'],
         labels: {
           style: {
             fontSize: '13px',
@@ -269,9 +269,9 @@
         }
       }
     };
-  if (typeof totalRevenueChartEl !== undefined && totalRevenueChartEl !== null) {
-    const totalRevenueChart = new ApexCharts(totalRevenueChartEl, totalRevenueChartOptions);
-    totalRevenueChart.render();
+  if (typeof totalTransaksiChartEl !== undefined && totalTransaksiChartEl !== null) {
+    const totalTransaksiChart = new ApexCharts(totalTransaksiChartEl, totalTransaksiChartOptions);
+    totalTransaksiChart.render();
   }
 
   // Growth Chart - Radial Bar Chart

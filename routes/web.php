@@ -9,6 +9,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\GroupController;
 use App\Http\Controllers\BarangController;
 use App\Http\Controllers\BarangAtkController;
+use App\Http\Controllers\BarangIsmsController;
 use App\Http\Controllers\SatuanController;
 use App\Http\Controllers\PengajuanController;
 use App\Http\Controllers\TransaksiController;
@@ -25,10 +26,27 @@ Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 Route::group(['middleware' => [AuthMiddleware::class]],function(){
 
     Route::get('dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
-
-    Route::get('/isms/list_transaksi_barang_masuk',[TransaksiController::class,'isms_list_transaksi_barang_masuk'])->name('isms_list_transaksi_barang_masuk');
-    Route::get('/isms/list_transaksi_barang_keluar',[TransaksiController::class,'isms_list_transaksi_barang_keluar'])->name('isms_list_transaksi_barang_keluar');
+    
+    // ISMS
+    Route::get('/isms/stock_barang',[TransaksiController::class,'isms_stock_barang'])->name('isms_stock_barang');
     Route::get('/isms/show_transaksi_barang/{id_transaction}',[TransaksiController::class,'isms_show_transaksi_barang'])->name('isms_show_transaksi_barang');
+    
+    Route::get('/isms/list_transaksi_barang_masuk',[TransaksiController::class,'isms_list_transaksi_barang_masuk'])->name('isms_list_transaksi_barang_masuk');
+    Route::post('/isms/add_transaksi_barang_masuk_action',[TransaksiController::class,'isms_add_transaksi_barang_masuk_action'])->name('isms_add_transaksi_barang_masuk_action');
+    Route::post('/isms/edit_transaksi_barang_masuk_action/{id_transaction}',[TransaksiController::class,'isms_edit_transaksi_barang_masuk_action'])->name('isms_edit_transaksi_barang_masuk_action');
+    Route::post('/isms/delete_transaksi_barang_masuk_action/{id_transaction}',[TransaksiController::class,'isms_delete_transaksi_barang_masuk_action'])->name('isms_delete_transaksi_barang_masuk_action');
+    
+    Route::get('/isms/list_transaksi_barang_keluar',[TransaksiController::class,'isms_list_transaksi_barang_keluar'])->name('isms_list_transaksi_barang_keluar');
+    Route::post('/isms/add_transaksi_barang_keluar_action',[TransaksiController::class,'isms_add_transaksi_barang_keluar_action'])->name('isms_add_transaksi_barang_keluar_action');
+    Route::post('/isms/edit_transaksi_barang_keluar_action/{id_transaction}',[TransaksiController::class,'isms_edit_transaksi_barang_keluar_action'])->name('isms_edit_transaksi_barang_keluar_action');
+    Route::post('/isms/delete_transaksi_barang_keluar_action/{id_transaction}',[TransaksiController::class,'isms_delete_transaksi_barang_keluar_action'])->name('isms_delete_transaksi_barang_keluar_action');
+
+    Route::get('/isms/list_data_barang', [BarangIsmsController::class, 'isms_list_data_barang'])->name('isms_list_data_barang');
+    Route::get('/isms/show_data_barang/{id_barang}', [BarangIsmsController::class, 'isms_show_data_barang'])->name('isms_show_data_barang');
+    Route::post('/isms/add_barang_action',[BarangIsmsController::class, 'isms_add_barang_action'])->name('isms_add_barang_action');
+    Route::post('/isms/edit_barang_action/{id_barang}',[BarangIsmsController::class, 'isms_edit_barang_action'])->name('isms_edit_barang_action');
+    Route::post('/isms/delete_barang_action/{id_barang}',[BarangIsmsController::class, 'isms_delete_barang_action'])->name('isms_delete_barang_action');
+    // END ISMS ///
 
     // ATK
     Route::get('/atk/stock_barang',[TransaksiController::class,'atk_stock_barang'])->name('atk_stock_barang');
@@ -47,7 +65,7 @@ Route::group(['middleware' => [AuthMiddleware::class]],function(){
     Route::get('/atk/list_data_barang', [BarangAtkController::class, 'atk_list_data_barang'])->name('atk_list_data_barang');
     Route::get('/atk/show_data_barang/{id_barang}', [BarangAtkController::class, 'atk_show_data_barang'])->name('atk_show_data_barang');
     Route::post('/atk/add_barang_action',[BarangAtkController::class, 'atk_add_barang_action'])->name('atk_add_barang_action');
-    Route::post('/atl/edit_barang_action/{id_barang}',[BarangAtkController::class, 'atk_edit_barang_action'])->name('atk_edit_barang_action');
+    Route::post('/atk/edit_barang_action/{id_barang}',[BarangAtkController::class, 'atk_edit_barang_action'])->name('atk_edit_barang_action');
     Route::post('/atk/delete_barang_action/{id_barang}',[BarangAtkController::class, 'atk_delete_barang_action'])->name('atk_delete_barang_action');
     // END ATK ///
 

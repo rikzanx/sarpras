@@ -301,7 +301,7 @@ List Data User
             url: `{{ route('show_user_data', ':id') }}`.replace(':id', id),
             method: 'GET',
             success: function(data){
-                console.log(data);
+                
                 $('#modalshow input[name="nik"]').val(data.nik);
                 $('#modalshow input[name="nama"]').val(data.nama);
                 $('#modalshow input[name="email"]').val(data.email);

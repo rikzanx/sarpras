@@ -26,7 +26,7 @@ List Stock Barang ATK
         <div class="col-lg-12 mb-4 order-0">
             <div class="card px-4">
                 <div class="card-header mt-4 py-2 px-1 d-flex justify-content-between align-items-center">
-                    <h4>Data Barang</h4>
+                    <h4>List Stock Barang ATK</h4>
                     <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal"
                         data-bs-target="#modaltambah">+ Add Barang</button> -->
                 </div>
@@ -279,7 +279,7 @@ List Stock Barang ATK
             url: `{{ route('show_data_barang', ':id') }}`.replace(':id', id),
             method: 'GET',
             success: function(data){
-                console.log(data);
+                
                 $('#modalshow input[name="nama"]').val(data.nama);
                 $('#modalshow input[name="deskripsi"]').val(data.deskripsi);
                 $('#modalshow select[name="id_group"]').val(data.id_group);

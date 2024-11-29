@@ -116,15 +116,15 @@ class DatabaseSeeder extends Seeder
         // Seed Stocks
         Stock::create([
             'id_barang' => $barang1->id_barang,
-            'available_stock' => 0
+            'available_stock' => 8
         ]);
         Stock::create([
             'id_barang' => $barang2->id_barang,
-            'available_stock' => 0
+            'available_stock' => 9
         ]);
         Stock::create([
             'id_barang' => $barang3->id_barang,
-            'available_stock' => 0
+            'available_stock' => 90
         ]);
         Stock::create([
             'id_barang' => $barang4->id_barang,

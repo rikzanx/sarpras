@@ -285,7 +285,7 @@ List Data Barang ATK
             url: `{{ route('atk_show_data_barang', ':id') }}`.replace(':id', id),
             method: 'GET',
             success: function(data){
-                console.log(data);
+                
                 $('#modalshow input[name="nama"]').val(data.nama);
                 $('#modalshow input[name="deskripsi"]').val(data.deskripsi);
                 $('#modalshow select[name="id_group"]').val(data.id_group);

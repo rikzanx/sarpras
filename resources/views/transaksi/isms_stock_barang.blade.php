@@ -17,7 +17,7 @@
 @endsection
 
 @section('judul')
-List Data Barang
+List Stock Barang ISMS
 @endsection
 
 @section('isi')
@@ -26,9 +26,9 @@ List Data Barang
         <div class="col-lg-12 mb-4 order-0">
             <div class="card px-4">
                 <div class="card-header mt-4 py-2 px-1 d-flex justify-content-between align-items-center">
-                    <h4>Data Barang</h4>
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                        data-bs-target="#modaltambah">+ Add Barang</button>
+                    <h4>List Stock Barang ISMS</h4>
+                    <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                        data-bs-target="#modaltambah">+ Add Barang</button> -->
                 </div>
                 <div class="card-datatable table-responsive mb-4 mt-4 dt-buttons display nowrap" style="width:100%">
                     <table id="myTable" class="table">
@@ -38,8 +38,11 @@ List Data Barang
                                 <th style="text-align: center;">Nama Group</th>
                                 <th style="text-align: center;">Nama Barang</th>
                                 <th style="text-align: center;">Deskripsi</th>
+                                <th style="text-align: center;">Stock Tersedia</th>
+                                <th style="text-align: center;">Barang Masuk</th>
+                                <th style="text-align: center;">Barang Keluar</th>
                                 <th style="text-align: center;">Satuan</th>
-                                <th style="text-align: center; width:5px;">Action</th>
+                                <th style="text-align: center; width:5px;">Updated At</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -49,20 +52,11 @@ List Data Barang
                                 <td style="text-align: center;">{{ $item->group->nama }}</td>
                                 <td>{{ $item->nama }}</td>
                                 <td>{{ $item->deskripsi }}</td>
+                                <td>{{ $item->stock->available_stock }}</td>
+                                <td>{{ $item->total_barang_masuk }}</td>
+                                <td>{{ $item->total_barang_keluar }}</td>
                                 <td>{{ $item->satuan->nama }}</td>
-                                <td style="text-align: center;">
-                                    <div class="demo-inline-spacing">
-                                        <button type="button" class="btn btn-icon btn-primary" onclick="modalshow('{{ Crypt::encryptString($item->id_barang) }}')">
-                                            <span class="tf-icons bx bx-show-alt"></span>
-                                        </button>
-                                        <button type="button" class="btn btn-icon btn-warning" onclick="modaledit('{{ Crypt::encryptString($item->id_barang) }}')">
-                                            <span class="tf-icons bx bx-edit"></span>
-                                        </button>
-                                        <button type="button" class="btn btn-icon btn-danger" onclick="modaldelete('{{ Crypt::encryptString($item->id_barang) }}')">
-                                            <span class="tf-icons bx bx-eraser"></span>
-                                        </button>
-                                    </div>
-                                </td>
+                                <td>{{ $item->stock->updated_at }}</td>
                             </tr>
                             @endforeach
                         </tbody>

@@ -26,6 +26,38 @@
         <li class="menu-header small text-uppercase">
             <span class="menu-header-text">ISMS</span>
         </li>
+        <li class="menu-item {{ request()->is('isms/list_transaksi*') ? 'open' : '' }}">
+            <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons bx bx-archive"></i>
+                <div data-i18n="Layouts">Transaksi</div>
+            </a>
+
+            <ul class="menu-sub">
+                <li class="menu-item {{ request()->is('isms/list_transaksi_barang_masuk*') ? 'active' : '' }}">
+                    <a href="{{route('isms_list_transaksi_barang_masuk')}}" class="menu-link">
+                        <div data-i18n="Without navbar">Barang Masuk <span class="tf-icons bx bx-archive-in"></span></div>
+                    </a>
+                </li>
+                
+                <li class="menu-item {{ request()->is('isms/list_transaksi_barang_keluar*') ? 'active' : '' }}">
+                    <a href="{{route('isms_list_transaksi_barang_keluar')}}" class="menu-link">
+                        <div data-i18n="Container">Barang Keluar <span class="tf-icons bx bx-archive-out"></span></div>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li class="menu-item {{ request()->is('isms/stock_barang*') ? 'active' : '' }}">
+            <a href="{{route('isms_stock_barang')}}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-line-chart"></i>
+                <div data-i18n="Documentation">Stock</div>
+            </a>
+        </li>
+        <li class="menu-item {{ request()->is('isms/list_data_barang*') ? 'active' : '' }}">
+            <a href="{{route('isms_list_data_barang')}}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-package"></i>
+                <div data-i18n="Documentation">List Barang</div>
+            </a>
+        </li>
         <li class="menu-header small text-uppercase">
             <span class="menu-header-text">ATK</span>
         </li>

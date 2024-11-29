@@ -17,7 +17,7 @@
 @endsection
 
 @section('judul')
-List Data Barang
+List Data Barang ISMS
 @endsection
 
 @section('isi')
@@ -77,7 +77,7 @@ List Data Barang
 <div class="modal fade" id="modaltambah" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-xl" role="document">
         <div class="modal-content">
-            <form action="{{ route('add_barang_action') }}" method="post">
+            <form action="{{ route('isms_add_barang_action') }}" method="post">
                 @csrf
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel4">Tambah Data</h5>
@@ -192,7 +192,7 @@ List Data Barang
 <div class="modal fade" id="modaledit" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-xl" role="document">
         <div class="modal-content">
-            <form action="{{ route('edit_barang_action',':id') }}" method="post">
+            <form action="{{ route('isms_edit_barang_action',':id') }}" method="post">
                 @csrf
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel4">Eidt Data</h5>
@@ -250,7 +250,7 @@ List Data Barang
 <div class="modal fade" id="modaldelete" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-xxs" role="document">
         <div class="modal-content">
-            <form action="{{  route('delete_barang_action',':id') }}" method="post" enctype="multipart/form-data">
+            <form action="{{  route('isms_delete_barang_action',':id') }}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel4">Hapus Data</h5>
@@ -282,7 +282,7 @@ List Data Barang
 <script>
     function modalshow(id){
         $.ajax({
-            url: `{{ route('show_data_barang', ':id') }}`.replace(':id', id),
+            url: `{{ route('isms_show_data_barang', ':id') }}`.replace(':id', id),
             method: 'GET',
             success: function(data){
                 
@@ -299,7 +299,7 @@ List Data Barang
     }
     function modaledit(id){
         $.ajax({
-            url: `{{ route('show_data_barang', ':id') }}`.replace(':id', id),
+            url: `{{ route('isms_show_data_barang', ':id') }}`.replace(':id', id),
             method: 'GET',
             success: function(data){
                 let url = $('#modaledit form').attr('action');
