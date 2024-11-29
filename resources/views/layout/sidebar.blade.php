@@ -97,12 +97,12 @@
             <span class="menu-header-text">Material Request</span>
         </li>
 
-        <li class="menu-item {{ request()->is('list_data_pengajuan*') ? 'active' : '' }}">
+        <!-- <li class="menu-item {{ request()->is('list_data_pengajuan*') ? 'active' : '' }}">
             <a href="{{route('list_data_pengajuan')}}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-crown"></i>
                 <div data-i18n="Boxicons">Pengajuan Barang</div>
             </a>
-        </li>
+        </li> -->
 
         <li class="menu-header small text-uppercase">
             <span class="menu-header-text">Master Data</span>
