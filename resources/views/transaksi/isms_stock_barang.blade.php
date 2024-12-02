@@ -53,8 +53,8 @@ List Stock Barang ISMS
                                 <td>{{ $item->nama }}</td>
                                 <td>{{ $item->deskripsi }}</td>
                                 <td>{{ $item->stock->available_stock }}</td>
-                                <td>{{ $item->total_barang_masuk }}</td>
-                                <td>{{ $item->total_barang_keluar }}</td>
+                                <td>{{ $item->total_barang_masuk ?? '0' }}</td>
+                                <td>{{ $item->total_barang_keluar ?? '0' }}</td>
                                 <td>{{ $item->satuan->nama }}</td>
                                 <td>{{ $item->stock->updated_at }}</td>
                             </tr>

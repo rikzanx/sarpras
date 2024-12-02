@@ -24,8 +24,8 @@ class TransaksiController extends Controller
         $satuan = Satuan::get();
         $group = Group::get();
         $barangs = Barang::with(['satuan','group','stock','transaksi_masuk','transaksi_keluar'])
-        ->withSum(['transaksi_masuk as total_barang_masuk'], 'transaksi_barangs.quantity') // Untuk transaksi masuk
-        ->withSum(['transaksi_keluar as total_barang_keluar'], 'transaksi_barangs.quantity') // Untuk transaksi keluar
+        ->withSum(['transaksi_masuk as total_barang_masuk'], 'transaksi_barangs.quantity')
+        ->withSum(['transaksi_keluar as total_barang_keluar'], 'transaksi_barangs.quantity')
         ->where('id_group',1)->get();
         // dd($barangs);
         return view('transaksi/isms_stock_barang',[
