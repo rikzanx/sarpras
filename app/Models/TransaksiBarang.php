@@ -28,4 +28,9 @@ class TransaksiBarang extends Model
     {
         return $this->belongsTo(Barang::class, 'id_barang', 'id_barang');
     }
+
+    public function transaksi()
+    {
+        return $this->hasOne(Transaksi::class, 'id_transaksi', 'id_transaksi');
+    }
 }

@@ -47,7 +47,7 @@ Dashboard
                                 </div>
                             </div>
                             <span >Stock Tersedia</span>
-                            <h3 class="card-title mb-2">1078</h3>
+                            <h3 class="card-title mb-2">{{ $overview['stock_tersedia'] }}</h3>
                             <small class="text-success fw-semibold"><i
                                     class="bx bx-up-arrow-alt"></i> +72.80%</small>
                         </div>
@@ -64,7 +64,7 @@ Dashboard
                                 </div>
                             </div>
                             <span>Barang Keluar</span>
-                            <h3 class="card-title text-nowrap mb-1">1022</h3>
+                            <h3 class="card-title text-nowrap mb-1">{{ $overview['jumlah_barang_keluar'] }}</h3>
                             <small class="text-success fw-semibold"><i
                                     class="bx bx-up-arrow-alt"></i> +28.42%</small>
                         </div>
@@ -81,7 +81,7 @@ Dashboard
                                 </div>
                             </div>
                             <span >Barang Masuk</span>
-                            <h3 class="card-title mb-2">2100</h3>
+                            <h3 class="card-title mb-2">{{ $overview['jumlah_barang_masuk'] }}</h3>
                             <small class="text-success fw-semibold"><i
                                     class="bx bx-up-arrow-alt"></i> +72.80%</small>
                         </div>
@@ -97,8 +97,8 @@ Dashboard
                                         alt="Credit Card" class="rounded" />
                                 </div>
                             </div>
-                            <span>AVG. Barang Keluar / Bulan</span>
-                            <h3 class="card-title text-nowrap mb-1">10</h3>
+                            <span>Rata" Barang Keluar</span>
+                            <h3 class="card-title text-nowrap mb-1">{{ $overview['rata_rata_barang_keluar'] }}</h3>
                             <small class="text-success fw-semibold"><i
                                     class="bx bx-up-arrow-alt"></i> +28.42%</small>
                         </div>
