@@ -15,7 +15,7 @@ class DashboardController extends Controller
     public function dashboard()
     {
         $overview = [];
-        $overview['stock_tersedia'] = Stock::sum('stock_available') ?? 0;
+        $overview['stock_tersedia'] = Stock::sum('available_stock') ?? 0;
         $overview['jumlah_barang_keluar'] = TransaksiBarang::whereHas('transaksi', function ($query) {
             $query->where('tipe', 'in');
         })->sum('quantity') ?? 0;
