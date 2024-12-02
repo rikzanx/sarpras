@@ -139,45 +139,33 @@ Dashboard
                 </div>
                 <div class="card-body">
                     <ul class="p-0 m-0">
-                        @for($i=0;$i<=2;$i++)
-                        <li class="d-flex mb-4 pb-1">
-                            <div class="avatar flex-shrink-0 me-3">
-                                <img src="{{ asset('assets/img/icons/unicons/cc-success.png')}}" alt="User"
-                                    class="rounded" />
-                            </div>
-                            <div
-                                class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
-                                <div class="me-2">
-                                    <p class="mb-1">
-                                        Barang Masuk <small class="mb-1 text-muted">2024-11-28 10:13:00</small>
-                                    </p>
-                                    <h6 class="mb-0">Pembelian barang peralatan IT</h6>
-                                    
-                               </div>
-                                <div class="user-progress d-flex align-items-center gap-1">
-                                    <h6 class="mb-0">+100</h6>
+                        @foreach($transaksi as $index => $item)
+                            <li class="d-flex mb-4 pb-1">
+                                <div class="avatar flex-shrink-0 me-3">
+                                    @if($item->tipe == "in")
+                                    <img src="{{ asset('assets/img/icons/unicons/cc-success.png')}}" alt="User"
+                                        class="rounded" />
+                                    @else
+                                    <img src="{{ asset('assets/img/icons/unicons/cc-warning.png')}}" alt="User"
+                                        class="rounded" />
+                                    @endif
                                 </div>
-                            </div>
-                        </li> 
-                        <li class="d-flex mb-4 pb-1">
-                            <div class="avatar flex-shrink-0 me-3">
-                                <img src="{{ asset('assets/img/icons/unicons/cc-warning.png')}}" alt="User"
-                                    class="rounded" />
-                            </div>
-                            <div
-                                class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
-                                <div class="me-2">
-                                    <p class="mb-1">
-                                        Barang Keluar <small class="mb-1 text-muted">2024-11-28 10:13:00</small>
-                                    </p>
-                                    <h6 class="mb-0">Pemakaian barang </h6>
+                                <div
+                                    class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
+                                    <div class="me-2">
+                                        <p class="mb-1">
+                                            {{ ($item->tipe == "in") ? 'Barang Masuk' : 'Barang Keluar' }}
+                                            <small class="mb-1 text-muted">2024-11-28 10:13:00</small>
+                                        </p>
+                                        <h6 class="mb-0">{{ $item->deskripsi }}</h6>
+                                        
                                 </div>
-                                <div class="user-progress d-flex align-items-center gap-1">
-                                    <h6 class="mb-0">-100</h6>
+                                    <div class="user-progress d-flex align-items-center gap-1">
+                                        <h6 class="mb-0">{{ ($item->tipe == "in") ? '+' : '-' }}{{ $item->total_barang }}</h6>
+                                    </div>
                                 </div>
-                            </div>
-                        </li> 
-                        @endfor
+                            </li>
+                        @endforeach
                     </ul>
                 </div>
             </div>
