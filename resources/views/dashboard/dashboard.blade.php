@@ -17,7 +17,7 @@ Dashboard
                 <div class="d-flex align-items-end row">
                     <div class="col-sm-7">
                         <div class="card-body">
-                            <h5 class="card-title text-primary">Selamat Datang {{ auth()->user()->nama }}! 🎉</h5>
+                            <h5 class="card-title text-primary">Selamat Datang {{ auth()->user()->nama }}!</h5>
                             <p class="mb-4">
                                 Setiap langkah kecil hari ini membawa kita lebih dekat pada tujuan besar di masa depan.
                             </p>
