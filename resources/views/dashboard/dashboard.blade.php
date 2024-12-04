@@ -196,11 +196,11 @@ Dashboard
       series: [
         {
           name: 'Barang Keluar',
-          data: @json($data_barang_keluar)
+          data: @json($overview['data_barang_keluar'])
         },
         {
           name: 'Barang Masuk',
-          data: @json($data_barang_masuk)
+          data: @json($overview['data_barang_masuk'])
         }
       ],
       chart: {
