@@ -20,7 +20,7 @@ class BarangController extends Controller
         $satuan = Satuan::get();
         $group = Group::get();
         $kategori = Kategori::get();
-        $barangs = Barang::with(['satuan','group'])->get();
+        $barangs = Barang::with(['kategori','satuan','group'])->get();
 
         return view('barang/list_data_barang',[
             'barangs' => $barangs,
@@ -138,6 +138,7 @@ class BarangController extends Controller
                 DB::rollback();
                 return redirect()->route('list_data_barang')->with('error', "Gagal Menghapus Data, Data sedang dipakai");
             }
+            Stock::where('id_barang',$barang->id_barang)->delete();
             $barang->delete();
             DB::commit();
             return redirect()->route('list_data_barang')->with('success', "Sukses Menghapus Data");

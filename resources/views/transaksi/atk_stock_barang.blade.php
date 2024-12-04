@@ -36,6 +36,7 @@ List Stock Barang ATK
                             <tr>
                                 <th style="text-align: center;">No</th>
                                 <th style="text-align: center;">Nama Group</th>
+                                <th style="text-align: center;">Nama Kategori</th>
                                 <th style="text-align: center;">Nama Barang</th>
                                 <th style="text-align: center;">Deskripsi</th>
                                 <th style="text-align: center;">Stock Tersedia</th>
@@ -50,6 +51,7 @@ List Stock Barang ATK
                             <tr>
                                 <td style="text-align: center;">{{ $index+1 }}</td>
                                 <td style="text-align: center;">{{ $item->group->nama }}</td>
+                                <td style="text-align: center;">{{ $item->kategori->nama }}</td>
                                 <td>{{ $item->nama }}</td>
                                 <td>{{ $item->deskripsi }}</td>
                                 <td>{{ $item->stock->available_stock }}</td>

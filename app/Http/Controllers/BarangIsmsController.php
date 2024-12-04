@@ -20,7 +20,7 @@ class BarangIsmsController extends Controller
         $satuan = Satuan::get();
         $group = Group::where('id_group',1)->get();
         $kategori = Kategori::where('id_group',1)->get();
-        $barangs = Barang::where('id_group',1)->with(['satuan','group'])->get();
+        $barangs = Barang::where('id_group',1)->with(['kategori','satuan','group'])->get();
 
         return view('barang/isms_list_data_barang',[
             'barangs' => $barangs,
@@ -138,6 +138,7 @@ class BarangIsmsController extends Controller
                 DB::rollback();
                 return redirect()->route('isms_list_data_barang')->with('error', "Gagal Menghapus Data, Data sedang dipakai");
             }
+            Stock::where('id_barang',$barang->id_barang)->delete();
             $barang->delete();
             DB::commit();
             return redirect()->route('isms_list_data_barang')->with('success', "Sukses Menghapus Data");
