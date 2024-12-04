@@ -43,6 +43,7 @@ class DashboardController extends Controller
             ->orderBy('bulan.bulan')
             ->get()->pluck('jumlah')->toArray();
         dd($data_barang_keluar);
+        
         return view('dashboard.dashboard',[
             'overview' => $overview,
             'transaksi' => $transaksi
