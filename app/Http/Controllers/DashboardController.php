@@ -25,7 +25,7 @@ class DashboardController extends Controller
         $overview['rata_rata_barang_keluar'] = TransaksiBarang::whereHas('transaksi', function ($query) {
             $query->where('tipe', 'out');
         })->avg('quantity') ?? 0;
-        $transaksi = Transaksi::with(['tranksasi_barangs'])
+        $transaksi = Transaksi::with(['transaksi_barangs'])
         ->withSum(['transaksi_barangs as total_barang'], 'transaksi_barangs.quantity')
         ->orderBy('tanggal', 'desc')->limit(10)->get();
         $year_now = date('Y');
@@ -43,7 +43,7 @@ class DashboardController extends Controller
             ->orderBy('bulan.bulan')
             ->get()->pluck('jumlah')->toArray();
         dd($data_barang_keluar);
-        
+
         return view('dashboard.dashboard',[
             'overview' => $overview,
             'transaksi' => $transaksi
