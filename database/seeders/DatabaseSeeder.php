@@ -46,11 +46,25 @@ class DatabaseSeeder extends Seeder
             'password' => $password,
             'id_level_user' => 2
         ]);
+        User::create([
+            'nik' => 'T.354778',
+            'nama' => 'RACHMAD WAHYUDI, S.T	',
+            'email' => 'wahyudi@gmail.com',
+            'password' => $password,
+            'id_level_user' => 2
+        ]);
+        User::create([
+            'nik' => 'K.230187',
+            'nama' => 'AGAM PEBRIAN',
+            'email' => 'agam@gmail.com',
+            'password' => $password,
+            'id_level_user' => 2
+        ]);
 
         // Satuan Unit
         $satuanUnit = Satuan::create([
-            'nama' => 'Unit',
-            'deskripsi' => 'Unit'
+            'nama' => 'EA',
+            'deskripsi' => 'ea'
         ]);
 
         $satuanMeter = Satuan::create([
@@ -144,9 +158,9 @@ class DatabaseSeeder extends Seeder
             'id_user' => $superAdmin->id_user,
             'id_group' => $GroupISMS->id_group,
             'tipe' => 'in',
-            'penerima' => 'Divisi IT',
+            'penerima' => 'Agam',
             'tanggal' => now(),
-            'deskripsi' => 'Permintaan barang peralatan IT'
+            'deskripsi' => 'Pemebelian barang peralatan IT'
         ]);
         TransaksiBarang::create([
             'id_transaksi' => $transaksiRequest->id_transaksi,
@@ -173,7 +187,7 @@ class DatabaseSeeder extends Seeder
             'tipe' => 'out',
             'penerima' => 'Divisi IT',
             'tanggal' => now(),
-            'deskripsi' => 'Permintaan barang peralatan IT'
+            'deskripsi' => 'Pemakaian di Zona 2'
         ]);
         TransaksiBarang::create([
             'id_transaksi' => $transaksiRequest->id_transaksi,
