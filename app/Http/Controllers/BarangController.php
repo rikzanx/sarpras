@@ -7,6 +7,7 @@ use App\Models\Barang;
 use App\Models\Satuan;
 use App\Models\Group;
 use App\Models\Stock;
+use App\Models\Kategori;
 use Illuminate\Support\Facades\Crypt;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Validator;
@@ -18,12 +19,14 @@ class BarangController extends Controller
     public function list_data_barang(){
         $satuan = Satuan::get();
         $group = Group::get();
+        $kategori = Kategori::get();
         $barangs = Barang::with(['satuan','group'])->get();
 
         return view('barang/list_data_barang',[
             'barangs' => $barangs,
             'satuan' => $satuan,
-            'group' => $group
+            'group' => $group,
+            'kategori' => $kategori
         ]);
     }
 
@@ -47,6 +50,7 @@ class BarangController extends Controller
         ];
         $validator = Validator::make($request->all(), [
             "id_group" => 'required',
+            "id_kategori" => 'required',
             "id_satuan" => 'required',
             "nama" => 'required',
             "deskripsi" => 'required',
@@ -58,6 +62,7 @@ class BarangController extends Controller
         try{
             $barang = Barang::create([
                 "id_group" => $request->id_group,
+                "id_kategori" => $request->id_kategori,
                 "id_satuan" => $request->id_satuan,
                 "nama" => $request->nama,
                 "deskripsi" => $request->deskripsi,
@@ -94,6 +99,7 @@ class BarangController extends Controller
         ];
         $validator = Validator::make($request->all(), [
             "id_group" => 'required',
+            "id_kategori" => 'required',
             "id_satuan" => 'required',
             "nama" => 'required',
             "deskripsi" => 'required',
@@ -107,6 +113,7 @@ class BarangController extends Controller
             $barang = Barang::findOrFail($decryptId);
             $barang->id_group = $request->id_group;
             $barang->id_satuan = $request->id_satuan;
+            $barang->id_kategori = $request->id_kategori;
             $barang->nama = $request->nama;
             $barang->deskripsi = $request->deskripsi;
             $barang->save();

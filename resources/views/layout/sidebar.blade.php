@@ -120,6 +120,11 @@
                     </a>
                 </li>
                 
+                <li class="menu-item {{ request()->is('list_data_kategori*') ? 'active' : '' }}">
+                    <a href="{{route('list_data_kategori')}}" class="menu-link">
+                        <div data-i18n="Container">Kategori</div>
+                    </a>
+                </li>
                 <li class="menu-item {{ request()->is('list_data_satuan*') ? 'active' : '' }}">
                     <a href="{{route('list_data_satuan')}}" class="menu-link">
                         <div data-i18n="Container">Satuan</div>

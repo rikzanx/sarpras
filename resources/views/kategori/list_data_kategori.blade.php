@@ -17,48 +17,47 @@
 @endsection
 
 @section('judul')
-List Data Barang ISMS
+List Data Kategori
 @endsection
 
 @section('isi')
+
 <div class="container-xxl flex-grow-1 container-p-y">
     <div class="row">
         <div class="col-lg-12 mb-4 order-0">
             <div class="card px-4">
                 <div class="card-header mt-4 py-2 px-1 d-flex justify-content-between align-items-center">
-                    <h4>Data Barang</h4>
+                    <h4>Data Kategori</h4>
                     <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                        data-bs-target="#modaltambah">+ Add Barang</button>
+                        data-bs-target="#modaltambah">+ Add Kategori</button>
                 </div>
                 <div class="card-datatable table-responsive mb-4 mt-4 dt-buttons display nowrap" style="width:100%">
                     <table id="myTable" class="table">
                         <thead>
                             <tr>
                                 <th style="text-align: center;">No</th>
-                                <th style="text-align: center;">Nama Group</th>
-                                <th style="text-align: center;">Nama Barang</th>
+                                <th style="text-align: center;">Group</th>
+                                <th style="text-align: center;">Nama Kategori</th>
                                 <th style="text-align: center;">Deskripsi</th>
-                                <th style="text-align: center;">Satuan</th>
                                 <th style="text-align: center; width:5px;">Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($barangs as $index => $item)
+                            @foreach($kategori as $index => $item)
                             <tr>
-                                <td style="text-align: center;">{{ $index+1 }}</td>
+                                <td>{{ $index+1 }}</td>
                                 <td style="text-align: center;">{{ $item->group->nama }}</td>
                                 <td>{{ $item->nama }}</td>
                                 <td>{{ $item->deskripsi }}</td>
-                                <td>{{ $item->satuan->nama }}</td>
                                 <td style="text-align: center;">
                                     <div class="demo-inline-spacing">
-                                        <button type="button" class="btn btn-icon btn-primary" onclick="modalshow('{{ Crypt::encryptString($item->id_barang) }}')">
+                                        <button type="button" class="btn btn-icon btn-primary" onclick="modalshow('{{ Crypt::encryptString($item->id_kategori) }}')">
                                             <span class="tf-icons bx bx-show-alt"></span>
                                         </button>
-                                        <button type="button" class="btn btn-icon btn-warning" onclick="modaledit('{{ Crypt::encryptString($item->id_barang) }}')">
+                                        <button type="button" class="btn btn-icon btn-warning" onclick="modaledit('{{ Crypt::encryptString($item->id_kategori) }}')">
                                             <span class="tf-icons bx bx-edit"></span>
                                         </button>
-                                        <button type="button" class="btn btn-icon btn-danger" onclick="modaldelete('{{ Crypt::encryptString($item->id_barang) }}')">
+                                        <button type="button" class="btn btn-icon btn-danger" onclick="modaldelete('{{ Crypt::encryptString($item->id_kategori) }}')">
                                             <span class="tf-icons bx bx-eraser"></span>
                                         </button>
                                     </div>
@@ -73,11 +72,12 @@ List Data Barang ISMS
     </div>
 </div>
 
+
 <!-- Modal Tambah -->
 <div class="modal fade" id="modaltambah" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-xl" role="document">
         <div class="modal-content">
-            <form action="{{ route('isms_add_barang_action') }}" method="post">
+            <form action="{{ route('add_kategori_action') }}" method="post">
                 @csrf
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel4">Tambah Data</h5>
@@ -97,36 +97,14 @@ List Data Barang ISMS
                     </div>
                     <div class="row">
                         <div class="col mb-3">
-                            <label for="nameExLarge" class="form-label">Ketegori</label>
-                            <select class="form-control" name="id_kategori" >
-                            <option selected disabled>Pilih Kategori</option>
-                                        @foreach ($kategori as $item)
-                                        <option value="{{ $item->id_kategori }}">{{ $item->nama }}</option>
-                                        @endforeach
-                            </select>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col mb-3">
-                            <label class="form-label">Nama Barang</label>
+                            <label class="form-label">Nama Kategori</label>
                             <input type="text" class="form-control" placeholder="Enter Name" name="nama" />
                         </div>
                     </div>
                     <div class="row g-2">
-                        <div class="col mb-3">
+                        <div class="col mb-0">
                             <label  class="form-label">Deskripsi</label>
                             <input type="text" class="form-control" placeholder="Enter Deskripsi" name="deskripsi" />
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col mb-0">
-                            <label for="nameExLarge" class="form-label">Satuan</label>
-                            <select class="form-control" name="id_satuan" >
-                            <option selected disabled>Pilih Satuan</option>
-                                        @foreach ($satuan as $item)
-                                        <option value="{{ $item->id_satuan }}">{{ $item->nama }}</option>
-                                        @endforeach
-                            </select>
                         </div>
                     </div>
                 </div>
@@ -146,7 +124,7 @@ List Data Barang ISMS
 <div class="modal fade" id="modalshow" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-xl" role="document">
         <div class="modal-content">
-            <form action="#" method="post">
+            <form action="{{ route('add_kategori_action') }}" method="post">
                 @csrf
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel4">Show Data</h5>
@@ -166,36 +144,14 @@ List Data Barang ISMS
                     </div>
                     <div class="row">
                         <div class="col mb-3">
-                            <label for="nameExLarge" class="form-label">Ketegori</label>
-                            <select class="form-control" name="id_kategori" >
-                            <option selected disabled>Pilih Kategori</option>
-                                        @foreach ($kategori as $item)
-                                        <option value="{{ $item->id_kategori }}">{{ $item->nama }}</option>
-                                        @endforeach
-                            </select>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col mb-3">
-                            <label class="form-label">Nama Barang</label>
+                            <label class="form-label">Nama Kategori</label>
                             <input type="text" class="form-control" placeholder="Enter Name" name="nama" />
                         </div>
                     </div>
                     <div class="row g-2">
-                        <div class="col mb-3">
+                        <div class="col mb-0">
                             <label  class="form-label">Deskripsi</label>
                             <input type="text" class="form-control" placeholder="Enter Deskripsi" name="deskripsi" />
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col mb-0">
-                            <label for="nameExLarge" class="form-label">Satuan</label>
-                            <select class="form-control" name="id_satuan" >
-                            <option selected disabled>Pilih Satuan</option>
-                                        @foreach ($satuan as $item)
-                                        <option value="{{ $item->id_satuan }}">{{ $item->nama }}</option>
-                                        @endforeach
-                            </select>
                         </div>
                     </div>
                 </div>
@@ -214,7 +170,7 @@ List Data Barang ISMS
 <div class="modal fade" id="modaledit" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-xl" role="document">
         <div class="modal-content">
-            <form action="{{ route('isms_edit_barang_action',':id') }}" method="post">
+            <form action="{{ route('edit_kategori_action',':id') }}" method="post">
                 @csrf
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel4">Eidt Data</h5>
@@ -234,36 +190,14 @@ List Data Barang ISMS
                     </div>
                     <div class="row">
                         <div class="col mb-3">
-                            <label for="nameExLarge" class="form-label">Ketegori</label>
-                            <select class="form-control" name="id_kategori" >
-                            <option selected disabled>Pilih Kategori</option>
-                                        @foreach ($kategori as $item)
-                                        <option value="{{ $item->id_kategori }}">{{ $item->nama }}</option>
-                                        @endforeach
-                            </select>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col mb-3">
-                            <label class="form-label">Nama Barang</label>
+                            <label class="form-label">Nama Kategori</label>
                             <input type="text" class="form-control" placeholder="Enter Name" name="nama" />
                         </div>
                     </div>
                     <div class="row g-2">
-                        <div class="col mb-3">
+                        <div class="col mb-0">
                             <label  class="form-label">Deskripsi</label>
                             <input type="text" class="form-control" placeholder="Enter Deskripsi" name="deskripsi" />
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col mb-0">
-                            <label for="nameExLarge" class="form-label">Satuan</label>
-                            <select class="form-control" name="id_satuan" >
-                            <option selected disabled>Pilih Satuan</option>
-                                        @foreach ($satuan as $item)
-                                        <option value="{{ $item->id_satuan }}">{{ $item->nama }}</option>
-                                        @endforeach
-                            </select>
                         </div>
                     </div>
                 </div>
@@ -283,7 +217,7 @@ List Data Barang ISMS
 <div class="modal fade" id="modaldelete" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-xxs" role="document">
         <div class="modal-content">
-            <form action="{{  route('isms_delete_barang_action',':id') }}" method="post" enctype="multipart/form-data">
+            <form action="{{  route('delete_kategori_action',':id') }}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel4">Hapus Data</h5>
@@ -315,15 +249,13 @@ List Data Barang ISMS
 <script>
     function modalshow(id){
         $.ajax({
-            url: `{{ route('isms_show_data_barang', ':id') }}`.replace(':id', id),
+            url: `{{ route('show_data_kategori', ':id') }}`.replace(':id', id),
             method: 'GET',
             success: function(data){
                 
                 $('#modalshow input[name="nama"]').val(data.nama);
                 $('#modalshow input[name="deskripsi"]').val(data.deskripsi);
                 $('#modalshow select[name="id_group"]').val(data.id_group);
-                $('#modalshow select[name="id_satuan"]').val(data.id_satuan);
-                $('#modalshow select[name="id_kategori"]').val(data.id_kategori);
                 $('#modalshow').modal('show');
             },
             error: function(err){
@@ -333,7 +265,7 @@ List Data Barang ISMS
     }
     function modaledit(id){
         $.ajax({
-            url: `{{ route('isms_show_data_barang', ':id') }}`.replace(':id', id),
+            url: `{{ route('show_data_kategori', ':id') }}`.replace(':id', id),
             method: 'GET',
             success: function(data){
                 let url = $('#modaledit form').attr('action');
@@ -341,8 +273,6 @@ List Data Barang ISMS
                 $('#modaledit input[name="nama"]').val(data.nama);
                 $('#modaledit input[name="deskripsi"]').val(data.deskripsi);
                 $('#modaledit select[name="id_group"]').val(data.id_group);
-                $('#modaledit select[name="id_satuan"]').val(data.id_satuan);
-                $('#modaledit select[name="id_kategori"]').val(data.id_kategori);
                 $('#modaledit').modal('show');
             },
             error: function(err){

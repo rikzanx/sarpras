@@ -97,6 +97,17 @@ List Data Barang
                     </div>
                     <div class="row">
                         <div class="col mb-3">
+                            <label for="nameExLarge" class="form-label">Ketegori</label>
+                            <select class="form-control" name="id_kategori" >
+                            <option selected disabled>Pilih Kategori</option>
+                                        @foreach ($kategori as $item)
+                                        <option value="{{ $item->id_kategori }}">{{ $item->nama }}</option>
+                                        @endforeach
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col mb-3">
                             <label class="form-label">Nama Barang</label>
                             <input type="text" class="form-control" placeholder="Enter Name" name="nama" />
                         </div>
@@ -155,6 +166,17 @@ List Data Barang
                     </div>
                     <div class="row">
                         <div class="col mb-3">
+                            <label for="nameExLarge" class="form-label">Ketegori</label>
+                            <select class="form-control" name="id_kategori" >
+                            <option selected disabled>Pilih Kategori</option>
+                                        @foreach ($kategori as $item)
+                                        <option value="{{ $item->id_kategori }}">{{ $item->nama }}</option>
+                                        @endforeach
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col mb-3">
                             <label class="form-label">Nama Barang</label>
                             <input type="text" class="form-control" placeholder="Enter Name" name="nama" />
                         </div>
@@ -206,6 +228,17 @@ List Data Barang
                             <option selected disabled>Pilih Group</option>
                                         @foreach ($group as $item)
                                         <option value="{{ $item->id_group }}">{{ $item->nama }}</option>
+                                        @endforeach
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col mb-3">
+                            <label for="nameExLarge" class="form-label">Ketegori</label>
+                            <select class="form-control" name="id_kategori" >
+                            <option selected disabled>Pilih Kategori</option>
+                                        @foreach ($kategori as $item)
+                                        <option value="{{ $item->id_kategori }}">{{ $item->nama }}</option>
                                         @endforeach
                             </select>
                         </div>
@@ -290,6 +323,7 @@ List Data Barang
                 $('#modalshow input[name="deskripsi"]').val(data.deskripsi);
                 $('#modalshow select[name="id_group"]').val(data.id_group);
                 $('#modalshow select[name="id_satuan"]').val(data.id_satuan);
+                $('#modalshow select[name="id_kategori"]').val(data.id_kategori);
                 $('#modalshow').modal('show');
             },
             error: function(err){
@@ -308,6 +342,7 @@ List Data Barang
                 $('#modaledit input[name="deskripsi"]').val(data.deskripsi);
                 $('#modaledit select[name="id_group"]').val(data.id_group);
                 $('#modaledit select[name="id_satuan"]').val(data.id_satuan);
+                $('#modaledit select[name="id_kategori"]').val(data.id_kategori);
                 $('#modaledit').modal('show');
             },
             error: function(err){

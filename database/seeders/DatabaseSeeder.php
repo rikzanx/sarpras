@@ -10,6 +10,7 @@ use App\Models\TransaksiBarang;
 use App\Models\Stock;
 use App\Models\Notifikasi;
 use App\Models\Satuan;
+use App\Models\Kategori;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 
@@ -46,25 +47,11 @@ class DatabaseSeeder extends Seeder
             'password' => $password,
             'id_level_user' => 2
         ]);
-        User::create([
-            'nik' => 'T.354778',
-            'nama' => 'RACHMAD WAHYUDI, S.T	',
-            'email' => 'wahyudi@gmail.com',
-            'password' => $password,
-            'id_level_user' => 2
-        ]);
-        User::create([
-            'nik' => 'K.230187',
-            'nama' => 'AGAM PEBRIAN',
-            'email' => 'agam@gmail.com',
-            'password' => $password,
-            'id_level_user' => 2
-        ]);
 
         // Satuan Unit
         $satuanUnit = Satuan::create([
-            'nama' => 'EA',
-            'deskripsi' => 'ea'
+            'nama' => 'Unit',
+            'deskripsi' => 'Unit'
         ]);
 
         $satuanMeter = Satuan::create([
@@ -87,21 +74,53 @@ class DatabaseSeeder extends Seeder
             'deskripsi' => 'Peralatan kantor seperti kertas, alat tulis, bolpoin, dll'
         ]);
 
+        // Seed Kategori (ISMS)
+        $kategoriCctv = Kategori::create([
+            'id_group' => $GroupISMS->id_group,
+            'nama' => "CCTV",
+            'deskripsi' => "CCTV ISMS"
+        ]);
+        $kategoriKomputer = Kategori::create([
+            'id_group' => $GroupISMS->id_group,
+            'nama' => "Komputer",
+            'deskripsi' => "Komputer ISMS"
+        ]);
+        $kategoriKabel = Kategori::create([
+            'id_group' => $GroupISMS->id_group,
+            'nama' => "Kabel",
+            'deskripsi' => "Kabel ISMS"
+        ]);
+
+        // Seed Kategori (ATK)
+        $kategoriKertas = Kategori::create([
+            'id_group' => $GroupATK->id_group,
+            'nama' => "Kertas",
+            'deskripsi' => "Kertas ATK"
+        ]);
+        $kategoriAlattulis = Kategori::create([
+            'id_group' => $GroupATK->id_group,
+            'nama' => "Alat Tulis",
+            'deskripsi' => "Alat Tulis"
+        ]);
+
         // Seed Barangs (ISMS)
         $barang1 = Barang::create([
             'id_group' => $GroupISMS->id_group,
+            'id_kategori' => $kategoriKomputer->id_kategori,
             'nama' => 'Komputer Desktop',
             'deskripsi' => 'Komputer desktop dengan monitor LED dan aksesoris',
             'id_satuan' => $satuanUnit->id_satuan
         ]);
         $barang2 = Barang::create([
             'id_group' => $GroupISMS->id_group,
+            'id_kategori' => $kategoriCctv->id_kategori,
             'nama' => 'CCTV Kamera',
             'deskripsi' => 'CCTV kamera untuk pengawasan',
             'id_satuan' => $satuanUnit->id_satuan
         ]);
         $barang3 = Barang::create([
             'id_group' => $GroupISMS->id_group,
+            'id_kategori' => $kategoriKabel->id_kategori,
             'nama' => 'Kabel LAN',
             'deskripsi' => 'Kabel untuk jaringan komputer',
             'id_satuan' => $satuanMeter->id_satuan
@@ -110,18 +129,21 @@ class DatabaseSeeder extends Seeder
         // Seed Barangs (ATK)
         $barang4 = Barang::create([
             'id_group' => $GroupATK->id_group,
+            'id_kategori' => $kategoriKertas->id_kategori,
             'nama' => 'Kertas A4',
             'deskripsi' => 'Kertas ukuran A4 untuk printer',
             'id_satuan' => $satuanPack->id_satuan
         ]);
         $barang5 = Barang::create([
             'id_group' => $GroupATK->id_group,
+            'id_kategori' => $kategoriAlattulis->id_kategori,
             'nama' => 'Pensil',
             'deskripsi' => 'Pensil merk standar',
             'id_satuan' => $satuanPack->id_satuan
         ]);
         $barang6 = Barang::create([
             'id_group' => $GroupATK->id_group,
+            'id_kategori' => $kategoriAlattulis->id_kategori,
             'nama' => 'Bolpoin',
             'deskripsi' => 'Bolpoin merk premium',
             'id_satuan' => $satuanPack->id_satuan
@@ -158,9 +180,9 @@ class DatabaseSeeder extends Seeder
             'id_user' => $superAdmin->id_user,
             'id_group' => $GroupISMS->id_group,
             'tipe' => 'in',
-            'penerima' => 'Agam',
+            'penerima' => 'Divisi IT',
             'tanggal' => now(),
-            'deskripsi' => 'Pemebelian barang peralatan IT'
+            'deskripsi' => 'Permintaan barang peralatan IT'
         ]);
         TransaksiBarang::create([
             'id_transaksi' => $transaksiRequest->id_transaksi,
@@ -187,7 +209,7 @@ class DatabaseSeeder extends Seeder
             'tipe' => 'out',
             'penerima' => 'Divisi IT',
             'tanggal' => now(),
-            'deskripsi' => 'Pemakaian di Zona 2'
+            'deskripsi' => 'Permintaan barang peralatan IT'
         ]);
         TransaksiBarang::create([
             'id_transaksi' => $transaksiRequest->id_transaksi,

@@ -17,6 +17,7 @@ class Barang extends Model
     [
         'id_barang',
         'id_group',
+        'id_kategori',
         'id_satuan',
         'nama',
         'deskripsi',
@@ -24,6 +25,10 @@ class Barang extends Model
 
     protected $guarded = [];
 
+    public function kategori()
+    {
+        return $this->belongsTo(Kategori::class, 'id_kategori', 'id_kategori');
+    }
     public function satuan()
     {
         return $this->belongsTo(Satuan::class, 'id_satuan', 'id_satuan');

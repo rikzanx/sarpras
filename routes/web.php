@@ -11,6 +11,7 @@ use App\Http\Controllers\BarangController;
 use App\Http\Controllers\BarangAtkController;
 use App\Http\Controllers\BarangIsmsController;
 use App\Http\Controllers\SatuanController;
+use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\PengajuanController;
 use App\Http\Controllers\TransaksiController;
 
@@ -93,6 +94,12 @@ Route::group(['middleware' => [AuthMiddleware::class]],function(){
     Route::post('/add_satuan_action',[SatuanController::class, 'add_satuan_action'])->name('add_satuan_action');
     Route::post('/edit_satuan_action/{id_satuan}',[SatuanController::class, 'edit_satuan_action'])->name('edit_satuan_action');
     Route::post('/delete_satuan_action/{id_satuan}',[SatuanController::class, 'delete_satuan_action'])->name('delete_satuan_action');
+    
+    Route::get('/list_data_kategori', [KategoriController::class, 'list_data_kategori'])->name('list_data_kategori');
+    Route::get('/show_data_kategori/{id_kategori}', [KategoriController::class, 'show_data_kategori'])->name('show_data_kategori');
+    Route::post('/add_kategori_action',[KategoriController::class, 'add_kategori_action'])->name('add_kategori_action');
+    Route::post('/edit_kategori_action/{id_kategori}',[KategoriController::class, 'edit_kategori_action'])->name('edit_kategori_action');
+    Route::post('/delete_kategori_action/{id_kategori}',[KategoriController::class, 'delete_kategori_action'])->name('delete_kategori_action');
 
 
     Route::get('/list_data_pengajuan', [PengajuanController::class, 'list_data_pengajuan'])->name('list_data_pengajuan');
