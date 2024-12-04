@@ -117,7 +117,7 @@ Dashboard
             <div class="card">
                 <div class="row row-bordered g-0">
                     <div class="col-md-12">
-                        <h5 class="card-header m-0 me-2 pb-3">Total Transaksi</h5>
+                        <h5 class="card-header m-0 me-2 pb-3">Total Transaksi ISMS</h5>
                         <div id="totalTransaksiChart" class="px-2"></div>
                     </div>
                 </div>
@@ -127,7 +127,7 @@ Dashboard
         <div class="col-md-12 col-lg-12 mb-4">
             <div class="card h-100">
                 <div class="card-header d-flex align-items-center justify-content-between">
-                    <h5 class="card-title m-0 me-2">Transaksi Terbaru</h5>
+                    <h5 class="card-title m-0 me-2">Transaksi Terbaru ISMS</h5>
                     <div class="dropdown">
                         <button class="btn p-0" type="button" id="transactionID"
                             data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -259,7 +259,7 @@ Dashboard
             <div class="card">
                 <div class="row row-bordered g-0">
                     <div class="col-md-12">
-                        <h5 class="card-header m-0 me-2 pb-3">Total Transaksi</h5>
+                        <h5 class="card-header m-0 me-2 pb-3">Total Transaksi ATK</h5>
                         <div id="totalTransaksiChart2" class="px-2"></div>
                     </div>
                 </div>
@@ -269,7 +269,7 @@ Dashboard
         <div class="col-md-12 col-lg-12 mb-4">
             <div class="card h-100">
                 <div class="card-header d-flex align-items-center justify-content-between">
-                    <h5 class="card-title m-0 me-2">Transaksi Terbaru</h5>
+                    <h5 class="card-title m-0 me-2">Transaksi Terbaru ATK</h5>
                     <div class="dropdown">
                         <button class="btn p-0" type="button" id="transactionID"
                             data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
