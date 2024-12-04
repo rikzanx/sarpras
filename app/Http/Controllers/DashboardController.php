@@ -17,18 +17,20 @@ class DashboardController extends Controller
     {
         // ISMS 
         $overviewisms = [];
-        $overviewisms['stock_tersedia'] = Stock::sum('available_stock') ?? 0;
+        $overviewisms['stock_tersedia'] = Stock::whereHas('barang',function ($query) {
+            $query->where('id_group',1);
+        })->sum('available_stock') ?? 0;
 
         $overviewisms['jumlah_barang_keluar'] = TransaksiBarang::whereHas('transaksi', function ($query) {
-            $query->where('tipe', 'out');
+            $query->where('tipe', 'out')->where('id_group',1);
         })->sum('quantity') ?? 0;
 
         $overviewisms['jumlah_barang_masuk'] = TransaksiBarang::whereHas('transaksi', function ($query) {
-            $query->where('tipe', 'in');
+            $query->where('tipe', 'in')->where('id_group',1);
         })->sum('quantity') ?? 0;
 
         $rata_rata_barang_keluar = TransaksiBarang::whereHas('transaksi', function ($query) {
-            $query->where('tipe', 'out');
+            $query->where('tipe', 'out')->where('id_group',1);
         })->avg('quantity') ?? 0;
         $overviewisms['rata_rata_barang_keluar'] = ROUND($rata_rata_barang_keluar,0);
 
@@ -39,6 +41,7 @@ class DashboardController extends Controller
                 LEFT JOIN transaksi_barangs ON transaksis.id_transaksi = transaksi_barangs.id_transaksi
                 WHERE 
                 transaksis.tipe = "out"
+                AND transaksis.id_group = 1
                 AND YEAR(transaksis.tanggal) = %d
                 GROUP BY bulan_tanggal) as tr', $year_now)), function ($join) {
                 $join->on(DB::raw('tr.bulan_tanggal'), '=', DB::raw('bulan.bulan'));
@@ -53,6 +56,7 @@ class DashboardController extends Controller
                 LEFT JOIN transaksi_barangs ON transaksis.id_transaksi = transaksi_barangs.id_transaksi
                 WHERE 
                 transaksis.tipe = "in"
+                AND transaksis.id_group = 1
                 AND YEAR(transaksis.tanggal) = %d
                 GROUP BY bulan_tanggal) as tr', $year_now)), function ($join) {
                 $join->on(DB::raw('tr.bulan_tanggal'), '=', DB::raw('bulan.bulan'));
@@ -64,23 +68,26 @@ class DashboardController extends Controller
 
         $transaksiisms = Transaksi::with(['transaksi_barangs'])
             ->withSum(['transaksi_barangs as total_barang'], 'transaksi_barangs.quantity')
+            ->where('id_group',1)
             ->orderBy('tanggal', 'desc')->limit(10)->get();
         // END ISMS
 
         // ATK
         $overviewatk = [];
-        $overviewatk['stock_tersedia'] = Stock::sum('available_stock') ?? 0;
+        $overviewatk['stock_tersedia'] = Stock::whereHas('barang',function ($query) {
+            $query->where('id_group',2);
+        })->sum('available_stock') ?? 0;
 
         $overviewatk['jumlah_barang_keluar'] = TransaksiBarang::whereHas('transaksi', function ($query) {
-            $query->where('tipe', 'out');
+            $query->where('tipe', 'out')->where('id_group',2);
         })->sum('quantity') ?? 0;
 
         $overviewatk['jumlah_barang_masuk'] = TransaksiBarang::whereHas('transaksi', function ($query) {
-            $query->where('tipe', 'in');
+            $query->where('tipe', 'in')->where('id_group',2);
         })->sum('quantity') ?? 0;
 
         $rata_rata_barang_keluar = TransaksiBarang::whereHas('transaksi', function ($query) {
-            $query->where('tipe', 'out');
+            $query->where('tipe', 'out')->where('id_group',2);
         })->avg('quantity') ?? 0;
         $overviewatk['rata_rata_barang_keluar'] = ROUND($rata_rata_barang_keluar,0);
 
@@ -91,6 +98,7 @@ class DashboardController extends Controller
                 LEFT JOIN transaksi_barangs ON transaksis.id_transaksi = transaksi_barangs.id_transaksi
                 WHERE 
                 transaksis.tipe = "out"
+                AND transaksis.id_group = 2
                 AND YEAR(transaksis.tanggal) = %d
                 GROUP BY bulan_tanggal) as tr', $year_now)), function ($join) {
                 $join->on(DB::raw('tr.bulan_tanggal'), '=', DB::raw('bulan.bulan'));
@@ -105,6 +113,7 @@ class DashboardController extends Controller
                 LEFT JOIN transaksi_barangs ON transaksis.id_transaksi = transaksi_barangs.id_transaksi
                 WHERE 
                 transaksis.tipe = "in"
+                AND transaksis.id_group = 2
                 AND YEAR(transaksis.tanggal) = %d
                 GROUP BY bulan_tanggal) as tr', $year_now)), function ($join) {
                 $join->on(DB::raw('tr.bulan_tanggal'), '=', DB::raw('bulan.bulan'));
@@ -116,6 +125,7 @@ class DashboardController extends Controller
 
         $transaksiatk = Transaksi::with(['transaksi_barangs'])
         ->withSum(['transaksi_barangs as total_barang'], 'transaksi_barangs.quantity')
+        ->where('id_group',2)
         ->orderBy('tanggal', 'desc')->limit(10)->get();
         // END ATK
         
