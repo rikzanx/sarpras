@@ -81,7 +81,7 @@ class TransaksiController extends Controller
         try{
             $transaksi = Transaksi::create([
                 "id_user" => Auth()->user()->id_user,
-                "id_group" => 2,
+                "id_group" => 1,
                 "tanggal" => Carbon::parse($request->tanggal)->format('Y-m-d H:i:s'),
                 "deskripsi" => $request->deskripsi,
                 "penerima" => $request->penerima,
@@ -288,7 +288,7 @@ class TransaksiController extends Controller
         try{
             $transaksi = Transaksi::create([
                 "id_user" => Auth()->user()->id_user,
-                "id_group" => 2,
+                "id_group" => 1,
                 "tanggal" => Carbon::parse($request->tanggal)->format('Y-m-d H:i:s'),
                 "deskripsi" => $request->deskripsi,
                 "penerima" => $request->penerima,

@@ -42,6 +42,7 @@ List Stock Barang ISMS
                                 <th style="text-align: center;">Barang Masuk</th>
                                 <th style="text-align: center;">Barang Keluar</th>
                                 <th style="text-align: center;">Satuan</th>
+                                <th style="text-align: center;">Pemakaian</th>
                                 <th style="text-align: center; width:5px;">Updated At</th>
                             </tr>
                         </thead>
@@ -56,6 +57,11 @@ List Stock Barang ISMS
                                 <td>{{ $item->total_barang_masuk ?? '0' }}</td>
                                 <td>{{ $item->total_barang_keluar ?? '0' }}</td>
                                 <td>{{ $item->satuan->nama }}</td>
+                                <td>
+                                    @foreach($item->transaksi_keluar as $keluar)
+                                    - {{ $keluar->deskripsi }} ({{ $keluar->total_quantity }} {{ $item->satuan->nama }}) <br>
+                                    @endforeach
+                                </td>
                                 <td>{{ $item->stock->updated_at }}</td>
                             </tr>
                             @endforeach

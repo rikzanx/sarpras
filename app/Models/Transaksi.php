@@ -38,4 +38,9 @@ class Transaksi extends Model
     {
         return $this->hasMany(TransaksiBarang::class, 'id_transaksi', 'id_transaksi');
     }
+    // Accessor untuk kolom buatan "total_quantity"
+    public function getTotalQuantityAttribute()
+    {
+        return $this->transaksi_barangs->sum('quantity');
+    }
 }
