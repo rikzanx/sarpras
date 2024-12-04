@@ -57,7 +57,7 @@ Dashboard
                                 </div>
                             </div>
                             <span >Stock Tersedia</span>
-                            <h3 class="card-title mb-2">{{ $overview['stock_tersedia'] }}</h3>
+                            <h3 class="card-title mb-2">{{ $overviewisms['stock_tersedia'] }}</h3>
                             <small class="text-success fw-semibold"></small>
                         </div>
                     </div>
@@ -73,7 +73,7 @@ Dashboard
                                 </div>
                             </div>
                             <span>Barang Keluar</span>
-                            <h3 class="card-title text-nowrap mb-1">{{ $overview['jumlah_barang_keluar'] }}</h3>
+                            <h3 class="card-title text-nowrap mb-1">{{ $overviewisms['jumlah_barang_keluar'] }}</h3>
                             <small class="text-success fw-semibold"></small>
                         </div>
                     </div>
@@ -89,7 +89,7 @@ Dashboard
                                 </div>
                             </div>
                             <span >Barang Masuk</span>
-                            <h3 class="card-title mb-2">{{ $overview['jumlah_barang_masuk'] }}</h3>
+                            <h3 class="card-title mb-2">{{ $overviewisms['jumlah_barang_masuk'] }}</h3>
                             <small class="text-success fw-semibold"></small>
                         </div>
                     </div>
@@ -105,7 +105,7 @@ Dashboard
                                 </div>
                             </div>
                             <span>Rata" Barang Keluar</span>
-                            <h3 class="card-title text-nowrap mb-1">{{ $overview['rata_rata_barang_keluar'] }}</h3>
+                            <h3 class="card-title text-nowrap mb-1">{{ $overviewisms['rata_rata_barang_keluar'] }}</h3>
                             <small class="text-success fw-semibold"></small>
                         </div>
                     </div>
@@ -113,7 +113,7 @@ Dashboard
             </div>
         </div>
         <!-- Total Revenue -->
-        <div class="col-12 col-lg-12 order-2 order-md-3 order-lg-2 mb-4">
+        <div class="col-12 col-lg-12 mb-4">
             <div class="card">
                 <div class="row row-bordered g-0">
                     <div class="col-md-12">
@@ -124,7 +124,7 @@ Dashboard
             </div>
         </div>
         <!-- Transactions -->
-        <div class="col-md-12 col-lg-12 order-2 mb-4">
+        <div class="col-md-12 col-lg-12 mb-4">
             <div class="card h-100">
                 <div class="card-header d-flex align-items-center justify-content-between">
                     <h5 class="card-title m-0 me-2">Transaksi Terbaru</h5>
@@ -143,7 +143,7 @@ Dashboard
                 </div>
                 <div class="card-body">
                     <ul class="p-0 m-0">
-                        @foreach($transaksi as $index => $item)
+                        @foreach($transaksiisms as $index => $item)
                             <li class="d-flex mb-4 pb-1">
                                 <div class="avatar flex-shrink-0 me-3">
                                     @if($item->tipe == "in")
@@ -199,7 +199,7 @@ Dashboard
                                 </div>
                             </div>
                             <span >Stock Tersedia</span>
-                            <h3 class="card-title mb-2">{{ $overview['stock_tersedia'] }}</h3>
+                            <h3 class="card-title mb-2">{{ $overviewatk['stock_tersedia'] }}</h3>
                             <small class="text-success fw-semibold"></small>
                         </div>
                     </div>
@@ -215,7 +215,7 @@ Dashboard
                                 </div>
                             </div>
                             <span>Barang Keluar</span>
-                            <h3 class="card-title text-nowrap mb-1">{{ $overview['jumlah_barang_keluar'] }}</h3>
+                            <h3 class="card-title text-nowrap mb-1">{{ $overviewatk['jumlah_barang_keluar'] }}</h3>
                             <small class="text-success fw-semibold"></small>
                         </div>
                     </div>
@@ -231,7 +231,7 @@ Dashboard
                                 </div>
                             </div>
                             <span >Barang Masuk</span>
-                            <h3 class="card-title mb-2">{{ $overview['jumlah_barang_masuk'] }}</h3>
+                            <h3 class="card-title mb-2">{{ $overviewatk['jumlah_barang_masuk'] }}</h3>
                             <small class="text-success fw-semibold"></small>
                         </div>
                     </div>
@@ -247,7 +247,7 @@ Dashboard
                                 </div>
                             </div>
                             <span>Rata" Barang Keluar</span>
-                            <h3 class="card-title text-nowrap mb-1">{{ $overview['rata_rata_barang_keluar'] }}</h3>
+                            <h3 class="card-title text-nowrap mb-1">{{ $overviewatk['rata_rata_barang_keluar'] }}</h3>
                             <small class="text-success fw-semibold"></small>
                         </div>
                     </div>
@@ -255,7 +255,7 @@ Dashboard
             </div>
         </div>
         <!-- Total Revenue -->
-        <div class="col-12 col-lg-12 order-2 order-md-3 order-lg-2 mb-4">
+        <div class="col-12 col-lg-12 mb-4">
             <div class="card">
                 <div class="row row-bordered g-0">
                     <div class="col-md-12">
@@ -266,7 +266,7 @@ Dashboard
             </div>
         </div>
         <!-- Transactions -->
-        <div class="col-md-12 col-lg-12 order-2 mb-4">
+        <div class="col-md-12 col-lg-12 mb-4">
             <div class="card h-100">
                 <div class="card-header d-flex align-items-center justify-content-between">
                     <h5 class="card-title m-0 me-2">Transaksi Terbaru</h5>
@@ -285,7 +285,7 @@ Dashboard
                 </div>
                 <div class="card-body">
                     <ul class="p-0 m-0">
-                        @foreach($transaksi as $index => $item)
+                        @foreach($transaksiatk as $index => $item)
                             <li class="d-flex mb-4 pb-1">
                                 <div class="avatar flex-shrink-0 me-3">
                                     @if($item->tipe == "in")
@@ -346,11 +346,11 @@ Dashboard
       series: [
         {
           name: 'Barang Keluar',
-          data: @json($overview['data_barang_keluar'])
+          data: @json($overviewisms['data_barang_keluar'])
         },
         {
           name: 'Barang Masuk',
-          data: @json($overview['data_barang_masuk'])
+          data: @json($overviewisms['data_barang_masuk'])
         }
       ],
       chart: {
@@ -606,11 +606,11 @@ Dashboard
       series: [
         {
           name: 'Barang Keluar',
-          data: @json($overview['data_barang_keluar'])
+          data: @json($overviewatk['data_barang_keluar'])
         },
         {
           name: 'Barang Masuk',
-          data: @json($overview['data_barang_masuk'])
+          data: @json($overviewatk['data_barang_masuk'])
         }
       ],
       chart: {
