@@ -182,7 +182,7 @@ class DatabaseSeeder extends Seeder
             'tipe' => 'in',
             'penerima' => 'Divisi IT',
             'tanggal' => now(),
-            'deskripsi' => 'Permintaan barang peralatan IT'
+            'deskripsi' => 'Pembelian barang peralatan IT'
         ]);
         TransaksiBarang::create([
             'id_transaksi' => $transaksiRequest->id_transaksi,
@@ -209,7 +209,7 @@ class DatabaseSeeder extends Seeder
             'tipe' => 'out',
             'penerima' => 'Divisi IT',
             'tanggal' => now(),
-            'deskripsi' => 'Permintaan barang peralatan IT'
+            'deskripsi' => 'Untuk Zona 2'
         ]);
         TransaksiBarang::create([
             'id_transaksi' => $transaksiRequest->id_transaksi,
