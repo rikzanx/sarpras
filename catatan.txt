@@ -2,7 +2,7 @@ pak yud aplikasi SARPRAS udah selesai, kurang lebih seperti ini fiturnya pak.
 Nanti tak koordinasi dengan mas agam dan mas amik fitur yang kurang apa aja.
 fitur:
 - input data masuk dan keluar: pengelolaan barang yang masuk dan keluar.
-- report stock: Menyediakan laporan terkait stok barang yang ada.
+- report stock: Menyediakan laporan terkait stok barang yang tersedia , terpakai berapa dll.
 - master barang: Mengelola data barang.
 - master user login: untuk menambahkan data login.
 
