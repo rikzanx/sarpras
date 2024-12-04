@@ -17,7 +17,7 @@
 @endsection
 
 @section('judul')
-List Transaksi Barang Masuk
+List Transaksi Barang Masuk | Sarpras Depkam
 @endsection
 
 @section('isi')

@@ -17,7 +17,7 @@
 @endsection
 
 @section('judul')
-List Stock Barang ISMS
+List Stock Barang ISMS | Sarpras Depkam
 @endsection
 
 @section('isi')

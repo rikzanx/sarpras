@@ -17,7 +17,7 @@
 @endsection
 
 @section('judul')
-List Data Kategori
+List Data Kategori | Sarpras Depkam
 @endsection
 
 @section('isi')

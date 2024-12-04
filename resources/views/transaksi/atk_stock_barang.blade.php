@@ -17,7 +17,7 @@
 @endsection
 
 @section('judul')
-List Stock Barang ATK
+List Stock Barang ATK | Sarpras Depkam
 @endsection
 
 @section('isi')

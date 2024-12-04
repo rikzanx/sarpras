@@ -17,7 +17,7 @@
 @endsection
 
 @section('judul')
-List Data Group
+List Data Group | Sarpras Depkam
 @endsection
 
 @section('isi')

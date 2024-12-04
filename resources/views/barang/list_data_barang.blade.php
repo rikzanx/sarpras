@@ -17,7 +17,7 @@
 @endsection
 
 @section('judul')
-List Data Barang
+List Data Barang | Sarpras Depkam
 @endsection
 
 @section('isi')

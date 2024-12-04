@@ -5,7 +5,7 @@
 @endsection
 
 @section('judul')
-Dashboard
+Dashboard | Sarpras Depkam
 @endsection
 
 @section('isi')

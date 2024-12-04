@@ -17,7 +17,7 @@
 @endsection
 
 @section('judul')
-List Transaksi Barang Keluar
+List Transaksi Barang Keluar | Sarpras Depkam
 @endsection
 
 @section('isi')
