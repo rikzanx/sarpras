@@ -34,6 +34,15 @@ Dashboard
                 </div>
             </div>
         </div>
+        <div class="col-12 col-lg-12 order-2 order-md-3 order-lg-2 mb-4">
+            <div class="card">
+                <div class="row row-bordered g-0">
+                    <div class="col-md-12">
+                        <h5 class="card-header m-0 me-2 pb-3">ISMS</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="col-lg-12 col-md-12">
             <div class="row">
                 <div class="col-lg-3 col-md-6 col-12 mb-4">
@@ -113,8 +122,6 @@ Dashboard
                 </div>
             </div>
         </div>
-    </div>
-    <div class="row">
         <!-- Transactions -->
         <div class="col-md-12 col-lg-12 order-2 mb-4">
             <div class="card h-100">
