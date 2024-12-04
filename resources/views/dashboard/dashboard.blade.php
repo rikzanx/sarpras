@@ -52,8 +52,10 @@ Dashboard
                             <div
                                 class="card-title d-flex align-items-start justify-content-between">
                                 <div class="avatar flex-shrink-0">
-                                    <img src="{{ asset('assets/img/icons/unicons/chart-success.png')}}"
-                                        alt="chart success" class="rounded" />
+                                    <a href="{{ route('isms_stock_barang') }}">
+                                      <img src="{{ asset('assets/img/icons/unicons/chart-success.png')}}"
+                                          alt="chart success" class="rounded" />
+                                    </a>
                                 </div>
                             </div>
                             <span >Stock Tersedia</span>
@@ -68,8 +70,10 @@ Dashboard
                             <div
                                 class="card-title d-flex align-items-start justify-content-between">
                                 <div class="avatar flex-shrink-0">
-                                    <img src="{{ asset('assets/img/icons/unicons/wallet-info.png')}}"
-                                        alt="Credit Card" class="rounded" />
+                                    <a href="{{ route('isms_list_transaksi_barang_keluar') }}">
+                                      <img src="{{ asset('assets/img/icons/unicons/wallet-info.png')}}"
+                                          alt="Credit Card" class="rounded" />
+                                    </a>
                                 </div>
                             </div>
                             <span>Barang Keluar</span>
@@ -84,8 +88,10 @@ Dashboard
                             <div
                                 class="card-title d-flex align-items-start justify-content-between">
                                 <div class="avatar flex-shrink-0">
-                                    <img src="{{ asset('assets/img/icons/unicons/chart-success.png')}}"
-                                        alt="chart success" class="rounded" />
+                                    <a href="{{ route('isms_list_transaksi_barang_masuk') }}">
+                                      <img src="{{ asset('assets/img/icons/unicons/chart-success.png')}}"
+                                          alt="chart success" class="rounded" />
+                                    </a>
                                 </div>
                             </div>
                             <span >Barang Masuk</span>
@@ -100,8 +106,10 @@ Dashboard
                             <div
                                 class="card-title d-flex align-items-start justify-content-between">
                                 <div class="avatar flex-shrink-0">
-                                    <img src="{{ asset('assets/img/icons/unicons/wallet-info.png')}}"
-                                        alt="Credit Card" class="rounded" />
+                                    <a href="{{ route('isms_list_transaksi_barang_keluar') }}">
+                                      <img src="{{ asset('assets/img/icons/unicons/wallet-info.png')}}"
+                                          alt="Credit Card" class="rounded" />
+                                    </a>
                                 </div>
                             </div>
                             <span>Rata" Barang Keluar</span>
@@ -194,8 +202,10 @@ Dashboard
                             <div
                                 class="card-title d-flex align-items-start justify-content-between">
                                 <div class="avatar flex-shrink-0">
+                                  <a href="{{ route('atk_stock_barang') }}">
                                     <img src="{{ asset('assets/img/icons/unicons/chart-success.png')}}"
                                         alt="chart success" class="rounded" />
+                                  </a>
                                 </div>
                             </div>
                             <span >Stock Tersedia</span>
@@ -210,8 +220,10 @@ Dashboard
                             <div
                                 class="card-title d-flex align-items-start justify-content-between">
                                 <div class="avatar flex-shrink-0">
-                                    <img src="{{ asset('assets/img/icons/unicons/wallet-info.png')}}"
-                                        alt="Credit Card" class="rounded" />
+                                    <a href="{{ route('atk_list_transaksi_barang_keluar') }}">
+                                      <img src="{{ asset('assets/img/icons/unicons/wallet-info.png')}}"
+                                          alt="Credit Card" class="rounded" />
+                                    </a>
                                 </div>
                             </div>
                             <span>Barang Keluar</span>
@@ -226,8 +238,10 @@ Dashboard
                             <div
                                 class="card-title d-flex align-items-start justify-content-between">
                                 <div class="avatar flex-shrink-0">
+                                  <a href="{{ route('atk_list_transaksi_barang_masuk') }}">
                                     <img src="{{ asset('assets/img/icons/unicons/chart-success.png')}}"
                                         alt="chart success" class="rounded" />
+                                    </a>
                                 </div>
                             </div>
                             <span >Barang Masuk</span>
@@ -242,8 +256,10 @@ Dashboard
                             <div
                                 class="card-title d-flex align-items-start justify-content-between">
                                 <div class="avatar flex-shrink-0">
+                                  <a href="{{ route('atk_list_transaksi_barang_keluar') }}">
                                     <img src="{{ asset('assets/img/icons/unicons/wallet-info.png')}}"
-                                        alt="Credit Card" class="rounded" />
+                                        alt="Credit Card" class="rounded" />    
+                                  </a>
                                 </div>
                             </div>
                             <span>Rata" Barang Keluar</span>
