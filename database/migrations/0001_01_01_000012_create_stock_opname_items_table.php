@@ -16,7 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('id_stock_opname');
             $table->foreign('id_stock_opname')->references('id_stock_opname')->on('stock_opname');
             $table->unsignedBigInteger('id_barang');
-            $table->foreign('id_barang')->references('id_barang')->on('groups');
+            $table->foreign('id_barang')->references('id_barang')->on('barangs');
             $table->integer('stock_sistem');
             $table->integer('stock_fisik');
             $table->integer('selisih');
