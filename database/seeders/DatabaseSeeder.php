@@ -316,6 +316,43 @@ class DatabaseSeeder extends Seeder
             'status' => 1,
         ]);
 
+        // seed stock opname ISMS
+        $stock_opname_isms = StockOpname::create([
+            'id_user' => $adminAplikasi->id_user,
+            'id_group' => $GroupISMS->id_group,
+            'tanggal' => now(),
+            'deskripsi' => "Melakukan stock opname akhir bulan"
+        ]);
+        $barangs = Barang::with('stock')->where('id_group',$GroupISMS->id_group)->get();
+        foreach ($barangs as $key => $item) {
+            StockOpnameItem::create([
+                'id_stock_opname' => $stock_opname_isms->id_stock_opname,
+                'id_barang' => $item->id_barang,
+                'stock_sistem' => $item->stock->stock_available,
+                'stock_fisik' => $item->stock->stock_available - 1,
+                'selisih' => 1,
+                'alasan' => 'Barang sudah rusak'
+            ]);
+        }
+        // seed stock opname ATK 
+        $stock_opname_atk = StockOpname::create([
+            'id_user' => $adminAplikasi->id_user,
+            'id_group' => $GroupATK->id_group,
+            'tanggal' => now(),
+            'deskripsi' => "Melakukan stock opname akhir bulan"
+        ]);
+        $barangs = Barang::with('stock')->where('id_group',$GroupATK->id_group)->get();
+        foreach ($barangs as $key => $item) {
+            StockOpnameItem::create([
+                'id_stock_opname' => $stock_opname_atk->id_stock_opname,
+                'id_barang' => $item->id_barang,
+                'stock_sistem' => $item->stock->stock_available,
+                'stock_fisik' => $item->stock->stock_available - 1,
+                'selisih' => 1,
+                'alasan' => 'Barang sudah rusak'
+            ]);
+        }
+
         $barang_atk = [
             ['nama_barang' => "BUKU JURNAL POS ISI 200"],
             ['nama_barang' => "BUKU JURNAL POS ISI 100"],
@@ -418,9 +455,6 @@ class DatabaseSeeder extends Seeder
             ['nama_barang' => "AMPLOP PG BESAR"],
         ];
 
-        $barang_isms = Barang::with('stock')->where('id_group',1)->get();
-        foreach ($barang_isms as $key => $item) {
-            echo $item->nama;
-        }
+        
     }
 }
