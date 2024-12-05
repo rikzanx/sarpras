@@ -23,11 +23,12 @@ class TransaksiController extends Controller
     {
         $satuan = Satuan::get();
         $group = Group::get();
-        $barangs = Barang::with(['kategori','satuan','group','stock','transaksi_masuk','transaksi_keluar'])
+        $barangs = Barang::with(['kategori','satuan','group','stock','transaksi_masuk','transaksi_keluar','stock_opname'])
         ->withSum(['transaksi_masuk as total_barang_masuk'], 'transaksi_barangs.quantity')
         ->withSum(['transaksi_keluar as total_barang_keluar'], 'transaksi_barangs.quantity')
+        ->withSum(['stock_opname as total_opname'], 'stock_opname_items.selisih')
         ->where('id_group',1)->get();
-        // dd($barangs);
+        dd($barangs);
         return view('transaksi/isms_stock_barang',[
             'barangs' => $barangs,
             'satuan' => $satuan,
@@ -488,9 +489,10 @@ class TransaksiController extends Controller
     {
         $satuan = Satuan::get();
         $group = Group::get();
-        $barangs = Barang::with(['kategori','satuan','group','stock','transaksi_masuk','transaksi_keluar'])
+        $barangs = Barang::with(['kategori','satuan','group','stock','transaksi_masuk','transaksi_keluar','stock_opname'])
         ->withSum(['transaksi_masuk as total_barang_masuk'], 'transaksi_barangs.quantity') // Untuk transaksi masuk
         ->withSum(['transaksi_keluar as total_barang_keluar'], 'transaksi_barangs.quantity') // Untuk transaksi keluar
+        ->withSum(['stock_opname as total_opname'], 'stock_opname_items.selisih')
         ->where('id_group',2)->get();
         // dd($barangs);
         return view('transaksi/atk_stock_barang',[

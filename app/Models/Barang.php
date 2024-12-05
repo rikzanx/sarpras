@@ -65,4 +65,11 @@ class Barang extends Model
             ->withPivot('quantity', 'deskripsi')
             ->withTimestamps();
     }
+
+    public function stock_opname()
+    {
+        return $this->belongsToMany(StockOpname::class, 'stock_opname_items', 'id_barang', 'id_stock_opname')
+                ->withPivot('selisih', 'alasan')
+                ->withTimestamps();
+    }
 }
