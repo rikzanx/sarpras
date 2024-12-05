@@ -335,6 +335,8 @@ class DatabaseSeeder extends Seeder
                 'selisih' => -1,
                 'alasan' => 'Barang sudah rusak'
             ]);
+            $item->stock->available_stock = $item->stock->available_stock - 1;
+            $item->stock->save();
         }
         // seed stock opname ATK 
         $stock_opname_atk = StockOpname::create([
@@ -353,6 +355,9 @@ class DatabaseSeeder extends Seeder
                 'selisih' => -1,
                 'alasan' => 'Barang sudah rusak'
             ]);
+            //update stock
+            $item->stock->available_stock = $item->stock->available_stock - 1;
+            $item->stock->save();
         }
 
         $barang_atk = [
