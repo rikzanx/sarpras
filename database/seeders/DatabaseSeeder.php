@@ -330,8 +330,8 @@ class DatabaseSeeder extends Seeder
             StockOpnameItem::create([
                 'id_stock_opname' => $stock_opname_isms->id_stock_opname,
                 'id_barang' => $item->id_barang,
-                'stock_sistem' => $item->stock->stock_available,
-                'stock_fisik' => $item->stock->stock_available - 1,
+                'stock_sistem' => $item->stock->available_stock,
+                'stock_fisik' => $item->stock->available_stock - 1,
                 'selisih' => 1,
                 'alasan' => 'Barang sudah rusak'
             ]);
@@ -348,8 +348,8 @@ class DatabaseSeeder extends Seeder
             StockOpnameItem::create([
                 'id_stock_opname' => $stock_opname_atk->id_stock_opname,
                 'id_barang' => $item->id_barang,
-                'stock_sistem' => $item->stock->stock_available,
-                'stock_fisik' => $item->stock->stock_available - 1,
+                'stock_sistem' => $item->stock->available_stock,
+                'stock_fisik' => $item->stock->available_stock - 1,
                 'selisih' => 1,
                 'alasan' => 'Barang sudah rusak'
             ]);
