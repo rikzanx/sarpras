@@ -42,6 +42,7 @@ List Stock Barang ISMS | Sarpras Depkam
                                 <th style="text-align: center;">Stock Tersedia</th>
                                 <th style="text-align: center;">Barang Masuk</th>
                                 <th style="text-align: center;">Barang Keluar</th>
+                                <th style="text-align: center;">Stock Opname</th>
                                 <th style="text-align: center;">Satuan</th>
                                 <th style="text-align: center;">Pemakaian</th>
                                 <th style="text-align: center; width:5px;">Updated At</th>
@@ -58,6 +59,7 @@ List Stock Barang ISMS | Sarpras Depkam
                                 <td>{{ $item->stock->available_stock }}</td>
                                 <td>{{ $item->total_barang_masuk ?? '0' }}</td>
                                 <td>{{ $item->total_barang_keluar ?? '0' }}</td>
+                                <td>{{ $item->total_opname ?? '0' }}</td>
                                 <td>{{ $item->satuan->nama }}</td>
                                 <td>
                                     @foreach($item->transaksi_keluar as $keluar)

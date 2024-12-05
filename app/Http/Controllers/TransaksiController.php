@@ -28,7 +28,7 @@ class TransaksiController extends Controller
         ->withSum(['transaksi_keluar as total_barang_keluar'], 'transaksi_barangs.quantity')
         ->withSum(['stock_opname as total_opname'], 'stock_opname_items.selisih')
         ->where('id_group',1)->get();
-        dd($barangs);
+        // dd($barangs);
         return view('transaksi/isms_stock_barang',[
             'barangs' => $barangs,
             'satuan' => $satuan,
