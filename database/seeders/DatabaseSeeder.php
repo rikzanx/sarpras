@@ -11,6 +11,8 @@ use App\Models\Stock;
 use App\Models\Notifikasi;
 use App\Models\Satuan;
 use App\Models\Kategori;
+use App\Models\StockOpname;
+use App\Models\StockOpnameItem;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 
