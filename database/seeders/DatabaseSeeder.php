@@ -332,7 +332,7 @@ class DatabaseSeeder extends Seeder
                 'id_barang' => $item->id_barang,
                 'stock_sistem' => $item->stock->available_stock,
                 'stock_fisik' => $item->stock->available_stock - 1,
-                'selisih' => 1,
+                'selisih' => -1,
                 'alasan' => 'Barang sudah rusak'
             ]);
         }
@@ -350,7 +350,7 @@ class DatabaseSeeder extends Seeder
                 'id_barang' => $item->id_barang,
                 'stock_sistem' => $item->stock->available_stock,
                 'stock_fisik' => $item->stock->available_stock - 1,
-                'selisih' => 1,
+                'selisih' => -1,
                 'alasan' => 'Barang sudah rusak'
             ]);
         }
