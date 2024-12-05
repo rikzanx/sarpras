@@ -63,7 +63,7 @@ List Stock Barang ATK | Sarpras Depkam
                                 <td>{{ $item->satuan->nama }}</td>
                                 <td>
                                     @foreach($item->transaksi_keluar as $keluar)
-                                    - {{ $keluar->deskripsi }} ({{ $keluar->total_quantity }} {{ $item->satuan->nama }}) <br>
+                                    - {{ $keluar->deskripsi }} ({{ $keluar->quantity }} {{ $item->satuan->nama }}) <br>
                                     @endforeach
                                 </td>
                                 <td>{{ $item->stock->updated_at }}</td>
