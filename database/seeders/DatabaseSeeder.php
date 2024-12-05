@@ -417,5 +417,10 @@ class DatabaseSeeder extends Seeder
             ['nama_barang' => "AMPLOP PG SEDANG"],
             ['nama_barang' => "AMPLOP PG BESAR"],
         ];
+
+        $barang_isms = Barang::with('stock')->where('id_group',1)->get();
+        foreach ($barang_isms as $key => $item) {
+            echo $item->nama;
+        }
     }
 }
