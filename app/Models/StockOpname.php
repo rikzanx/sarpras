@@ -39,6 +39,6 @@ class StockOpname extends Model
     // Accessor untuk kolom buatan "total_selisih"
     public function getTotalSelisihAttribute()
     {
-        return $this->stock_opname->sum('selisih');
+        return $this->stock_opname_items->sum('selisih');
     }
 }

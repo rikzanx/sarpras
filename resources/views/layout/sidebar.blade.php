@@ -52,6 +52,12 @@
                 <div data-i18n="Documentation">Stock</div>
             </a>
         </li>
+        <li class="menu-item {{ request()->is('isms/stock_opname*') ? 'active' : '' }}">
+            <a href="{{route('isms_stock_opname')}}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-line-chart"></i>
+                <div data-i18n="Documentation">Stock Opname</div>
+            </a>
+        </li>
         <li class="menu-item {{ request()->is('isms/list_data_barang*') ? 'active' : '' }}">
             <a href="{{route('isms_list_data_barang')}}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-package"></i>
