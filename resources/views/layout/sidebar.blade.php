@@ -54,7 +54,7 @@
         </li>
         <li class="menu-item {{ request()->is('isms/stock_opname*') ? 'active' : '' }}">
             <a href="{{route('isms_stock_opname')}}" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-report"></i>
+                <i class="menu-icon tf-icons bx bx-task"></i>
                 <div data-i18n="Documentation">Stock Opname</div>
             </a>
         </li>
@@ -95,7 +95,7 @@
         </li>
         <li class="menu-item {{ request()->is('atk/stock_opname*') ? 'active' : '' }}">
             <a href="{{route('atk_stock_opname')}}" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-report"></i>
+                <i class="menu-icon tf-icons bx bx-task"></i>
                 <div data-i18n="Documentation">Stock Opname</div>
             </a>
         </li>
