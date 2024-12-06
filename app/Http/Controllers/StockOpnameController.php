@@ -39,19 +39,53 @@ class StockOpnameController extends Controller
 
     public function isms_stock_opname_tambah_action(Request $request)
     {
+        
         $messages = [
             'required'  => 'Harap bagian :attribute di isi.',
         ];
         $validator = Validator::make($request->all(), [
-            'tanggal' => 'required|date',
             'deskripsi' => 'required|string|max:255',
             'barang.*.id_barang' => 'required|exists:barangs,id_barang',
-            'barang.*.quantity' => 'required|integer|min:1',
+            'barang.*.stock_sistem' => 'required|integer|min:1',
+            'barang.*.stock_fisik' => 'required|integer|min:1',
+            'barang.*.alasan' => 'required|string',
         ],$messages);
         if ($validator->fails()) {
             return redirect()->back()->with('error', $validator->errors()->first());
         }
-        DB::beginTransaction();
+        try{
+            DB::beginTransaction();
+        
+            $stock_opname_isms = StockOpname::create([
+                'id_user' => Auth()->user()->id_user,
+                'id_group' => 1,
+                'tanggal' => now(),
+                'deskripsi' => $request->deskripsi
+            ]);
+            
+            foreach ($request->barang as $key => $item) {
+                $barang = Barang::with('stock')->where('id_barang',$item['id_barang'])->firstOrFail();
+                StockOpnameItem::create([
+                    'id_stock_opname' => $stock_opname_isms->id_stock_opname,
+                    'id_barang' => $item['id_barang'],
+                    'stock_sistem' => $item['stock_sistem'],
+                    'stock_fisik' => $item['stock_fisik'],
+                    'selisih' => ($item['stock_sistem'] - $item['stock_fisik']) ,
+                    'alasan' => $item['alasan']
+                ]);
+                $barang->stock->available_stock = $barang->stock->available_stock - ($item['stock_sistem'] - $item['stock_fisik']);
+                $barang->stock->save();
+            }
+            DB::commit();
+
+            return redirect()->route('isms_stock_opname')->with('success', "Sukses Menambahkan Data");
+        }catch (\Exception $e) {
+            report($e);
+            DB::rollback();
+            $ea = "Terjadi Kesalahan saat menambah data: " . $e->getMessage();
+            return redirect()->back()->with('error', $ea);
+        }
+        
     }
 
     public function isms_stock_opname_show(Request $request,$id_stock_opname)
