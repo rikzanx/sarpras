@@ -36,6 +36,7 @@ Stock Opname Barang ISMS | Sarpras Depkam
                                 <th style="text-align: center;">Deskripsi</th>
                                 <th style="text-align: center;">Hasil</th>
                                 <th style="text-align: center;">Tanggal</th>
+                                <th style="text-align: center;">Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -47,6 +48,13 @@ Stock Opname Barang ISMS | Sarpras Depkam
                                 <td>{{ $item->deskripsi }}</td>
                                 <td>{{ $item->total_selisih ?? '0' }}</td>
                                 <td>{{ $item->created_at }}</td>
+                                <td style="text-align: center;">
+                                    <div class="demo-inline-spacing">
+                                        <a href="{{ route('isms_stock_opname_show',Crypt::encryptString($item->id_stock_opname)) }}" class="btn btn-icon btn-primary text-white">
+                                            <span class="tf-icons bx bx-show-alt"></span>
+                                        </button>
+                                    </div>
+                                </td>
                             </tr>
                             @endforeach
                         </tbody>
