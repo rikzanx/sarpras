@@ -60,7 +60,13 @@ Route::group(['middleware' => [AuthMiddleware::class]],function(){
 
     // ATK
     Route::get('/atk/stock_opname',[StockOpnameController::class,'atk_stock_opname'])->name('atk_stock_opname');
-    
+    Route::get('/atk/stock_opname/tambah',[StockOpnameController::class,'atk_stock_opname_tambah'])->name('atk_stock_opname_tambah');
+    Route::post('/atk/stock_opname/tambah/action',[StockOpnameController::class,'atk_stock_opname_tambah_action'])->name('atk_stock_opname_tambah_action');
+    Route::get('/atk/stock_opname/show/{id_stock_opname}',[StockOpnameController::class,'atk_stock_opname_show'])->name('atk_stock_opname_show');
+    Route::get('/atk/stock_opname/edit/{id_stock_opname}',[StockOpnameController::class,'atk_stock_opname_edit'])->name('atk_stock_opname_edit');
+    Route::post('/atk/stock_opname/edit/{id_stock_opname}/action',[StockOpnameController::class,'atk_stock_opname_edit_action'])->name('atk_stock_opname_edit_action');
+    Route::post('/atk/stock_opname/delete/{id_stock_opname}/action',[StockOpnameController::class,'atk_stock_opname_delete_action'])->name('atk_stock_opname_delete_action');
+  
     Route::get('/atk/stock_barang',[TransaksiController::class,'atk_stock_barang'])->name('atk_stock_barang');
     Route::get('/atk/show_transaksi_barang/{id_transaction}',[TransaksiController::class,'atk_show_transaksi_barang'])->name('atk_show_transaksi_barang');
 

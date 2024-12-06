@@ -93,6 +93,12 @@
                 <div data-i18n="Documentation">Stock</div>
             </a>
         </li>
+        <li class="menu-item {{ request()->is('atk/stock_opname*') ? 'active' : '' }}">
+            <a href="{{route('atk_stock_opname')}}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-line-chart"></i>
+                <div data-i18n="Documentation">Stock Opname</div>
+            </a>
+        </li>
         <li class="menu-item {{ request()->is('atk/list_data_barang*') ? 'active' : '' }}">
             <a href="{{route('atk_list_data_barang')}}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-package"></i>
