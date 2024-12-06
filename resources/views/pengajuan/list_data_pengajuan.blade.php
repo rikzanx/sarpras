@@ -253,12 +253,7 @@ List Data Pengajuan | Sarpras Depkam
             ],
             pageLength: 10
         });
-    });
 
-</script>
-
-<script>
-    $(document).ready(function () {
         $('#tableApprove').DataTable({
             scrollX: true,
             responsive: true,
@@ -291,12 +286,7 @@ List Data Pengajuan | Sarpras Depkam
             ],
             pageLength: 10
         });
-    });
 
-</script>
-
-<script>
-    $(document).ready(function () {
         $('#tableReject').DataTable({
             scrollX: true,
             responsive: true,
@@ -330,7 +320,6 @@ List Data Pengajuan | Sarpras Depkam
             pageLength: 10
         });
     });
-
 </script>
 
 @endsection
