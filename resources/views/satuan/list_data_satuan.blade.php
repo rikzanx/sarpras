@@ -251,7 +251,7 @@ List Data Satuan | Sarpras Depkam
     }
     $(document).ready(function () {
         $('#myTable').DataTable({
-            scrollX: true,
+            scrollX: false,
             responsive: true,
             autoWidth: false,
             dom: 'Blfrtip', // 'B' untuk Buttons, 'f' untuk filter, 'r' untuk processing, 't' untuk table, 'i' untuk info, 'p' untuk pagination
