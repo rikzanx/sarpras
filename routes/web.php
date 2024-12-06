@@ -27,16 +27,16 @@ Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 Route::group(['middleware' => [AuthMiddleware::class]],function(){
 
     Route::get('dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
-    
+
     // ISMS
     Route::get('/isms/stock_barang',[TransaksiController::class,'isms_stock_barang'])->name('isms_stock_barang');
     Route::get('/isms/show_transaksi_barang/{id_transaction}',[TransaksiController::class,'isms_show_transaksi_barang'])->name('isms_show_transaksi_barang');
-    
+
     Route::get('/isms/list_transaksi_barang_masuk',[TransaksiController::class,'isms_list_transaksi_barang_masuk'])->name('isms_list_transaksi_barang_masuk');
     Route::post('/isms/add_transaksi_barang_masuk_action',[TransaksiController::class,'isms_add_transaksi_barang_masuk_action'])->name('isms_add_transaksi_barang_masuk_action');
     Route::post('/isms/edit_transaksi_barang_masuk_action/{id_transaction}',[TransaksiController::class,'isms_edit_transaksi_barang_masuk_action'])->name('isms_edit_transaksi_barang_masuk_action');
     Route::post('/isms/delete_transaksi_barang_masuk_action/{id_transaction}',[TransaksiController::class,'isms_delete_transaksi_barang_masuk_action'])->name('isms_delete_transaksi_barang_masuk_action');
-    
+
     Route::get('/isms/list_transaksi_barang_keluar',[TransaksiController::class,'isms_list_transaksi_barang_keluar'])->name('isms_list_transaksi_barang_keluar');
     Route::post('/isms/add_transaksi_barang_keluar_action',[TransaksiController::class,'isms_add_transaksi_barang_keluar_action'])->name('isms_add_transaksi_barang_keluar_action');
     Route::post('/isms/edit_transaksi_barang_keluar_action/{id_transaction}',[TransaksiController::class,'isms_edit_transaksi_barang_keluar_action'])->name('isms_edit_transaksi_barang_keluar_action');
@@ -52,12 +52,12 @@ Route::group(['middleware' => [AuthMiddleware::class]],function(){
     // ATK
     Route::get('/atk/stock_barang',[TransaksiController::class,'atk_stock_barang'])->name('atk_stock_barang');
     Route::get('/atk/show_transaksi_barang/{id_transaction}',[TransaksiController::class,'atk_show_transaksi_barang'])->name('atk_show_transaksi_barang');
-    
+
     Route::get('/atk/list_transaksi_barang_masuk',[TransaksiController::class,'atk_list_transaksi_barang_masuk'])->name('atk_list_transaksi_barang_masuk');
     Route::post('/atk/add_transaksi_barang_masuk_action',[TransaksiController::class,'atk_add_transaksi_barang_masuk_action'])->name('atk_add_transaksi_barang_masuk_action');
     Route::post('/atk/edit_transaksi_barang_masuk_action/{id_transaction}',[TransaksiController::class,'atk_edit_transaksi_barang_masuk_action'])->name('atk_edit_transaksi_barang_masuk_action');
     Route::post('/atk/delete_transaksi_barang_masuk_action/{id_transaction}',[TransaksiController::class,'atk_delete_transaksi_barang_masuk_action'])->name('atk_delete_transaksi_barang_masuk_action');
-    
+
     Route::get('/atk/list_transaksi_barang_keluar',[TransaksiController::class,'atk_list_transaksi_barang_keluar'])->name('atk_list_transaksi_barang_keluar');
     Route::post('/atk/add_transaksi_barang_keluar_action',[TransaksiController::class,'atk_add_transaksi_barang_keluar_action'])->name('atk_add_transaksi_barang_keluar_action');
     Route::post('/atk/edit_transaksi_barang_keluar_action/{id_transaction}',[TransaksiController::class,'atk_edit_transaksi_barang_keluar_action'])->name('atk_edit_transaksi_barang_keluar_action');
@@ -94,7 +94,7 @@ Route::group(['middleware' => [AuthMiddleware::class]],function(){
     Route::post('/add_satuan_action',[SatuanController::class, 'add_satuan_action'])->name('add_satuan_action');
     Route::post('/edit_satuan_action/{id_satuan}',[SatuanController::class, 'edit_satuan_action'])->name('edit_satuan_action');
     Route::post('/delete_satuan_action/{id_satuan}',[SatuanController::class, 'delete_satuan_action'])->name('delete_satuan_action');
-    
+
     Route::get('/list_data_kategori', [KategoriController::class, 'list_data_kategori'])->name('list_data_kategori');
     Route::get('/show_data_kategori/{id_kategori}', [KategoriController::class, 'show_data_kategori'])->name('show_data_kategori');
     Route::post('/add_kategori_action',[KategoriController::class, 'add_kategori_action'])->name('add_kategori_action');
@@ -103,6 +103,10 @@ Route::group(['middleware' => [AuthMiddleware::class]],function(){
 
 
     Route::get('/list_data_pengajuan', [PengajuanController::class, 'list_data_pengajuan'])->name('list_data_pengajuan');
+
+
+    Route::get('/detail_form_permintaan_barang', [PengajuanController::class, 'detail_form_permintaan_barang'])->name('detail_form_permintaan_barang');
+
 
 });
 
