@@ -32,34 +32,34 @@ Tambah Stock Opname Barang ISMS | Sarpras Depkam
                         <div class="row">
                             <div class="col mb-3">
                                 <label class="form-label">Tanggal Stock Opname</label>
-                                <input type="date" class="form-control" name="tanggal" value="{{ date('Y-m-d') }}" disabled>
+                                <input type="text" class="form-control" name="tanggal" value="{{ $stock_opname->tanggal }}" disabled>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col mb-3">
                                 <label  class="form-label">Deskripsi</label>
-                                <input type="text" class="form-control" placeholder="Enter Deskripsi" name="deskripsi" />
+                                <input type="text" class="form-control" placeholder="Enter Deskripsi" name="deskripsi" value="{{ $stock_opname->deskripsi }}" disabled />
                             </div>
                         </div>
-                        @foreach($barangs as $index => $item)
+                        @foreach($stock_opname->stock_opname_items as $index => $item)
                         <div class="row item-row mb-3">
                             <div class="col-4">
                                 <input type="hidden" name="barang[{{$index}}][id_barang]" value="{{ $item->id_barang }}">
                                 <label for="barang[{{$index}}][nama_barang]" class="form-label">Nama Barang</label>
-                                <input type="text" class="form-control" name="barang[{{$index}}][nama_barang]" value="{{ $item->nama }} ({{ $item->satuan->nama }})" disabled>
+                                <input type="text" class="form-control" name="barang[{{$index}}][nama_barang]" value="{{ $item->barang->nama }} ({{ $item->barang->satuan->nama }})" disabled>
                             </div>
                             <div class="col-2">
-                                <input type="hidden" name="barang[{{$index}}][stock_sistem]" value="{{ $item->stock->available_stock }}">
+                                <input type="hidden" name="barang[{{$index}}][stock_sistem]" value="{{ $item->stock_sistem }}">
                                 <label for="barang[{{$index}}][available_stock]" class="form-label">Stock Sistem</label>
-                                <input type="text" class="form-control" name="barang[{{$index}}][available_stock]" value="{{ $item->stock->available_stock }}" disabled>
+                                <input type="text" class="form-control" name="barang[{{$index}}][available_stock]" value="{{ $item->stock_sistem }}" disabled>
                             </div>
                             <div class="col-2">
                                 <label for="barang[{{$index}}][stock_fisik]" class="form-label">Stock Fisik</label>
-                                <input type="number" class="form-control" name="barang[{{$index}}][stock_fisik]" value="0" required>
+                                <input type="number" class="form-control" name="barang[{{$index}}][stock_fisik]" value="{{ $item->stock_fisik }}" disabled>
                             </div>
                             <div class="col-4">
                                 <label for="barang[{{$index}}][alasan]" class="form-label">Isi Alasan (Apabila stock tidak sesuai)</label>
-                                <input type="text" class="form-control" name="barang[{{$index}}][alasan]" placeholder="Alasan" value="" required>
+                                <input type="text" class="form-control" name="barang[{{$index}}][alasan]" placeholder="Alasan" value="{{ $item->alasan }}" disabled>
                             </div>
                         </div>
                         @endforeach
