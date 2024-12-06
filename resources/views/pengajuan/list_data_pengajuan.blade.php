@@ -221,14 +221,12 @@ List Data Pengajuan | Sarpras Depkam
 
 <script>
     $(document).ready(function () {
-        // Inisialisasi untuk tab pertama
-        let tableReviewer = $('#tableReviewer').DataTable({
-            scrollX: true,
+        $('#tableReviewer').DataTable({
+            scrollX: false,
             responsive: true,
             autoWidth: false,
-            dom: 'Blfrtip',
-            buttons: [
-                {
+            dom: 'Blfrtip', // 'B' untuk Buttons, 'f' untuk filter, 'r' untuk processing, 't' untuk table, 'i' untuk info, 'p' untuk pagination
+            buttons: [{
                     extend: 'copyHtml5',
                     text: '<i class="ri-file-text-line me-1"></i> Copy',
                     className: 'btn btn-primary'
@@ -256,81 +254,70 @@ List Data Pengajuan | Sarpras Depkam
             pageLength: 10
         });
 
-        // Inisialisasi tabel hanya saat tab aktif
-        $('a[data-bs-toggle="tab"]').on('shown.bs.tab', function (e) {
-            let target = $(e.target).attr("data-bs-target"); // Ambil ID tab target
+        $('#tableApprove').DataTable({
+            scrollX: false,
+            responsive: true,
+            autoWidth: false,
+            dom: 'Blfrtip', // 'B' untuk Buttons, 'f' untuk filter, 'r' untuk processing, 't' untuk table, 'i' untuk info, 'p' untuk pagination
+            buttons: [{
+                    extend: 'copyHtml5',
+                    text: '<i class="ri-file-text-line me-1"></i> Copy',
+                    className: 'btn btn-primary'
+                },
+                {
+                    extend: 'excelHtml5',
+                    text: '<i class="ri-file-excel-line me-1"></i> Excel',
+                    className: 'btn btn-primary'
+                },
+                {
+                    extend: 'pdfHtml5',
+                    text: '<i class="ri-file-pdf-line me-1"></i> PDF',
+                    className: 'btn btn-primary'
+                },
+                {
+                    extend: 'print',
+                    text: '<i class="ri-printer-line me-1"></i> Print',
+                    className: 'btn btn-primary'
+                }
+            ],
+            lengthMenu: [
+                [10, 25, 50, 100],
+                [10, 25, 50, 100]
+            ],
+            pageLength: 10
+        });
 
-            if (target === "#navs-pills-justified-profile" && !$.fn.DataTable.isDataTable('#tableApprove')) {
-                $('#tableApprove').DataTable({
-                    scrollX: true,
-                    responsive: true,
-                    autoWidth: false,
-                    dom: 'Blfrtip',
-                    buttons: [
-                        {
-                            extend: 'copyHtml5',
-                            text: '<i class="ri-file-text-line me-1"></i> Copy',
-                            className: 'btn btn-primary'
-                        },
-                        {
-                            extend: 'excelHtml5',
-                            text: '<i class="ri-file-excel-line me-1"></i> Excel',
-                            className: 'btn btn-primary'
-                        },
-                        {
-                            extend: 'pdfHtml5',
-                            text: '<i class="ri-file-pdf-line me-1"></i> PDF',
-                            className: 'btn btn-primary'
-                        },
-                        {
-                            extend: 'print',
-                            text: '<i class="ri-printer-line me-1"></i> Print',
-                            className: 'btn btn-primary'
-                        }
-                    ],
-                    lengthMenu: [
-                        [10, 25, 50, 100],
-                        [10, 25, 50, 100]
-                    ],
-                    pageLength: 10
-                });
-            }
-
-            if (target === "#navs-pills-justified-messages" && !$.fn.DataTable.isDataTable('#tableReject')) {
-                $('#tableReject').DataTable({
-                    scrollX: true,
-                    responsive: true,
-                    autoWidth: false,
-                    dom: 'Blfrtip',
-                    buttons: [
-                        {
-                            extend: 'copyHtml5',
-                            text: '<i class="ri-file-text-line me-1"></i> Copy',
-                            className: 'btn btn-primary'
-                        },
-                        {
-                            extend: 'excelHtml5',
-                            text: '<i class="ri-file-excel-line me-1"></i> Excel',
-                            className: 'btn btn-primary'
-                        },
-                        {
-                            extend: 'pdfHtml5',
-                            text: '<i class="ri-file-pdf-line me-1"></i> PDF',
-                            className: 'btn btn-primary'
-                        },
-                        {
-                            extend: 'print',
-                            text: '<i class="ri-printer-line me-1"></i> Print',
-                            className: 'btn btn-primary'
-                        }
-                    ],
-                    lengthMenu: [
-                        [10, 25, 50, 100],
-                        [10, 25, 50, 100]
-                    ],
-                    pageLength: 10
-                });
-            }
+        $('#tableReject').DataTable({
+            scrollX: false,
+            responsive: true,
+            autoWidth: false,
+            dom: 'Blfrtip', // 'B' untuk Buttons, 'f' untuk filter, 'r' untuk processing, 't' untuk table, 'i' untuk info, 'p' untuk pagination
+            buttons: [{
+                    extend: 'copyHtml5',
+                    text: '<i class="ri-file-text-line me-1"></i> Copy',
+                    className: 'btn btn-primary'
+                },
+                {
+                    extend: 'excelHtml5',
+                    text: '<i class="ri-file-excel-line me-1"></i> Excel',
+                    className: 'btn btn-primary'
+                },
+                {
+                    extend: 'pdfHtml5',
+                    text: '<i class="ri-file-pdf-line me-1"></i> PDF',
+                    className: 'btn btn-primary'
+                },
+                {
+                    extend: 'print',
+                    text: '<i class="ri-printer-line me-1"></i> Print',
+                    className: 'btn btn-primary'
+                }
+            ],
+            lengthMenu: [
+                [10, 25, 50, 100],
+                [10, 25, 50, 100]
+            ],
+            pageLength: 10
         });
     });
 </script>
