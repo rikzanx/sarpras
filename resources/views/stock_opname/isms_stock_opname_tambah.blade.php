@@ -25,7 +25,7 @@ Tambah Stock Opname Barang ISMS | Sarpras Depkam
                 <div class="card-header mt-4 py-2 px-1 d-flex justify-content-between align-items-center">
                     <h4>Tambah Stock Opname Barang ISMS</h4>
                 </div>
-                <div class="card-datatable table-responsive mb-4 mt-4 dt-buttons display nowrap" style="width:100%">
+                <div class="card">
                     <form action="{{ route('isms_stock_opname_tambah_action') }}" method="POST">
                         @csrf
                         <div class="row">
