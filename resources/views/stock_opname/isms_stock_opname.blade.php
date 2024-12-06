@@ -24,7 +24,7 @@ Stock Opname Barang ISMS | Sarpras Depkam
             <div class="card px-4">
                 <div class="card-header mt-4 py-2 px-1 d-flex justify-content-between align-items-center">
                     <h4>Stock Opname Barang ISMS</h4>
-                    <a route="{{ route('isms_stock_opname_tambah') }}" class="btn btn-primary">+ Add Stock Opname</a>
+                    <a href="{{ route('isms_stock_opname_tambah') }}" class="btn btn-primary text-white">+ Add Stock Opname</a>
                 </div>
                 <div class="card-datatable table-responsive mb-4 mt-4 dt-buttons display nowrap" style="width:100%">
                     <table id="myTable" class="table">
