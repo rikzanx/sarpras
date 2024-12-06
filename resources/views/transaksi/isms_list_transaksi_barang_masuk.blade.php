@@ -118,7 +118,7 @@ List Transaksi Barang Masuk | Sarpras Depkam
                     </div>
                     <div class="dynamic-items">
                         <div class="row item-row mb-3">
-                            <div class="col-9">
+                            <div class="col-12 col-sm-12 col-md-9 col-lg-9">
                                 <label for="barang[0][id_barang]" class="form-label">Pilih Barang</label>
                                 <select class="form-control" name="barang[0][id_barang]" required>
                                     <option selected disabled>Pilih Barang</option>
@@ -127,11 +127,11 @@ List Transaksi Barang Masuk | Sarpras Depkam
                                     @endforeach
                                 </select>
                             </div>
-                            <div class="col-2">
+                            <div class="col-6 col-sm-6 col-md-2 col-lg-2">
                                 <label for="barang[0][quantity]" class="form-label">Jumlah</label>
                                 <input type="number" class="form-control" name="barang[0][quantity]" value="1" required>
                             </div>
-                            <div class="col-1">
+                            <div class="col-6 col-sm-6 col-md-2 col-lg-2">
                                 <label class="form-label">&nbsp;</label>
                                 <div class="mx-auto">
                                     <button type="button" class="btn btn-icon btn-danger remove-item">
