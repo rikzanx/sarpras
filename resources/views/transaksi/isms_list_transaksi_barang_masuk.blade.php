@@ -131,7 +131,7 @@ List Transaksi Barang Masuk | Sarpras Depkam
                                 <label for="barang[0][quantity]" class="form-label">Jumlah</label>
                                 <input type="number" class="form-control" name="barang[0][quantity]" value="1" required>
                             </div>
-                            <div class="col-6 col-sm-6 col-md-2 col-lg-2">
+                            <div class="col-6 col-sm-6 col-md-1 col-lg-1">
                                 <label class="form-label">&nbsp;</label>
                                 <div class="mx-auto">
                                     <button type="button" class="btn btn-icon btn-danger remove-item">
@@ -190,7 +190,7 @@ List Transaksi Barang Masuk | Sarpras Depkam
                     </div>
                     <div class="dynamic-items">
                         <div class="row item-row mb-3">
-                            <div class="col-9">
+                            <div class="col-12 col-sm-12 col-md-9 col-lg-9">
                                 <label for="barang[0][id_barang]" class="form-label">Pilih Barang</label>
                                 <select class="form-control" name="barang[0][id_barang]" required>
                                     <option selected disabled>Pilih Barang</option>
@@ -199,11 +199,11 @@ List Transaksi Barang Masuk | Sarpras Depkam
                                     @endforeach
                                 </select>
                             </div>
-                            <div class="col-2">
+                            <div class="col-6 col-sm-6 col-md-2 col-lg-2">
                                 <label for="barang[0][quantity]" class="form-label">Jumlah</label>
                                 <input type="number" class="form-control" name="barang[0][quantity]" value="1" required>
                             </div>
-                            <div class="col-1">
+                            <div class="col-6 col-sm-6 col-md-1 col-lg-1">
                                 <label class="form-label">&nbsp;</label>
                                 <div class="mx-auto">
                                 </div>
@@ -263,7 +263,7 @@ List Transaksi Barang Masuk | Sarpras Depkam
                     </div>
                     <div class="dynamic-items">
                         <div class="row item-row mb-3">
-                            <div class="col-9">
+                            <div class="col-12 col-sm-12 col-md-9 col-lg-9">
                                 <label for="barang[0][id_barang]" class="form-label">Pilih Barang</label>
                                 <select class="form-control" name="barang[0][id_barang]" required>
                                     <option selected disabled>Pilih Barang</option>
@@ -272,11 +272,11 @@ List Transaksi Barang Masuk | Sarpras Depkam
                                     @endforeach
                                 </select>
                             </div>
-                            <div class="col-2">
+                            <div class="col-6 col-sm-6 col-md-2 col-lg-2">
                                 <label for="barang[0][quantity]" class="form-label">Jumlah</label>
                                 <input type="number" class="form-control" name="barang[0][quantity]" value="1" required>
                             </div>
-                            <div class="col-1">
+                            <div class="col-6 col-sm-6 col-md-1 col-lg-1">
                                 <label class="form-label">&nbsp;</label>
                                 <div class="mx-auto">
                                     <button type="button" class="btn btn-icon btn-danger remove-item">
@@ -351,7 +351,7 @@ List Transaksi Barang Masuk | Sarpras Depkam
                 data.transaksi_barangs.forEach((item, index) => {
                     const newItem = `
                         <div class="row item-row mb-3">
-                            <div class="col-9">
+                            <div class="col-12 col-sm-12 col-md-9 col-lg-9">
                                 <label for="barang[${index}][id_barang]" class="form-label">Pilih Barang</label>
                                 <select class="form-control" name="barang[${index}][id_barang]" required disabled>
                                     <option selected disabled>Pilih Barang</option>
@@ -362,11 +362,11 @@ List Transaksi Barang Masuk | Sarpras Depkam
                                     @endforeach
                                 </select>
                             </div>
-                            <div class="col-2">
+                            <div class="col-6 col-sm-6 col-md-2 col-lg-2">
                                 <label for="barang[${index}][quantity]" class="form-label">Jumlah</label>
                                 <input type="number" class="form-control" name="barang[${index}][quantity]" value="${item.quantity}" required disabled>
                             </div>
-                            <div class="col-1">
+                            <div class="col-6 col-sm-6 col-md-1 col-lg-1">
                                 <label class="form-label">&nbsp;</label>
                                 <div class="mx-auto">
                                 </div>
@@ -411,7 +411,7 @@ List Transaksi Barang Masuk | Sarpras Depkam
                 data.transaksi_barangs.forEach((item, index) => {
                     const newItem = `
                         <div class="row item-row mb-3">
-                            <div class="col-9">
+                            <div class="col-12 col-sm-12 col-md-9 col-lg-9">
                                 <label for="barang[${index}][id_barang]" class="form-label">Pilih Barang</label>
                                 <select class="form-control" name="barang[${index}][id_barang]" required>
                                     <option selected disabled>Pilih Barang</option>
@@ -422,12 +422,12 @@ List Transaksi Barang Masuk | Sarpras Depkam
                                     @endforeach
                                 </select>
                             </div>
-                            <div class="col-2">
+                            <div class="col-6 col-sm-6 col-md-2 col-lg-2">
                                 <label for="barang[${index}][quantity]" class="form-label">Jumlah</label>
                                 <input type="hidden" name="barang[${index}][id_transaksi_barang]" value="${item.id_transaksi_barang}">
                                 <input type="number" class="form-control" name="barang[${index}][quantity]" value="${item.quantity}" required>
                             </div>
-                            <div class="col-1">
+                            <div class="col-6 col-sm-6 col-md-1 col-lg-1">
                                 <label class="form-label">&nbsp;</label>
                                 <div class="mx-auto">
                                     <button type="button" class="btn btn-icon btn-danger remove-item">
@@ -464,7 +464,7 @@ List Transaksi Barang Masuk | Sarpras Depkam
             console.log('clicked');
             const newItem = `
                 <div class="row item-row mb-3">
-                    <div class="col-9">
+                    <div class="col-12 col-sm-12 col-md-9 col-lg-9">
                         <label for="barang[${itemIndex}][id_barang]" class="form-label">Pilih Barang</label>
                         <select class="form-control" name="barang[${itemIndex}][id_barang]" required>
                             <option selected disabled>Pilih Barang</option>
@@ -473,11 +473,11 @@ List Transaksi Barang Masuk | Sarpras Depkam
                             @endforeach
                         </select>
                     </div>
-                    <div class="col-2">
+                    <div class="col-6 col-sm-6 col-md-2 col-lg-2">
                         <label for="barang[${itemIndex}][quantity]" class="form-label">Jumlah</label>
                         <input type="number" class="form-control" name="barang[${itemIndex}][quantity]" value="1" required>
                     </div>
-                    <div class="col-1">
+                    <div class="col-6 col-sm-6 col-md-1 col-lg-1">
                         <label class="form-label">&nbsp;</label>
                         <div class="mx-auto">
                             <button type="button" class="btn btn-icon btn-danger remove-item">
@@ -497,7 +497,7 @@ List Transaksi Barang Masuk | Sarpras Depkam
             console.log(lastItemIndex);
             const newItem = `
                 <div class="row item-row mb-3">
-                    <div class="col-9">
+                    <div class="col-12 col-sm-12 col-md-9 col-lg-9">
                         <label for="barang[${lastItemIndex}][id_barang]" class="form-label">Pilih Barang</label>
                         <select class="form-control" name="barang[${lastItemIndex}][id_barang]" required>
                             <option selected disabled>Pilih Barang</option>
@@ -506,11 +506,11 @@ List Transaksi Barang Masuk | Sarpras Depkam
                             @endforeach
                         </select>
                     </div>
-                    <div class="col-2">
+                    <div class="col-6 col-sm-6 col-md-2 col-lg-2">
                         <label for="barang[${lastItemIndex}][quantity]" class="form-label">Jumlah</label>
                         <input type="number" class="form-control" name="barang[${lastItemIndex}][quantity]" value="1" required>
                     </div>
-                    <div class="col-1">
+                    <div class="col-6 col-sm-6 col-md-1 col-lg-1">
                         <label class="form-label">&nbsp;</label>
                         <div class="mx-auto">
                             <button type="button" class="btn btn-icon btn-danger remove-item">
