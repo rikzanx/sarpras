@@ -23,7 +23,7 @@ class StockOpnameController extends Controller
     //================ ISMS================//
     public function isms_stock_opname()
     {
-        $stock_opname = StockOpname::with(['stock_opname_items','group','user'])->where('group_id',1)->get();
+        $stock_opname = StockOpname::with(['stock_opname_items','group','user'])->where('id_group',1)->get();
         return view('stock_opname/isms_stock_opname',[
             'stock_opname' => $stock_opname
         ]);
