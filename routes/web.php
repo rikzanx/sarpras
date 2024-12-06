@@ -14,6 +14,7 @@ use App\Http\Controllers\SatuanController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\PengajuanController;
 use App\Http\Controllers\TransaksiController;
+use App\Http\Controllers\StockOpnameController;
 
 
 Route::get('/', [AuthController::class, 'index'])->name('login');
@@ -29,6 +30,14 @@ Route::group(['middleware' => [AuthMiddleware::class]],function(){
     Route::get('dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
     
     // ISMS
+    Route::get('/isms/stock_opname',[StockOpnameController::class,'isms_stock_opname'])->name('isms_stock_opname');
+    Route::get('/isms/stock_opname/tambah',[StockOpnameController::class,'isms_stock_opname_tambah'])->name('isms_stock_opname_tambah');
+    Route::post('/isms/stock_opname/tambah/action',[StockOpnameController::class,'isms_stock_opname_tambah_action'])->name('isms_stock_opname_tambah_action');
+    Route::get('/isms/stock_opname/show/{id_stock_opname}',[StockOpnameController::class,'isms_stock_opname_show'])->name('isms_stock_opname_show');
+    Route::get('/isms/stock_opname/edit/{id_stock_opname}',[StockOpnameController::class,'isms_stock_opname_edit'])->name('isms_stock_opname_edit');
+    Route::post('/isms/stock_opname/edit/{id_stock_opname}/action',[StockOpnameController::class,'isms_stock_opname_edit_action'])->name('isms_stock_opname_edit_action');
+    Route::post('/isms/stock_opname/delete/{id_stock_opname}/action',[StockOpnameController::class,'isms_stock_opname_delete_action'])->name('isms_stock_opname_delete_action');
+    
     Route::get('/isms/stock_barang',[TransaksiController::class,'isms_stock_barang'])->name('isms_stock_barang');
     Route::get('/isms/show_transaksi_barang/{id_transaction}',[TransaksiController::class,'isms_show_transaksi_barang'])->name('isms_show_transaksi_barang');
     
@@ -50,6 +59,8 @@ Route::group(['middleware' => [AuthMiddleware::class]],function(){
     // END ISMS ///
 
     // ATK
+    Route::get('/atk/stock_opname',[StockOpnameController::class,'atk_stock_opname'])->name('atk_stock_opname');
+    
     Route::get('/atk/stock_barang',[TransaksiController::class,'atk_stock_barang'])->name('atk_stock_barang');
     Route::get('/atk/show_transaksi_barang/{id_transaction}',[TransaksiController::class,'atk_show_transaksi_barang'])->name('atk_show_transaksi_barang');
     
