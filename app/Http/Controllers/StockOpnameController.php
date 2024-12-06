@@ -91,7 +91,7 @@ class StockOpnameController extends Controller
     public function isms_stock_opname_show(Request $request,$id_stock_opname)
     {
         $decryptId = Crypt::decryptString($id_stock_opname);
-        $stock_opname = StockOpname::with('user','group','stock_opname_items','stock_opname_items.barang','stock_opname_items.satuan')->where('id_stock_opname',$decryptId)->firstOrFail();
+        $stock_opname = StockOpname::with('user','group','stock_opname_items','stock_opname_items.barang','stock_opname_items.barang.satuan')->where('id_stock_opname',$decryptId)->firstOrFail();
         dd($stock_opname);
     }
 
@@ -182,7 +182,7 @@ class StockOpnameController extends Controller
     public function atk_stock_opname_show(Request $request,$id_stock_opname)
     {
         $decryptId = Crypt::decryptString($id_stock_opname);
-        $stock_opname = StockOpname::with('user','group','stock_opname_items','stock_opname_items.barang','stock_opname_items.satuan')->where('id_stock_opname',$decryptId)->firstOrFail();
+        $stock_opname = StockOpname::with('user','group','stock_opname_items','stock_opname_items.barang','stock_opname_items.barang.satuan')->where('id_stock_opname',$decryptId)->firstOrFail();
         dd($stock_opname);
     }
 
