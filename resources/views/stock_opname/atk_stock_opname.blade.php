@@ -52,7 +52,7 @@ Stock Opname Barang ATK | Sarpras Depkam
                                     <div class="demo-inline-spacing">
                                         <a href="{{ route('atk_stock_opname_show',Crypt::encryptString($item->id_stock_opname)) }}" class="btn btn-icon btn-primary text-white">
                                             <span class="tf-icons bx bx-show-alt"></span>
-                                        </button>
+                                        </a>
                                     </div>
                                 </td>
                             </tr>

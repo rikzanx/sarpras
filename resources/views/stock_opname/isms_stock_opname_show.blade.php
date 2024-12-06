@@ -14,7 +14,7 @@
 @endsection
 
 @section('judul')
-Stock Opname Barang ISMS | Sarpras Depkam
+Tambah Stock Opname Barang ISMS | Sarpras Depkam
 @endsection
 
 @section('isi')
@@ -23,42 +23,52 @@ Stock Opname Barang ISMS | Sarpras Depkam
         <div class="col-lg-12 mb-4 order-0">
             <div class="card px-4">
                 <div class="card-header mt-4 py-2 px-1 d-flex justify-content-between align-items-center">
-                    <h4>Stock Opname Barang ISMS</h4>
-                    <a href="{{ route('isms_stock_opname_tambah') }}" class="btn btn-primary text-white">+ Add Stock Opname</a>
+                    <h4>Tambah Stock Opname Barang ISMS</h4>
                 </div>
-                <div class="card-datatable table-responsive mb-4 mt-4 dt-buttons display nowrap" style="width:100%">
-                    <table id="myTable" class="table">
-                        <thead>
-                            <tr>
-                                <th style="text-align: center;">No</th>
-                                <th style="text-align: center;">Nama Group</th>
-                                <th style="text-align: center;">User</th>
-                                <th style="text-align: center;">Deskripsi</th>
-                                <th style="text-align: center;">Hasil</th>
-                                <th style="text-align: center;">Tanggal</th>
-                                <th style="text-align: center;">Aksi</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach($stock_opname as $index => $item)
-                            <tr>
-                                <td style="text-align: center;">{{ $index+1 }}</td>
-                                <td style="text-align: center;">{{ $item->group->nama }}</td>
-                                <td style="text-align: center;">{{ $item->user->nama }}</td>
-                                <td>{{ $item->deskripsi }}</td>
-                                <td>{{ $item->total_selisih ?? '0' }}</td>
-                                <td>{{ $item->created_at }}</td>
-                                <td style="text-align: center;">
-                                    <div class="demo-inline-spacing">
-                                        <a href="{{ route('isms_stock_opname_show',Crypt::encryptString($item->id_stock_opname)) }}" class="btn btn-icon btn-primary text-white">
-                                            <span class="tf-icons bx bx-show-alt"></span>
-                                        </a>
-                                    </div>
-                                </td>
-                            </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
+                <div class="card">
+                    <p>Lakukan perhitungan stock fisik dan input di bawah</p>
+                    <form action="#" method="POST">
+                        @csrf
+                        <div class="row">
+                            <div class="col mb-3">
+                                <label class="form-label">Tanggal Stock Opname</label>
+                                <input type="date" class="form-control" name="tanggal" value="{{ date('Y-m-d') }}" disabled>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col mb-3">
+                                <label  class="form-label">Deskripsi</label>
+                                <input type="text" class="form-control" placeholder="Enter Deskripsi" name="deskripsi" />
+                            </div>
+                        </div>
+                        @foreach($barangs as $index => $item)
+                        <div class="row item-row mb-3">
+                            <div class="col-4">
+                                <input type="hidden" name="barang[{{$index}}][id_barang]" value="{{ $item->id_barang }}">
+                                <label for="barang[{{$index}}][nama_barang]" class="form-label">Nama Barang</label>
+                                <input type="text" class="form-control" name="barang[{{$index}}][nama_barang]" value="{{ $item->nama }} ({{ $item->satuan->nama }})" disabled>
+                            </div>
+                            <div class="col-2">
+                                <input type="hidden" name="barang[{{$index}}][stock_sistem]" value="{{ $item->stock->available_stock }}">
+                                <label for="barang[{{$index}}][available_stock]" class="form-label">Stock Sistem</label>
+                                <input type="text" class="form-control" name="barang[{{$index}}][available_stock]" value="{{ $item->stock->available_stock }}" disabled>
+                            </div>
+                            <div class="col-2">
+                                <label for="barang[{{$index}}][stock_fisik]" class="form-label">Stock Fisik</label>
+                                <input type="number" class="form-control" name="barang[{{$index}}][stock_fisik]" value="0" required>
+                            </div>
+                            <div class="col-4">
+                                <label for="barang[{{$index}}][alasan]" class="form-label">Isi Alasan (Apabila stock tidak sesuai)</label>
+                                <input type="text" class="form-control" name="barang[{{$index}}][alasan]" placeholder="Alasan" value="" required>
+                            </div>
+                        </div>
+                        @endforeach
+                        <div class="row mb-3">
+                            <div class="col-12">
+                            <a href="{{ route('isms_stock_opname') }}" class="btn btn-outline-secondary">Back</a>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
