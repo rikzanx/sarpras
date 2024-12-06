@@ -14,7 +14,7 @@
 @endsection
 
 @section('judul')
-Tambah Stock Opname Barang ATK | Sarpras Depkam
+Detail Stock Opname Barang ATK | Sarpras Depkam
 @endsection
 
 @section('isi')
@@ -23,7 +23,7 @@ Tambah Stock Opname Barang ATK | Sarpras Depkam
         <div class="col-lg-12 mb-4 order-0">
             <div class="card px-4">
                 <div class="card-header mt-4 py-2 px-1 d-flex justify-content-between align-items-center">
-                    <h4>Tambah Stock Opname Barang ATK</h4>
+                    <h4>Detail Stock Opname Barang ATK</h4>
                 </div>
                 <div class="card">
                     <form action="#" method="POST">
