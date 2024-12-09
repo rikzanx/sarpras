@@ -60,7 +60,7 @@ List Data Pengajuan | Sarpras Depkam
                     <div class="tab-content">
                         <div class="tab-pane fade show active" id="navs-pills-justified-home" role="tabpanel">
                             <div class="card-header mt-4 py-2 px-1 d-flex justify-content-between align-items-center">
-                                <h4>List Transaksi Barang Masuk</h4>
+                                <h4>List Pengajuan</h4>
                                 <button type="button" class="btn btn-primary" data-bs-toggle="modal"
                                     data-bs-target="#modaltambah">+ Add Transaksi Masuk</button>
                             </div>
@@ -103,7 +103,7 @@ List Data Pengajuan | Sarpras Depkam
                         </div>
                         <div class="tab-pane fade" id="navs-pills-justified-profile" role="tabpanel">
                             <div class="card-header mt-4 py-2 px-1 d-flex justify-content-between align-items-center">
-                                <h4>List Transaksi Barang Masuk</h4>
+                                <h4>List Pengajuan</h4>
                                 <button type="button" class="btn btn-primary" data-bs-toggle="modal"
                                     data-bs-target="#modaltambah">+ Add Transaksi Masuk</button>
                             </div>
@@ -146,7 +146,7 @@ List Data Pengajuan | Sarpras Depkam
                         </div>
                         <div class="tab-pane fade" id="navs-pills-justified-messages" role="tabpanel">
                             <div class="card-header mt-4 py-2 px-1 d-flex justify-content-between align-items-center">
-                                <h4>List Transaksi Barang Masuk</h4>
+                                <h4>List Pengajuan</h4>
                                 <button type="button" class="btn btn-primary" data-bs-toggle="modal"
                                     data-bs-target="#modaltambah">+ Add Transaksi Masuk</button>
                             </div>
