@@ -53,6 +53,9 @@ Stock Opname Barang ATK | Sarpras Depkam
                                         <a href="{{ route('atk_stock_opname_show',Crypt::encryptString($item->id_stock_opname)) }}" class="btn btn-icon btn-primary text-white">
                                             <span class="tf-icons bx bx-show-alt"></span>
                                         </a>
+                                        <button type="button" class="btn btn-icon btn-danger" onclick="modaldelete('{{ Crypt::encryptString($item->id_stock_opname) }}')">
+                                            <span class="tf-icons bx bx-eraser"></span>
+                                        </button>
                                     </div>
                                 </td>
                             </tr>
@@ -69,7 +72,7 @@ Stock Opname Barang ATK | Sarpras Depkam
 <div class="modal fade" id="modaldelete" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-xxs" role="document">
         <div class="modal-content">
-            <form action="{{  route('delete_barang_action',':id') }}" method="post" enctype="multipart/form-data">
+            <form action="{{  route('atk_stock_opname_delete_action',':id') }}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel4">Hapus Data</h5>

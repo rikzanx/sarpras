@@ -109,7 +109,32 @@ class StockOpnameController extends Controller
 
     public function isms_stock_opname_delete_action(Request $request, $id_stock_opname)
     {
-        return 'delete';
+        DB::beginTransaction();
+
+        try {
+            $decryptId = Crypt::decryptString($id_stock_opname);
+            $stock_opname = StockOpname::with(['stock_opname_items'])->where('id_stock_opname', $decryptId)->firstOrFail();
+
+            // Menghapus setiap transaksi barang yang terkait dan mengembalikan stok yang ditambahkan/dikurangi
+            foreach ($stock_opname->stock_opname_items as $transaksiBarang) {
+                $stock = Stock::where('id_barang', $transaksiBarang->id_barang)->first();
+                if ($stock) {
+                    $stock->available_stock += $transaksiBarang->quantity; // Kurangi stok yang ditambah
+                    $stock->save();
+                }
+                $transaksiBarang->delete();
+                // Hapus transaksi barang
+            }
+
+            // Hapus transaksi itu sendiri
+            $stock_opname->delete();
+
+            DB::commit();
+            return redirect()->route('isms_stock_opname')->with('success', 'Stock Opname berhasil dihapus.');
+        } catch (\Exception $e) {
+            DB::rollback();
+            return redirect()->back()->with('error', 'Terjadi kesalahan saat menghapus transaksi: ' . $e->getMessage());
+        }
     } 
 
 
@@ -202,7 +227,32 @@ class StockOpnameController extends Controller
 
     public function atk_stock_opname_delete_action(Request $request, $id_stock_opname)
     {
-        return 'delete';
+        DB::beginTransaction();
+
+        try {
+            $decryptId = Crypt::decryptString($id_stock_opname);
+            $stock_opname = StockOpname::with(['stock_opname_items'])->where('id_stock_opname', $decryptId)->firstOrFail();
+
+            // Menghapus setiap transaksi barang yang terkait dan mengembalikan stok yang ditambahkan/dikurangi
+            foreach ($stock_opname->stock_opname_items as $transaksiBarang) {
+                $stock = Stock::where('id_barang', $transaksiBarang->id_barang)->first();
+                if ($stock) {
+                    $stock->available_stock += $transaksiBarang->quantity; // Kurangi stok yang ditambah
+                    $stock->save();
+                }
+                $transaksiBarang->delete();
+                // Hapus transaksi barang
+            }
+
+            // Hapus transaksi itu sendiri
+            $stock_opname->delete();
+
+            DB::commit();
+            return redirect()->route('atk_stock_opname')->with('success', 'Stock Opname berhasil dihapus.');
+        } catch (\Exception $e) {
+            DB::rollback();
+            return redirect()->back()->with('error', 'Terjadi kesalahan saat menghapus transaksi: ' . $e->getMessage());
+        }
     } 
 
 
