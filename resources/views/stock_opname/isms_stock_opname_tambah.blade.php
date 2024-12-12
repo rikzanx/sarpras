@@ -46,7 +46,7 @@ Tambah Stock Opname Barang ISMS | Sarpras Depkam
                             <div class="col-4">
                                 <input type="hidden" name="barang[{{$index}}][id_barang]" value="{{ $item->id_barang }}">
                                 <label for="barang[{{$index}}][nama_barang]" class="form-label">Nama Barang</label>
-                                <input type="text" class="form-control" name="barang[{{$index}}][nama_barang]" value="{{ $item->nama }} ({{ $item->satuan->nama }})" disabled>
+                                <input type="text" class="form-control" name="barang[{{$index}}][nama_barang]" value="{{ $item->kategori->nama }} - {{ $item->nama }} ({{ $item->satuan->nama }})" disabled>
                             </div>
                             <div class="col-2">
                                 <input type="hidden" name="barang[{{$index}}][stock_sistem]" value="{{ $item->stock->available_stock }}">

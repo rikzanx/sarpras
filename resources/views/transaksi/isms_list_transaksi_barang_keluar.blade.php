@@ -123,7 +123,7 @@ List Transaksi Barang Keluar | Sarpras Depkam
                                 <select class="form-control" name="barang[0][id_barang]" required>
                                     <option selected disabled>Pilih Barang</option>
                                     @foreach ($barang as $item)
-                                        <option value="{{ $item->id_barang }}">{{ $item->nama }} ({{ $item->satuan->nama }})</option>
+                                        <option value="{{ $item->id_barang }}">{{ $item->kategori->nama }} - {{ $item->nama }} ({{ $item->satuan->nama }})</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -195,7 +195,7 @@ List Transaksi Barang Keluar | Sarpras Depkam
                                 <select class="form-control" name="barang[0][id_barang]" required>
                                     <option selected disabled>Pilih Barang</option>
                                     @foreach ($barang as $item)
-                                        <option value="{{ $item->id_barang }}">{{ $item->nama }} ({{ $item->satuan->nama }})</option>
+                                        <option value="{{ $item->id_barang }}">{{ $item->kategori->nama }} - {{ $item->nama }} ({{ $item->satuan->nama }})</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -268,7 +268,7 @@ List Transaksi Barang Keluar | Sarpras Depkam
                                 <select class="form-control" name="barang[0][id_barang]" required>
                                     <option selected disabled>Pilih Barang</option>
                                     @foreach ($barang as $item)
-                                        <option value="{{ $item->id_barang }}">{{ $item->nama }} ({{ $item->satuan->nama }})</option>
+                                        <option value="{{ $item->id_barang }}">{{ $item->kategori->nama }} - {{ $item->nama }} ({{ $item->satuan->nama }})</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -469,7 +469,7 @@ List Transaksi Barang Keluar | Sarpras Depkam
                         <select class="form-control" name="barang[${itemIndex}][id_barang]" required>
                             <option selected disabled>Pilih Barang</option>
                             @foreach ($barang as $item)
-                                <option value="{{ $item->id_barang }}">{{ $item->nama }} ({{ $item->satuan->nama }})</option>
+                                <option value="{{ $item->id_barang }}">{{ $item->kategori->nama }} - {{ $item->nama }} ({{ $item->satuan->nama }})</option>
                             @endforeach
                         </select>
                     </div>
@@ -502,7 +502,7 @@ List Transaksi Barang Keluar | Sarpras Depkam
                         <select class="form-control" name="barang[${lastItemIndex}][id_barang]" required>
                             <option selected disabled>Pilih Barang</option>
                             @foreach ($barang as $item)
-                                <option value="{{ $item->id_barang }}">{{ $item->nama }} ({{ $item->satuan->nama }})</option>
+                                <option value="{{ $item->id_barang }}">{{ $item->kategori->nama }} - {{ $item->nama }} ({{ $item->satuan->nama }})</option>
                             @endforeach
                         </select>
                     </div>

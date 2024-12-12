@@ -31,7 +31,7 @@ class StockOpnameController extends Controller
 
     public function isms_stock_opname_tambah()
     {
-        $barangs = Barang::with(['stock','satuan'])->where('id_group',1)->get();
+        $barangs = Barang::with(['kategori','stock','satuan'])->where('id_group',1)->get();
         return view('stock_opname/isms_stock_opname_tambah',[
             'barangs' => $barangs
         ]);
@@ -149,7 +149,7 @@ class StockOpnameController extends Controller
 
     public function atk_stock_opname_tambah()
     {
-        $barangs = Barang::with(['stock','satuan'])->where('id_group',2)->get();
+        $barangs = Barang::with(['kategori','stock','satuan'])->where('id_group',2)->get();
         return view('stock_opname/atk_stock_opname_tambah',[
             'barangs' => $barangs
         ]);
