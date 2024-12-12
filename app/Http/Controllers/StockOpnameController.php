@@ -119,6 +119,7 @@ class StockOpnameController extends Controller
             foreach ($stock_opname->stock_opname_items as $transaksiBarang) {
                 $stock = Stock::where('id_barang', $transaksiBarang->id_barang)->first();
                 if ($stock) {
+                    dd($stock->available_stock - $transaksiBarang->quantity);
                     $stock->available_stock -= $transaksiBarang->quantity; // Kurangi stok yang ditambah
                     $stock->save();
                 }
@@ -237,6 +238,7 @@ class StockOpnameController extends Controller
             foreach ($stock_opname->stock_opname_items as $transaksiBarang) {
                 $stock = Stock::where('id_barang', $transaksiBarang->id_barang)->first();
                 if ($stock) {
+                    dd($stock->available_stock - $transaksiBarang->quantity);
                     $stock->available_stock -= $transaksiBarang->quantity; // Kurangi stok yang ditambah
                     $stock->save();
                 }
