@@ -122,8 +122,8 @@ class StockOpnameController extends Controller
                     $stock->available_stock += $transaksiBarang->quantity; // Kurangi stok yang ditambah
                     $stock->save();
                 }
+                $transaksiBarang->delete();
                 // Hapus transaksi barang
-                StockOpnameItem::where('id_stock_opname_item',$transaksiBarang->id_stock_opname_item)->delete();
             }
 
             // Hapus transaksi itu sendiri
@@ -240,8 +240,8 @@ class StockOpnameController extends Controller
                     $stock->available_stock += $transaksiBarang->quantity; // Kurangi stok yang ditambah
                     $stock->save();
                 }
+                $transaksiBarang->delete();
                 // Hapus transaksi barang
-                StockOpnameItem::where('id_stock_opname_item',$transaksiBarang->id_stock_opname_item)->delete();
             }
 
             // Hapus transaksi itu sendiri
