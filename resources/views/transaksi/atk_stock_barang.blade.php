@@ -35,7 +35,6 @@ List Stock Barang ATK | Sarpras Depkam
                         <thead>
                             <tr>
                                 <th style="text-align: center;">No</th>
-                                <th style="text-align: center;">Nama Group</th>
                                 <th style="text-align: center;">Nama Kategori</th>
                                 <th style="text-align: center;">Nama Barang</th>
                                 <th style="text-align: center;">Deskripsi</th>
@@ -52,7 +51,6 @@ List Stock Barang ATK | Sarpras Depkam
                             @foreach($barangs as $index => $item)
                             <tr>
                                 <td style="text-align: center;">{{ $index+1 }}</td>
-                                <td style="text-align: center;">{{ $item->group->nama }}</td>
                                 <td style="text-align: center;">{{ $item->kategori->nama }}</td>
                                 <td>{{ $item->nama }}</td>
                                 <td>{{ $item->deskripsi }}</td>

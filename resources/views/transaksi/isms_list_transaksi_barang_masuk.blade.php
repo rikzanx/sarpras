@@ -35,7 +35,6 @@ List Transaksi Barang Masuk | Sarpras Depkam
                         <thead>
                             <tr>
                                 <th style="text-align: center;">No</th>
-                                <th style="text-align: center;">Group</th>
                                 <th style="text-align: center;">Tanggal</th>
                                 <th style="text-align: center;">Deskripsi</th>
                                 <th style="text-align: center;">Nama Penerima</th>
@@ -48,7 +47,6 @@ List Transaksi Barang Masuk | Sarpras Depkam
                             @foreach($transaksi_barang_masuk as $index => $item)
                             <tr>
                                 <td style="text-align: center;">{{ $index+1 }}</td>
-                                <td>{{ $item->group->nama }}</td>
                                 <td style="text-align: center;">{{ $item->tanggal}}</td>
                                 <td>{{ $item->deskripsi }}</td>
                                 <td>{{ $item->penerima }}</td>

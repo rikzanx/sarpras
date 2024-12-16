@@ -31,7 +31,6 @@ Stock Opname Barang ATK | Sarpras Depkam
                         <thead>
                             <tr>
                                 <th style="text-align: center;">No</th>
-                                <th style="text-align: center;">Nama Group</th>
                                 <th style="text-align: center;">User</th>
                                 <th style="text-align: center;">Deskripsi</th>
                                 <th style="text-align: center;">Hasil</th>
@@ -43,7 +42,6 @@ Stock Opname Barang ATK | Sarpras Depkam
                             @foreach($stock_opname as $index => $item)
                             <tr>
                                 <td style="text-align: center;">{{ $index+1 }}</td>
-                                <td style="text-align: center;">{{ $item->group->nama }}</td>
                                 <td style="text-align: center;">{{ $item->user->nama }}</td>
                                 <td>{{ $item->deskripsi }}</td>
                                 <td>{{ $item->total_selisih ?? '0' }}</td>
