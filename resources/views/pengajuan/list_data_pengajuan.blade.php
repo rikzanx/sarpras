@@ -84,7 +84,7 @@ List Data Pengajuan | Sarpras Depkam
                                             <td>1</td>
                                             <td>1</td>
                                             <td style="text-align: center;">
-                                                <div class="demo-inline-spacing">
+                                                <div class="btn-group" role="group" aria-label="Basic example">
                                                     <button type="button" class="btn btn-icon btn-primary">
                                                         <span class="tf-icons bx bx-show-alt"></span>
                                                     </button>
@@ -127,7 +127,7 @@ List Data Pengajuan | Sarpras Depkam
                                             <td>1</td>
                                             <td>1</td>
                                             <td style="text-align: center;">
-                                                <div class="demo-inline-spacing">
+                                                <div class="btn-group" role="group" aria-label="Basic example">
                                                     <button type="button" class="btn btn-icon btn-primary">
                                                         <span class="tf-icons bx bx-show-alt"></span>
                                                     </button>
@@ -170,7 +170,7 @@ List Data Pengajuan | Sarpras Depkam
                                             <td>1</td>
                                             <td>1</td>
                                             <td style="text-align: center;">
-                                                <div class="demo-inline-spacing">
+                                                <div class="btn-group" role="group" aria-label="Basic example">
                                                     <button type="button" class="btn btn-icon btn-primary">
                                                         <span class="tf-icons bx bx-show-alt"></span>
                                                     </button>

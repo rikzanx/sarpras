@@ -54,7 +54,7 @@ List Data User | Sarpras Depkam
                                 <td style="text-align: center;">{{$item->nama}}</td>
                                 <td style="text-align: center;">{{$item->email}}</td>
                                 <td style="text-align: center;">
-                                    <div class="demo-inline-spacing">
+                                    <div class="btn-group" role="group" aria-label="Basic example">
                                         <button type="button" class="btn btn-icon btn-primary" onclick="modalshow('{{ Crypt::encryptString($item->id_user) }}')">
                                             <span class="tf-icons bx bx-show-alt"></span>
                                         </button>

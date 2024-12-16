@@ -50,7 +50,7 @@ List Data Kategori | Sarpras Depkam
                                 <td>{{ $item->nama }}</td>
                                 <td>{{ $item->deskripsi }}</td>
                                 <td style="text-align: center;">
-                                    <div class="demo-inline-spacing">
+                                    <div class="btn-group" role="group" aria-label="Basic example">
                                         <button type="button" class="btn btn-icon btn-primary" onclick="modalshow('{{ Crypt::encryptString($item->id_kategori) }}')">
                                             <span class="tf-icons bx bx-show-alt"></span>
                                         </button>
