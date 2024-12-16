@@ -117,7 +117,7 @@ List Transaksi Barang Masuk | Sarpras Depkam
                     <div class="dynamic-items">
                         <div class="row item-row mb-3">
                             <div class="col-12 col-sm-12 col-md-9 col-lg-9">
-                                <label for="barang[0][id_barang]" class="form-label">Pilih Barang</label>
+                                <label for="barang[0][id_barang]" class="form-label">Barang</label>
                                 <select class="form-control" name="barang[0][id_barang]" required>
                                     <option selected disabled>Pilih Barang</option>
                                     @foreach ($barang as $item)
@@ -189,7 +189,7 @@ List Transaksi Barang Masuk | Sarpras Depkam
                     <div class="dynamic-items">
                         <div class="row item-row mb-3">
                             <div class="col-12 col-sm-12 col-md-9 col-lg-9">
-                                <label for="barang[0][id_barang]" class="form-label">Pilih Barang</label>
+                                <label for="barang[0][id_barang]" class="form-label">Barang</label>
                                 <select class="form-control" name="barang[0][id_barang]" required>
                                     <option selected disabled>Pilih Barang</option>
                                     @foreach ($barang as $item)
@@ -262,7 +262,7 @@ List Transaksi Barang Masuk | Sarpras Depkam
                     <div class="dynamic-items">
                         <div class="row item-row mb-3">
                             <div class="col-12 col-sm-12 col-md-9 col-lg-9">
-                                <label for="barang[0][id_barang]" class="form-label">Pilih Barang</label>
+                                <label for="barang[0][id_barang]" class="form-label">Barang</label>
                                 <select class="form-control" name="barang[0][id_barang]" required>
                                     <option selected disabled>Pilih Barang</option>
                                     @foreach ($barang as $item)
@@ -350,7 +350,7 @@ List Transaksi Barang Masuk | Sarpras Depkam
                     const newItem = `
                         <div class="row item-row mb-3">
                             <div class="col-12 col-sm-12 col-md-9 col-lg-9">
-                                <label for="barang[${index}][id_barang]" class="form-label">Pilih Barang</label>
+                                <label for="barang[${index}][id_barang]" class="form-label">Barang</label>
                                 <select class="form-control" name="barang[${index}][id_barang]" required disabled>
                                     <option selected disabled>Pilih Barang</option>
                                     @foreach ($barang as $barangItem)
@@ -410,7 +410,7 @@ List Transaksi Barang Masuk | Sarpras Depkam
                     const newItem = `
                         <div class="row item-row mb-3">
                             <div class="col-12 col-sm-12 col-md-9 col-lg-9">
-                                <label for="barang[${index}][id_barang]" class="form-label">Pilih Barang</label>
+                                <label for="barang[${index}][id_barang]" class="form-label">Barang</label>
                                 <select class="form-control" name="barang[${index}][id_barang]" required>
                                     <option selected disabled>Pilih Barang</option>
                                     @foreach ($barang as $barangItem)
@@ -463,7 +463,7 @@ List Transaksi Barang Masuk | Sarpras Depkam
             const newItem = `
                 <div class="row item-row mb-3">
                     <div class="col-12 col-sm-12 col-md-9 col-lg-9">
-                        <label for="barang[${itemIndex}][id_barang]" class="form-label">Pilih Barang</label>
+                        <label for="barang[${itemIndex}][id_barang]" class="form-label">Barang</label>
                         <select class="form-control" name="barang[${itemIndex}][id_barang]" required>
                             <option selected disabled>Pilih Barang</option>
                             @foreach ($barang as $item)
@@ -496,7 +496,7 @@ List Transaksi Barang Masuk | Sarpras Depkam
             const newItem = `
                 <div class="row item-row mb-3">
                     <div class="col-12 col-sm-12 col-md-9 col-lg-9">
-                        <label for="barang[${lastItemIndex}][id_barang]" class="form-label">Pilih Barang</label>
+                        <label for="barang[${lastItemIndex}][id_barang]" class="form-label">Barang</label>
                         <select class="form-control" name="barang[${lastItemIndex}][id_barang]" required>
                             <option selected disabled>Pilih Barang</option>
                             @foreach ($barang as $item)
