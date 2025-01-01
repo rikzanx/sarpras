@@ -120,8 +120,8 @@ Route::group(['middleware' => [AuthMiddleware::class]],function(){
 
 
     Route::get('/list_data_pengajuan', [PengajuanController::class, 'list_data_pengajuan'])->name('list_data_pengajuan');
-    Route::post('/add_data_pengajuan',[PengajuanController::class, 'add_data_pengajuan'])->name('add_data_pengajuan');
-
+    Route::get('/add_data_pengajuan',[PengajuanController::class, 'add_data_pengajuan'])->name('add_data_pengajuan');
+            
 
     Route::get('/detail_form_permintaan_barang', [PengajuanController::class, 'detail_form_permintaan_barang'])->name('detail_form_permintaan_barang');
 
