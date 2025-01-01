@@ -37,7 +37,7 @@ Route::group(['middleware' => [AuthMiddleware::class]],function(){
     Route::get('/isms/stock_opname/edit/{id_stock_opname}',[StockOpnameController::class,'isms_stock_opname_edit'])->name('isms_stock_opname_edit');
     Route::post('/isms/stock_opname/edit/{id_stock_opname}/action',[StockOpnameController::class,'isms_stock_opname_edit_action'])->name('isms_stock_opname_edit_action');
     Route::post('/isms/stock_opname/delete/{id_stock_opname}/action',[StockOpnameController::class,'isms_stock_opname_delete_action'])->name('isms_stock_opname_delete_action');
-    
+
     Route::get('/isms/stock_barang',[TransaksiController::class,'isms_stock_barang'])->name('isms_stock_barang');
     Route::get('/isms/show_transaksi_barang/{id_transaction}',[TransaksiController::class,'isms_show_transaksi_barang'])->name('isms_show_transaksi_barang');
 
@@ -66,7 +66,7 @@ Route::group(['middleware' => [AuthMiddleware::class]],function(){
     Route::get('/atk/stock_opname/edit/{id_stock_opname}',[StockOpnameController::class,'atk_stock_opname_edit'])->name('atk_stock_opname_edit');
     Route::post('/atk/stock_opname/edit/{id_stock_opname}/action',[StockOpnameController::class,'atk_stock_opname_edit_action'])->name('atk_stock_opname_edit_action');
     Route::post('/atk/stock_opname/delete/{id_stock_opname}/action',[StockOpnameController::class,'atk_stock_opname_delete_action'])->name('atk_stock_opname_delete_action');
-  
+
     Route::get('/atk/stock_barang',[TransaksiController::class,'atk_stock_barang'])->name('atk_stock_barang');
     Route::get('/atk/show_transaksi_barang/{id_transaction}',[TransaksiController::class,'atk_show_transaksi_barang'])->name('atk_show_transaksi_barang');
 
@@ -120,6 +120,7 @@ Route::group(['middleware' => [AuthMiddleware::class]],function(){
 
 
     Route::get('/list_data_pengajuan', [PengajuanController::class, 'list_data_pengajuan'])->name('list_data_pengajuan');
+    Route::post('/add_data_pengajuan',[PengajuanController::class, 'add_data_pengajuan'])->name('add_data_pengajuan');
 
 
     Route::get('/detail_form_permintaan_barang', [PengajuanController::class, 'detail_form_permintaan_barang'])->name('detail_form_permintaan_barang');
