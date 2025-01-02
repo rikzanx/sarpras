@@ -2,6 +2,43 @@
 
 @section('link')
 
+<style>
+    /* Sesuaikan tinggi dan border Select2 */
+.select2-container .select2-selection--single {
+    height: calc(2.25rem + 2px); /* Sama dengan form-control */
+    border: 1px solid #ced4da; /* Border Bootstrap */
+    border-radius: 0.375rem; /* Radius Bootstrap */
+    padding: 0.375rem 0.75rem; /* Padding Bootstrap */
+    box-shadow: none; /* Hilangkan shadow */
+}
+
+/* Hilangkan background focus dan outline */
+.select2-container .select2-selection--single:focus {
+    outline: none;
+    box-shadow: none;
+    border-color: #80bdff; /* Warna fokus Bootstrap */
+}
+
+/* Sesuaikan warna placeholder */
+.select2-container .select2-selection__placeholder {
+    color: #6c757d; /* Warna placeholder Bootstrap */
+}
+
+/* Posisi ikon dropdown */
+.select2-container .select2-selection__arrow {
+    height: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* Atur dropdown agar tampak lebih bersih */
+.select2-container .select2-dropdown {
+    border: 1px solid #ced4da;
+    border-radius: 0.375rem;
+    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
+}
+</style>
+
 @endsection
 
 @section('judul')
@@ -119,9 +156,26 @@ Form Pengajuan | Sarpras Depkam
 @section('script')
 
 <script>
+
+
+// Fungsi untuk inisialisasi Select2
+function initializeSelect2() {
+    $('.barang select').select2({
+        placeholder: "Pilih Barang",
+        allowClear: true,
+        width: 'resolve' // Agar Select2 mengikuti lebar parent
+    });
+}
+
+// Panggil fungsi inisialisasi saat dokumen siap
+$(document).ready(function () {
+    initializeSelect2(); // Inisialisasi awal
+});
+
+// Tambah baris baru ketika tombol "Barang" diklik
 document.querySelector('.add-item').addEventListener('click', function () {
     const tbody = document.querySelector('.barang');
-    const rowCount = tbody.children.length; // Hitung jumlah baris saat ini
+    const rowCount = tbody.children.length; // Hitung jumlah baris
     const newRow = document.createElement('tr'); // Buat elemen baris baru
 
     // Template baris baru
@@ -155,10 +209,13 @@ document.querySelector('.add-item').addEventListener('click', function () {
         </td>
     `;
 
-    // Tambahkan baris baru ke tbody
+    // Tambahkan baris baru ke dalam tbody
     tbody.appendChild(newRow);
 
-    // Tambahkan event listener untuk tombol hapus (remove-item) di baris baru
+    // Re-inisialisasi Select2 untuk elemen baru
+    initializeSelect2();
+
+    // Tambahkan event listener untuk tombol hapus
     newRow.querySelector('.remove-item').addEventListener('click', function () {
         newRow.remove();
         updateRowNumbers();
@@ -175,7 +232,6 @@ function updateRowNumbers() {
         row.querySelector('textarea[name*="[keterangan]"]').setAttribute('name', `barang[${index}][keterangan]`);
     });
 }
-
 
 
 </script>

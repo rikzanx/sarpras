@@ -41,6 +41,9 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.4.1/css/responsive.bootstrap5.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.3.6/css/buttons.bootstrap5.min.css">
 
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0-rc.0/css/select2.min.css" rel="stylesheet" />
+
+
     @yield('link')
 
     <!-- Page CSS -->
@@ -126,11 +129,14 @@
     <script src="https://cdn.datatables.net/buttons/2.3.6/js/buttons.html5.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/2.3.6/js/buttons.print.min.js"></script>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0-rc.0/js/select2.min.js"></script>
+
+
     <!-- Main JS -->
     <script src="{{ asset('assets/js/main.js')}}"></script>
 
     <!-- Page JS -->
-    
+
     <script src="{{ asset('assets/js/ui-toasts.js')}}"></script>
 
     <!-- Place this tag in your head or just before your close body tag. -->

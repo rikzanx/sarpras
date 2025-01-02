@@ -51,14 +51,14 @@ List Stock Barang ATK | Sarpras Depkam
                             @foreach($barangs as $index => $item)
                             <tr>
                                 <td style="text-align: center;">{{ $index+1 }}</td>
-                                <td style="text-align: center;">{{ $item->kategori->nama }}</td>
+                                <td><b>{{ $item->kategori->nama }}</b></td>
                                 <td>{{ $item->nama }}</td>
                                 <td>{{ $item->deskripsi }}</td>
-                                <td>{{ $item->stock->available_stock }}</td>
-                                <td>{{ $item->total_barang_masuk ?? '0' }}</td>
-                                <td>{{ $item->total_barang_keluar ?? '0' }}</td>
-                                <td>{{ $item->total_opname ?? '0' }}</td>
-                                <td>{{ $item->satuan->nama }}</td>
+                                <td style="text-align: center;"><span class="badge rounded-pill bg-primary">{{ $item->stock->available_stock }}</span></td>
+                                <td style="text-align: center;">{{ $item->total_barang_masuk ?? '0' }}</td>
+                                <td style="text-align: center;">{{ $item->total_barang_keluar ?? '0' }}</td>
+                                <td style="text-align: center;">{{ $item->total_opname ?? '0' }}</td>
+                                <td style="text-align: center;">{{ $item->satuan->nama }}</td>
                                 <td>
                                     @foreach($item->transaksi_keluar as $keluar)
                                     - {{ $keluar->deskripsi }} ({{ $keluar->pivot->quantity }} {{ $item->satuan->nama }}) <br>
@@ -287,7 +287,7 @@ List Stock Barang ATK | Sarpras Depkam
             url: `{{ route('show_data_barang', ':id') }}`.replace(':id', id),
             method: 'GET',
             success: function(data){
-                
+
                 $('#modalshow input[name="nama"]').val(data.nama);
                 $('#modalshow input[name="deskripsi"]').val(data.deskripsi);
                 $('#modalshow select[name="id_group"]').val(data.id_group);
